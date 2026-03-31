@@ -4,7 +4,7 @@ Times: 9:05 – 11:35 und 12:50 – 15:10  <br/>
 room: 745 116 1st floor
 
 ## Instructors
-Yann Martins, Stefanie Bräuer
+Yann Martins, Stefanie Bräuer <br/>
 Guests:  <a href="https://unsorted.love" target="_blank">Unsorted Love</a> (Paulina Zybinska, Andrea Zaccuri, Alper Yagcioglu), <a href="https://nervousdata.com" target="_blank">Jasmin Meerhoff</a>, <a href="https://teddavis.org" target="_blank">Ted Davis</a>  
 
 ## Live Agenda :calendar:
@@ -23,11 +23,11 @@ We acquire the ability to quickly create prototypes to test and iteratively impr
 The module promotes an understanding of coding as a craft, and as a reflective, caring activity that is practiced and shared in collaboration. We learn to work effectively in a team, share ideas, assign roles and work together on projects to achieve common goals. We learn to document projects appropriately and to present them clearly and convincingly to inform and inspire others. Therefore, the outcomes are developed during group work and peer teaching.<br/>
 
 ## Deliverables 
-Until mid-term presentations on 18 May:
-Develop a live coding mini-project in groups of two.
+Until mid-term presentations on 18 May:<br/>
+Develop a live coding mini-project in groups of two.<br/><br/>
 
-Until final presentations on 1 June:
-Create-Share-Show: feel free to find new groups of two, generate your own setting that suits your work. The outcome will be a live coding set that you’ll share internally on 1 June and then again in the cinema Rex on 2 June.
+Until final presentations on 1 June:<br/>
+Create-Share-Show: feel free to find new groups of two, generate your own setting that suits your work. The outcome will be a live coding set that you’ll share internally on 1 June and then again in the cinema Rex on 2 June.<br/>
 
 ### Documentation 
 You’ll each be creating a documentation website. This site will bring together everything you’ve worked on: your experiments, your thoughts, and the outcomes of every stage of the module. It’s not just a side task—it's part of your project. The website will be published on github, and it serves as a way to reflect on and present your process. The following writing assignement is part of the documentation.
