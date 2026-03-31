@@ -24,7 +24,7 @@ The module promotes an understanding of coding as a craft, and as a reflective, 
 
 ## Deliverables 
 Until mid-term presentations on 18 May:<br/>
-Develop a live coding mini-project in groups of two.<br/><br/>
+Develop a live coding mini-project in groups of two.<br/>
 
 Until final presentations on 1 June:<br/>
 Create-Share-Show: feel free to find new groups of two, generate your own setting that suits your work. The outcome will be a live coding set that you’ll share internally on 1 June and then again in the cinema Rex on 2 June.<br/>
