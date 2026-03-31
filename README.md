@@ -8,7 +8,7 @@ Yann Martins, Stefanie Bräuer <br/>
 Guests:  <a href="https://unsorted.love" target="_blank">Unsorted Love</a> (Paulina Zybinska, Andrea Zaccuri, Alper Yagcioglu), <a href="https://nervousdata.com" target="_blank">Jasmin Meerhoff</a>, <a href="https://teddavis.org" target="_blank">Ted Davis</a>  
 
 ## Live Agenda :calendar:
-<a href="https://docs.google.com/spreadsheets/d/16ZCqY39xTD9FFI1RdVbiJdFREi_elg6u_iRzr2toSsw/edit?gid=0#gid=0" target="_blank">Link zu Agenda (Check for Updates)</a>
+<a href="https://docs.google.com/spreadsheets/d/1qRkvmpcOofRrkQ5Rw_JtUIZzaAUuNLWNUsvVkxn57Qs/edit?usp=sharing" target="_blank">Link zu Agenda (Check for Updates)</a>
 
 ## Salon
 <a href="https://www.hslu.ch/de-ch/design-film-kunst/studium/interdisziplinaere-module/colabor/salon-colabor-2025/" target="_blank">Salon Colabor 2025 Öffentliche Vorträge und Präsentationen </a>
