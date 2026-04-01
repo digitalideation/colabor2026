@@ -4,7 +4,7 @@ Times: 9:05 – 11:35 und 12:50 – 15:10  <br/>
 room: 745 116 1st floor
 
 ## Instructors
-Yann Martins, Stefanie Bräuer <br/>
+<a href="https://yano.squatted.online" target="_blank">Yann Martins</a>, <a href="https://stefaniebraeuer.ch" target="_blank">Stefanie Bräuer</a> <br/>
 Guests:  <a href="https://unsorted.love" target="_blank">Unsorted Love</a> (Paulina Zybinska, Andrea Zaccuri, Alper Yagcioglu), <a href="https://nervousdata.com" target="_blank">Jasmin Meerhoff</a>, <a href="https://teddavis.org" target="_blank">Ted Davis</a>  
 
 ## Live Agenda :calendar:
