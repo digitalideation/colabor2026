@@ -23,14 +23,87 @@ We acquire the ability to quickly create prototypes to test and iteratively impr
 The module promotes an understanding of coding as a craft, and as a reflective, caring activity that is practiced and shared in collaboration. We learn to work effectively in a team, share ideas, assign roles and work together on projects to achieve common goals. We learn to document projects appropriately and to present them clearly and convincingly to inform and inspire others. Therefore, the outcomes are developed during group work and peer teaching.<br/>
 
 ## Deliverables 
-Until mid-term presentations on 18 May:<br/>
-Develop a live coding mini-project in groups of two.<br/>
+Live coding can be challenging, especially if starting from zero. A good live coder is one who can make use of functions and code snippets to avoid typing everything from scratch. While p5live and p5.js already offer a lot of shorthand functions, for the first week of the collaboration we will concentrate on developing code snippets and functions that can be called multiple times to create interesting and intricate visuals.
 
-Until final presentations on 1 June:<br/>
-Create-Share-Show: feel free to find new groups of two, generate your own setting that suits your work. The outcome will be a live coding set that you’ll share internally on 1 June and then again in the cinema Rex on 2 June.<br/>
+In parallel to the development of visuals, the class will also focus on the production of audio. For this, we will look at the basics of sound design and algorithmic composition, as well as how to include audio into your visuals. Working with audio also means recording and using already existing songs (pay attention to copyright if you publish this material). The class will offer some introduction to sampling techniques to work with existing audio. When working with audio, it is recommended that you bring headphones that connect with a cable.
 
-### Documentation 
-You’ll each be creating a documentation website. This site will bring together everything you’ve worked on: your experiments, your thoughts, and the outcomes of every stage of the module. It’s not just a side task—it's part of your project. The website will be published on github, and it serves as a way to reflect on and present your process. The following writing assignement is part of the documentation.
+#### For the mid-term presentations on 18 of May:
+
+- Produce 3+ code snippets that you can use in your live coding repertoire. Each code snippet should be properly documented with comments describing what the function does.
+- Code snippets should be a maximum of 20–30 lines of code.
+- If you need more lines, you can always nest functions within functions.
+
+  ```javascript
+  function first_function(){
+    // some code describing visuals
+    second_function()
+    // some code describing visuals
+  }
+  
+  function second_function(){
+    // some code describing visuals
+  }
+  ```
+
+- You can name the functions for what they do, but remember live coding is a journey for you as well as the spectators. Be creative with how you name the functions.
+- A 2-minute long audio composition. This can be original or existing audio (a song, a speech, a field recording, etc.) that has been altered.
+- Performing live is storytelling. What do these functions do? What is the story of your visuals? How do they connect to the sound? You can refer to your own personal experiences or use current events, histories, computations, political messages, etc. But also it could be an aesthetic exploration, and if there is no story, this is valid too.
+
+#### For the final presentations on 1st of June:
+
+**Algorave**: For the final presentation, each group of 2 will present a cohesive work that reflects the points above. Rework the code and expand to 6+ snippets (each 20 lines long). The audio for the final presentation should be 4 minutes long, or it can be 2 compositions each of 2 minutes.
+
+For the internal presentation, you will need to reflect on your work and show the code and describe its functions.
+
+### Documentation
+
+You’ll each be creating a documentation markdown file, which will include images, videos, and code snippets. The markdown will later be used as **a** basis for the whole course documentation website.
+
+The documentation will be organized by date, i.e., weeks. It should look like this:
+
+```
+course/
+documentation.md
+		week1/
+			code/
+					some-code.js
+			video/
+					some-video.mov
+			images/
+					some-image.png
+			reflections/
+					some-text.txt
+      week2/
+        code/
+            some-code.js
+        video/
+            some-video.mov
+        images/
+            some-image.png
+        reflections/
+            some-text.txt
+      week3/
+        code/
+            some-code.js
+        video/
+            some-video.mov
+        images/
+            some-image.png
+        reflections/
+            some-text.txt
+       week-etc.../
+        code/
+            some-code.js
+        video/
+            some-video.mov
+        images/
+            some-image.png
+        reflections/
+            some-text.txt
+```
+
+This documentation will bring together everything you’ve worked on: your experiments, your thoughts, and the outcomes of every stage of the module. It’s not just a side task—it's part of your project. The documentation will be published on GitHub, and it serves as a way to reflect on and present your process.
+
 
 ### Writing Assignment for Online Process Documentation
 Until mid-term presentations on 18 May:<br/>
