@@ -102,7 +102,7 @@ documentation.md
 This documentation will bring together everything you’ve worked on: your experiments, your thoughts, and the outcomes of every stage of the module. It’s not just a side task, it's part of your project. The documentation will be published on GitHub, and it serves as a way to reflect on and present your process.
 
 
-### Writing Assignment for Online Process Documentation
+### Additional Writing Assignment for Online Process Documentation
 Until mid-term presentations on 18 May:<br/>
 Briefly present your results and give a brief written account of the decisions you made during the first phase of the module. This process reflection should accompany your online process gallery and be no longer than 400 words.<br/><br/>
 Until final presentations on 1 June:<br/>
