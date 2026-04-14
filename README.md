@@ -11,10 +11,10 @@ Guests:  <a href="https://unsorted.love" target="_blank">Unsorted Love</a> (Paul
 <a href="https://docs.google.com/spreadsheets/d/1qRkvmpcOofRrkQ5Rw_JtUIZzaAUuNLWNUsvVkxn57Qs/edit?usp=sharing" target="_blank">Link zu Agenda (Check for Updates)</a>
 
 ## Salon
-<a href="https://www.hslu.ch/de-ch/design-film-kunst/studium/interdisziplinaere-module/colabor/salon-colabor-2025/" target="_blank">Salon Colabor 2025 Öffentliche Vorträge und Präsentationen </a>
+<a href="https://www.hslu.ch/de-ch/design-film-kunst/studium/interdisziplinaere-module/colabor/salon-colabor-2026/" target="_blank">Salon Colabor 2025 Öffentliche Vorträge und Präsentationen </a>
 
-## HUB Program
-<a href="https://lets-meet.org/events/colabor"> Preview Courses </a>
+//## HUB Program
+<a href="https://lets-meet.org/events/colabor"> Preview Courses </a>//
 
 ## Module Content
 We learn to use code as a design medium and to reflect on it critically: We design using algorithms, we use generative and deconstructive-critical imaging methods and reflect on these in presentations and in written statements. Analysis and discussion of works of computer and media art enable us to understand various strategies, tackle questions of computer aesthetics and techniques and to apply these strategies in relation to the focus of the respective studies. We practice basic design principles such as composition, color theory and typography and apply them to digital media. By creating generative visualizations with the help of JavaScript, p5.js and other libraries, we learn to implement ideas prototypically and develop them iteratively. The entire process is reflected upon in individual portfolios, documented and published on github.<br/>
