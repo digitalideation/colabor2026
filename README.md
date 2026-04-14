@@ -102,7 +102,7 @@ documentation.md
             some-text.txt
 ```
 
-This documentation will bring together everything you’ve worked on: your experiments, your thoughts, and the outcomes of every stage of the module. It’s not just a side task—it's part of your project. The documentation will be published on GitHub, and it serves as a way to reflect on and present your process.
+This documentation will bring together everything you’ve worked on: your experiments, your thoughts, and the outcomes of every stage of the module. It’s not just a side task, it's part of your project. The documentation will be published on GitHub, and it serves as a way to reflect on and present your process.
 
 
 ### Writing Assignment for Online Process Documentation
