@@ -1,7 +1,7 @@
 # +Colabor Creative Coding 2026 :boom: :fire:
 
 Times: 9:05 – 11:35 und 12:50 – 15:10  <br/>
-room: 745 116 1st floor
+room: 742_418 DI Plaza, 4th floor of 742 building (space of Digital Ideation)
 
 ## Instructors
 <a href="https://yano.squatted.online" target="_blank">Yann Martins</a>, <a href="https://stefaniebraeuer.ch" target="_blank">Stefanie Bräuer</a> <br/>
