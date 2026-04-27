@@ -1,6 +1,6 @@
 # +Colabor Creative Coding 2026 :boom: :fire:
 
-Times: 9:05 – 11:35 und 12:50 – 15:10  <br/>
+Times: 9:05 – 11:45 and 12:50 – 15:00  <br/>
 room: 742_418 DI Plaza, 4th floor of 742 building (space of Digital Ideation)
 
 ## Instructors
