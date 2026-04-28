@@ -4,6 +4,9 @@
 [P5live](https://teddavis.org/p5live/)
 ## P5.js reference
 [https://p5js.org/reference/](https://p5js.org/reference/)
+
+
+
 ## day 1
 
 ### most basic paint program
@@ -131,3 +134,7 @@ function draw() {
 ![basic molnár sketch](https://github.com/digitalideation/colabor2026/blob/main/week-1/p5Live/P5L_basic-molnar_20260428113621.png?raw=true)
 
 
+## To Do for day 2
+
+* look a the coding train video tutorials [here](https://thecodingtrain.com/tracks/code-programming-with-p5-js/code/2-variables/1-mouseX-mouseY). Skip `createGraphics` the whole `Objects` chapter. If you can have a look at the `Arrays` chapter.
+* If you feel motivated try to use nested loops to recreate Vera Molnár artworks in a 6 x 6 grid.
