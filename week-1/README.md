@@ -226,4 +226,4 @@ function draw() {
 ## To Do for day 2
 
 * look a the coding train video tutorials [here](https://thecodingtrain.com/tracks/code-programming-with-p5-js/code/2-variables/1-mouseX-mouseY). Skip `createGraphics` the whole `Objects` chapter. If you can have a look at the `Arrays` chapter.
-* If you feel motivated try to use nested loops to recreate Vera Molnár artworks in a 6 x 6 grid.
+* If you feel motivated try to use nested loops to recreate Vera Molnár artworks in a 3 x 3 grid.
