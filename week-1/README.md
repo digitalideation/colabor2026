@@ -48,7 +48,7 @@ function draw() {
 }
 ```
 
-![basic paint sketch](/Users/admin/switchdrive2/institution/TEACHING/HSLU/2026/colabor2026/week-1/p5Live/P5L_basic_paint_20260428113737.png)
+![basic paint sketch](https://github.com/digitalideation/colabor2026/blob/main/week-1/p5Live/P5L_basic_paint_20260428113737.png)
 
 ### basic squares
 
@@ -74,7 +74,7 @@ function draw() {
 	square(500, 200, 100)
 }
 ```
-![basic sqaures sketch](/Users/admin/switchdrive2/institution/TEACHING/HSLU/2026/colabor2026/week-1/p5Live/P5L_basic-squares_20260428113724.png)
+![basic sqaures sketch](https://github.com/digitalideation/colabor2026/blob/main/week-1/p5Live/P5L_basic-squares_20260428113724.png)
 
 ### basic Molnár
 
@@ -128,4 +128,6 @@ function draw() {
 }
 ```
 ![basic molnár sketch](/Users/admin/switchdrive2/institution/TEACHING/HSLU/2026/colabor2026/week-1/p5Live/P5L_basic-molnar_20260428113621.png)
+![basic molnár sketch](https://github.com/digitalideation/colabor2026/blob/main/week-1/p5Live/P5L_basic-molnar_20260428113621.png?raw=true)
+
 
