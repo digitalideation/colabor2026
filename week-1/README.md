@@ -230,6 +230,63 @@ function draw() {
 
 ## day 2
 
+### Using functions
+In the following sketch we use a function to replace a for loop to draw many concentric squares
+
+```javascript
+let dimX = 453
+let dimY = dimX
+let num = 17
+let reduction = dimX / num
+let posX = 0
+let posY = 0
+
+function setup() {
+	createCanvas(windowWidth, windowHeight)
+	background(255)
+	rectMode(CENTER)
+	angleMode(DEGREES)
+	posX = width / 2
+	posY = height / 2
+}
+
+function draw() {
+	background(255)
+	noFill()
+	strokeWeight(3)
+	stroke(0)
+	tmcs(1200, 200, 2, 250, 10)
+	tmcs(1200, 500, 6, 350, 13)
+}
+// this function draws squares at position
+// x and y, and they move randomly 
+// a tiny bit
+function tmcs(x, y, speed, dim, num){
+	
+	let dimension = dim + sin(frameCount * speed) * 10
+	// num = 10
+	let reduction = dimension / num
+	
+	for(let i = 0; i < num; i++) {
+		let offsetX = random(7)
+		let offsetY = random(7)
+		stroke(255, 0, 0)
+		strokeWeight(3)
+		square(
+			x,
+			y,
+			(dimension) - (reduction * i)
+		)
+	}
+}
+```
+
+
+
+### Reproducing Molnár
+
+Here I use a two for loop nested to display a grid of concentric squares
+
 ```javascript
 
 let dimX = 453
@@ -253,96 +310,29 @@ function draw() {
 	noFill()
 	strokeWeight(3)
 	stroke(0)
-	// animation!
-	// calculate the dimension of the square
-	// based on a sin function
-
-	// for loop
-	for(let i = 0; i < num; i++) {
-		let offsetX = random(7)
-		let offsetY = random(7)
-		stroke(255, 0, 0)
-		strokeWeight(3)
-		if(i == 0) {
-			// fill(0, 255, 0)
-			stroke(0, 0, 255)
-			strokeWeight(1)
+	// nested loops
+	let numX = 10
+	// first loop
+	for(let i = 0; i < numX; i++){
+		// define the size of the square based on th enumber of times
+		// we loop the square
+		let dimension = width / numX
+		// define the position of the square on the x axis
+		let posX = dimension / 2 +  (i * dimension)
+		// second loop
+		for(let j = 0; j < 5; j++){
+			// define position on y axis
+			let posY = dimension / 2 +  (j * dimension)
+			// draw the concentric squares
+			tmcs(posX, posY, dimension, 1, 10)	
 		}
-
-		if(i == 4) {
-			// fill(0, 255, 0)
-			stroke(0, 0, 255)
-			strokeWeight(1)
-		}
-
-		square(
-			posX + offsetX,
-			posY + offsetY,
-			(dimX) - (reduction * i)
-		)
+		
 	}
-	
-		// for loop
-	for(let i = 0; i < num; i++) {
-		let offsetX = random(7)
-		let offsetY = random(7)
-		stroke(255, 0, 0)
-		strokeWeight(3)
-		if(i == 0) {
-			// fill(0, 255, 0)
-			stroke(0, 0, 255)
-			strokeWeight(1)
-		}
-
-		if(i == 4) {
-			// fill(0, 255, 0)
-			stroke(0, 0, 255)
-			strokeWeight(1)
-		}
-
-		square(
-			posX + offsetX,
-			-330 + posY + offsetY,
-			(dimX) - (reduction * i)
-		)
-	}
-	
-		// for loop
-	for(let i = 0; i < num; i++) {
-		let offsetX = random(7)
-		let offsetY = random(7)
-		stroke(255, 0, 0)
-		strokeWeight(3)
-		if(i == 0) {
-			// fill(0, 255, 0)
-			stroke(0, 0, 255)
-			strokeWeight(1)
-		}
-
-		if(i == 4) {
-			// fill(0, 255, 0)
-			stroke(0, 0, 255)
-			strokeWeight(1)
-		}
-
-		square(
-			-330 + posX + offsetX,
-			posY + offsetY,
-			(dimX) - (reduction * i)
-		)
-	}
-	// global animation parameters
-	dimX = 300 + sin(frameCount * 4) * 10
-	num = 10
-	reduction = dimX / num
-
-	tmcs(1200, 200, 2, 250, 10)
-	tmcs(1200, 500, 6, 350, 13)
 }
 // this function draws squares at position
 // x and y, and they move randomly 
 // a tiny bit
-function tmcs(x, y, speed, dim, num){
+function tmcs(x, y, dim, speed, num){
 	
 	let dimension = dim + sin(frameCount * speed) * 10
 	// num = 10
@@ -354,10 +344,168 @@ function tmcs(x, y, speed, dim, num){
 		stroke(255, 0, 0)
 		strokeWeight(3)
 		square(
-			x,
-			y,
+			x+offsetX,
+			y+offsetY,
 			(dimension) - (reduction * i)
 		)
+	}
+}
+```
+
+![concentric squares](https://github.com/digitalideation/colabor2026/blob/main/week-1/p5Live/P5L_molnár-function_001_20260429130741.png?raw=true)
+
+### Moving cube
+
+Finally working in 3d space!
+
+```javascript
+// define basic variables
+// for positioning a cube on the screen
+let posX = 0
+let posY = 0
+let boxDim = 100
+function setup() {
+	// WEBGL == 3D!!!
+	createCanvas(windowWidth, windowHeight, WEBGL)
+	
+}
+
+function draw() {
+	background(0)
+	orbitControl()
+	fill(255)
+	// what follows is how to do the most basic animarion:
+	// moving a 3d object on the screen
+	// posX = posX + 1
+	// posX+=1
+	posX++
+		posX+=10
+	posY = posY - 1
+	// use if to bring the cube
+	// reset the position of the cube to the left of the screen
+	// when it reaches the right edge
+	if(posX > width/2 + boxDim){
+		// posX = 0
+		posX = -width/2
+	}
+	// same for the y-axis:
+	// set the position of the cube back to 0
+	// when it moves above the screen height
+	if(posY < -(height / 2)){
+		posY = 0
+	}
+	
+	// when working with 3d geometry
+	// it is very important to use 
+	// push() and pop()
+	// so that transformations are applied only locally 
+	// to the 3d primitive within thos two functions
+	push()
+	// move the primitive in 3d space
+	translate(posX, posY, 0)
+	box(boxDim)
+	pop()
+
+	// draw the 3d axis
+	strokeWeight(3)
+	push()
+	stroke(255, 0, 0)
+	line(0,0,0, width, 0, 0)
+	stroke(0, 255, 0)
+	line(0,0,0, 0, -height, 0)
+	stroke(0, 0, 255)
+	line(0,0,0, 0, 0, 1000)
+	pop()
+	
+}
+```
+
+### Not the DVD logo in 3d space
+
+Source [https://editor.p5js.org/Lllucas/sketches/zRcCe8EKM](https://editor.p5js.org/Lllucas/sketches/zRcCe8EKM)
+
+```javascript
+
+let x;
+let y;
+let z;
+let xspeed;
+let yspeed;
+let zspeed;
+let depth = 2000
+let dvd;
+let r, g, b;
+
+
+function setup() {
+	createCanvas(windowWidth, windowHeight, WEBGL);
+	// initialize the variables
+	// for the position of the cube 
+	// at the beginning!
+	x = random(width);
+	y = random(height);
+	z = random(-depth, 0)
+	// initialize speed at which the cube
+	// moves!
+	xspeed = 4;
+	yspeed = 4;
+	zspeed = 4;
+	// IDK!
+	pickcolor();
+}
+
+function pickcolor() {
+	r = random(255);
+	g = random(255);
+	b = random(255);
+
+}
+
+function draw() {
+	translate(-width/2, -height/2)
+	background(0);
+	// noStroke(255);
+	// fill(255);
+	fill(r, g, b);
+	
+	push()
+	translate(x, y, z)
+	box(100)
+	pop()
+	// rect(x, y, 80, 60);
+	//image(dvd, x, y, 80, 60);
+	x = x + xspeed;
+	y = y + yspeed;
+	z = z + zspeed;
+	
+	if(z >= 200) {
+		zspeed = -zspeed;
+		z = 200;
+		pickcolor();
+	} else if(z <= -depth) {
+		zspeed = -zspeed;
+		z = -depth;
+		pickcolor();
+	}
+
+	if(x >= width) {
+		xspeed = -xspeed;
+		x = width;
+		pickcolor();
+	} else if(x <= 0) {
+		xspeed = -xspeed;
+		x = 0;
+		pickcolor();
+	}
+
+	if(y >= height) {
+		yspeed = -yspeed;
+		y = height;
+		pickcolor();
+	} else if(y <= 0) {
+		yspeed = -yspeed;
+		y = 0;
+		pickcolor();
 	}
 }
 ```
