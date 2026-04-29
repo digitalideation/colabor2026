@@ -420,6 +420,8 @@ function draw() {
 }
 ```
 
+![concentric squares](https://github.com/digitalideation/colabor2026/blob/main/week-1/p5Live/P5L_moving-boxes_20260429142547.png?raw=true)
+
 ### Not the DVD logo in 3d space
 
 Source [https://editor.p5js.org/Lllucas/sketches/zRcCe8EKM](https://editor.p5js.org/Lllucas/sketches/zRcCe8EKM)
@@ -509,3 +511,4 @@ function draw() {
 	}
 }
 ```
+![Not the DVD logo in 3d](https://github.com/digitalideation/colabor2026/blob/main/week-1/p5Live/P5L_dvd-logo_20260429173307.png?raw=true)
