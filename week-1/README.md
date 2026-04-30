@@ -7,7 +7,7 @@
 
 
 
-## day 1
+## Day 1
 ### Topics:
 * [Variables](https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/Scripting/Variables)
 * [let](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/let)
@@ -58,7 +58,7 @@ function draw() {
 }
 ```
 
-![basic paint sketch](https://github.com/digitalideation/colabor2026/blob/main/week-1/p5Live/P5L_basic_paint_20260428113737.png)
+![basic paint sketch](https://github.com/digitalideation/colabor2026/blob/main/week-1/p5Live/images/P5L_basic_paint_20260428113737.png)
 
 ![P5L_basic_paint_20260428113737](/Users/admin/switchdrive2/institution/TEACHING/HSLU/2026/colabor2026/week-1/p5Live/P5L_basic_paint_20260428113737.png)
 
@@ -86,7 +86,7 @@ function draw() {
 	square(500, 200, 100)
 }
 ```
-![basic sqaures sketch](https://github.com/digitalideation/colabor2026/blob/main/week-1/p5Live/P5L_basic-squares_20260428113724.png)
+![basic sqaures sketch](https://github.com/digitalideation/colabor2026/blob/main/week-1/p5Live/images/P5L_basic-squares_20260428113724.png)
 
 ### basic Molnár
 
@@ -140,7 +140,7 @@ function draw() {
 }
 ```
 
-![basic molnár sketch](https://github.com/digitalideation/colabor2026/blob/main/week-1/p5Live/P5L_basic-molnar_20260428113621.png?raw=true)
+![basic molnár sketch](https://github.com/digitalideation/colabor2026/blob/main/week-1/p5Live/images/P5L_basic-molnar_20260428113621.png?raw=true)
 
 ### Animating Molnár
 ```javascript
@@ -222,7 +222,7 @@ function draw() {
 }
 ```
 
-![Animated molnár sketch](https://github.com/digitalideation/colabor2026/blob/main/week-1/p5Live/P5L_basic-molnar-animation_20260428145429.png?raw=true)
+![Animated molnár sketch](https://github.com/digitalideation/colabor2026/blob/main/week-1/p5Live/images/P5L_basic-molnar-animation_20260428145429.png?raw=true)
 
 
 ## To Do for day 2
@@ -230,7 +230,7 @@ function draw() {
 * look a the coding train video tutorials [here](https://thecodingtrain.com/tracks/code-programming-with-p5-js/code/2-variables/1-mouseX-mouseY). Skip `createGraphics` the whole `Objects` chapter. If you can have a look at the `Arrays` chapter.
 * If you feel motivated try to use nested loops to recreate Vera Molnár artworks in a 3 x 3 grid.
 
-## day 2
+## Day 2
 
 ### Using functions
 In the following sketch we use a function to replace a for loop to draw many concentric squares
@@ -354,7 +354,7 @@ function tmcs(x, y, dim, speed, num){
 }
 ```
 
-![concentric squares](https://github.com/digitalideation/colabor2026/blob/main/week-1/p5Live/P5L_molnár-function_001_20260429130741.png?raw=true)
+![concentric squares](https://github.com/digitalideation/colabor2026/blob/main/week-1/p5Live/images/P5L_molnár-function_001_20260429130741.png?raw=true)
 
 ### Moving cube
 
@@ -422,7 +422,7 @@ function draw() {
 }
 ```
 
-![concentric squares](https://github.com/digitalideation/colabor2026/blob/main/week-1/p5Live/P5L_moving-boxes_20260429142547.png?raw=true)
+![concentric squares](https://github.com/digitalideation/colabor2026/blob/main/week-1/p5Live/images/P5L_moving-boxes_20260429142547.png?raw=true)
 
 ### Not the DVD logo in 3d space
 
@@ -515,11 +515,11 @@ function draw() {
 	}
 }
 ```
-![Not the DVD logo in 3d](https://github.com/digitalideation/colabor2026/blob/main/week-1/p5Live/P5L_dvd-logo_20260429173307.png?raw=true)
+![Not the DVD logo in 3d](https://github.com/digitalideation/colabor2026/blob/main/week-1/p5Live/images/P5L_dvd-logo_20260429173307.png?raw=true)
 
 ## Day 3
 
-Sound
+Working with sound
 
 Software: [VCV Rack](https://vcvrack.com/Rack)
 Addtional modules:
@@ -527,8 +527,13 @@ Addtional modules:
 * [Surge XT](https://library.vcvrack.com/?brand=Surge%20XT)
 * [4ms](https://library.vcvrack.com/?brand=4ms)
 
-* sound sources
-* envelopes
-* mixers
-* modulation
-* sequencing
+
+![vcv-rack-00001](https://github.com/digitalideation/colabor2026/blob/main/week-1/vcv-rack/images/vcv-rack-00001.png?raw=true)
+
+![vcv-rack-00002](https://github.com/digitalideation/colabor2026/blob/main/week-1/vcv-rack/images/vcv-rack-00002.png?raw=true)
+
+![vcv-rack-00003](https://github.com/digitalideation/colabor2026/blob/main/week-1/vcv-rack/images/vcv-rack-00003.png?raw=true)
+
+![vcv-rack-00004](https://github.com/digitalideation/colabor2026/blob/main/week-1/vcv-rack/images/vcv-rack-00004.png?raw=true)
+
+![vcv-rack-00005](https://github.com/digitalideation/colabor2026/blob/main/week-1/vcv-rack/images/vcv-rack-00005.png?raw=true)
