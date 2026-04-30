@@ -10,6 +10,9 @@ Guests:  <a href="https://unsorted.love" target="_blank">Unsorted Love</a> (Paul
 ## Live Agenda :calendar:
 <a href="https://docs.google.com/spreadsheets/d/1qRkvmpcOofRrkQ5Rw_JtUIZzaAUuNLWNUsvVkxn57Qs/edit?usp=sharing" target="_blank">Link zu Agenda (Check for Updates)</a>
 
+## Support slots
+### May 1st [Sheet](https://docs.google.com/spreadsheets/d/1qRkvmpcOofRrkQ5Rw_JtUIZzaAUuNLWNUsvVkxn57Qs/edit?gid=1515019391#gid=1515019391)
+
 ## Salon
 <a href="https://www.hslu.ch/de-ch/design-film-kunst/studium/interdisziplinaere-module/colabor/salon-colabor-2026/" target="_blank">Salon Colabor 2025 Öffentliche Vorträge und Präsentationen </a>
 
