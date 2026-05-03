@@ -7,7 +7,8 @@
 [https://dusie.ch/2526/colabor](https://dusie.ch/2526/colabor)
 
 <img src="iclc_2023-cocoding-c-Paulus_van_Dorsten-8.jpg" height="400">  
-*[ICLC 2023 Ultrecht](https://iclc.toplap.org/2023/index.html), [P5LIVE COCODING](https://iclc.toplap.org/2023/catalogue/performance/p5live-cocoding.html), [Ted Davis](https://teddavis.org/), [Sabrina Verhage](https://www.sabrinaverhage.com/) © Paulus van Dorsten*
+[ICLC 2023 Ultrecht](https://iclc.toplap.org/2023/index.html), [P5LIVE COCODING](https://iclc.toplap.org/2023/catalogue/performance/p5live-cocoding.html), [Ted Davis](https://teddavis.org/), [Sabrina Verhage](https://www.sabrinaverhage.com/) © Paulus van Dorsten  
+
 
 Let's dive into [P5LIVE](https://p5live.org/), the p5.js collaborative live-coding vj environment! We'll walk through as many of its features as time allows and get you up and running within the environment so that soon enough you'll be performing at an [algorave](https://en.wikipedia.org/wiki/Algorave) near you! 
 
