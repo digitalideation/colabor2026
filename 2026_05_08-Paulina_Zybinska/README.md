@@ -1,6 +1,6 @@
 # Machine Learning in the Browser
 
-![Body tracking](/2026_05_08-Paulina_Zybinska/images/mlWeb.png)
+![Body tracking](/2026_05_08-Paulina_Zybinska/images/mlWeb.jpg)
 
 <br>
 While running traditional Machine Learning models often requires significant GPU compute, it can be optimized to run efficiently in resource-limited environments like the browser. A great entry into body tracking and image classification is the **ml5.js** high-level library and **Teachable Machine** tool. It is great for creative coding and live interaction, often used in combination with **p5.js**.
