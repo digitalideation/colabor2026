@@ -253,6 +253,7 @@ function keyPressed(){
 ```javascript
 let moveX = 0;
 let moveY = 0;
+let position = 0;
 
 function setup () {
   createCanvas(windowWidth, windowHeight);
@@ -260,15 +261,21 @@ function setup () {
 
 function draw() {
   background(155) 
-  console.log(key, keyCode);
 
   if (keyIsDown(49)) { // 49 = Taste "1"
     moveX = map(mouseX, 0, width, 0, 255);
     moveY = map(mouseY, 0, height, 0, 255);
   }
 
+  if (keyIsDown(39)) {
+    position += 2;
+  }
+  if (keyIsDown(37)) {
+    position -= 2;
+  }
+
   fill(255, 0, 0);
-  ellipse(width / 2, height / 2, 50 + moveX, 50 + moveY);
+  ellipse(width / 2 + position, height / 2, 50 + moveX, 50 + moveY);
 }
 ```
 
