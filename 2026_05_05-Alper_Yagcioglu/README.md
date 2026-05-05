@@ -260,6 +260,7 @@ function setup () {
 
 function draw() {
   background(155) 
+  console.log(key, keyCode);
 
   if (keyIsDown(49)) { // 49 = Taste "1"
     moveX = map(mouseX, 0, width, 0, 255);
