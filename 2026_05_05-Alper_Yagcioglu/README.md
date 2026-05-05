@@ -276,6 +276,8 @@ function draw() {
 
   fill(255, 0, 0);
   ellipse(width / 2 + position, height / 2, 50 + moveX, 50 + moveY);
+
+  text("keyCode: " + keyCode, 50, 100);
 }
 ```
 
