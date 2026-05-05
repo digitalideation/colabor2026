@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="de">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Workshop: Text and Computational Poetry in P5LIVE</title>
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+    <header>
+      <nav>
+      <ul class="menu">
+        <li><a href="#overview">Overview</a></li>
+        <li><a href="#intro">Intro-Talk</a></li>
+        <li><a href="#concrete">Concrete Poetry</a></li>
+        <li><a href="#p5live">text()</a></li>
+      </ul></nav>
+    </header>
+
+  <div class="slide">
+    <div class="slide-col">
+    <h1>Concrete Poetry in P5LIVE</h1>
+    <br>
+    <p>Workshop — May 7, 2026</p>
+    <p>+Colabor — Creative Coding — HSLU Luzern</p>
+    <p>Jasmin Meerhoff — <a href="https://nervousdata.com">nervousdata.com</a></p>
+    </div>
+    <div class="slide-col">
+      <br>
+      <br>
+      <img width="90%" src="images/grammarian_at_iclc_screenshot.png" alt="Screenshot Grammarian">
+    </div>
+  </div>
+
+  <div id="overview" class="slide">
+    <div class="slide-col">
+    <h2>Overview</h2>
+    <h3>Morning Session</h3>
+    <ul>
+      <li>Intro-Talk</li>
+      <li>Concrete Poetry & Typewritings</li>
+      <li>P5LIVE text()</li>
+      <li>P5LIVE Text Attributes</li>
+    </ul>
+    </div>
+    <div class="slide-col">
+    <br>
+    <br>
+    <h3>Afternoon Session</h3>
+    <ul>
+      <li>P5LIVE Arrays and Strings</li>
+      <li>JavaScript String Methods</li>
+    </ul>
+    </div>
+  </div>
+
+<div id="intro" class="slide">
+  <div class="slide-full">
+    <br>
+    <h1>Intro-Talk</h1>
+    <p>Techno-Poetics, Experimental Poetry and Sound, Media History & Philosophy, …</p>
+    <p>Engage with the ways how the tools I use and how technology in general came into being.</p>
+    <br>
+    <p>Code: <a href="https://codeberg.org/nervousdata">codeberg.org/nervousdata/</a> — <em><a href="https://codeberg.org/">Codeberg</a> (non-profit, community-led), based in Berlin</em></p>
+  </div>
+</div>
+
+<div class="slide">
+  <div class="slide-full">
+    <h1>Computer-aided Poetry & Text Works</h1>
+  </div>
+  <div class="slide-col">
+    <h2>Knoten und Bäuche, <a href="https://www.etkbooks.com/knoten/">etkbooks</a>, 2022</h2>
+    <img width="90%" src="images/meerhoff_jasmin--wie_die_liegen--2022.png" alt="un und un un und un uno uno unundun">
+  </div>
+  <div class="slide-col">
+    <h2>.</h2>
+    <img width="90%" src="images/meerhoff_jasmin--schnittbereitung--2022.png" alt="7. Ueber">
+  </div>
+</div>
+
+<div class="slide">
+  <div class="slide-full">
+    <h1>Computer-aided Poetry & Text Works</h1>
+  </div>
+  <div class="slide-full">
+    <h2>Hydra Sketches</h2>
+      <ul>
+        <li><a href="https://hydra.ojack.xyz/?sketch_id=XAwK4d5YOD2pKSDr">https://hydra.ojack.xyz/?sketch_id=XAwK4d5YOD2pKSDr</a></li>
+        <li><a href="https://hydra.ojack.xyz/?sketch_id=vcWMV3vi1ykmd9U1">https://hydra.ojack.xyz/?sketch_id=vcWMV3vi1ykmd9U1</a></li>
+      </ul>
+    <video controls loop>
+       <source src="videos/nervousdata--p5_hydra_10.mp4" type="video/mp4">
+       Your browser does not support showing this video.
+    </video>
+  </div>
+</div>
+
+<div class="slide">
+  <div class="slide-full">
+    <h1>Computer-aided Poetry & Text Works</h1>
+    <h2>Carb ustion, 2024</h2>
+    <p>A sentence being written and re-written on screen in P5LIVE. Sentence taken from Charles Babbage <em>On the Economy of Machinery and Manufactures</em>.</p>
+    <video controls>
+       <source src="videos/nervousdata--carb_ustion_algopoetica_2025.mp4" type="video/mp4">
+       Your browser does not support showing this video.
+    </video>
+  </div>
+</div>
+
+<div class="slide">
+  <div class="slide-full">
+    <h1>Collaborations (in Live Coding)</h1>
+  </div>
+  <div class="slide-col">
+    <h2>Collab with Cathleen Baumann, Düsseldorf, 2024</h2>
+    <img width="90%" src="images/nervousdata--collab_elevator_scene_2024.jpg" alt="photo">
+    <p>Sound Poetry. Live-loop, Cut-Up and effects with TidalCycles.</p>
+  </div>
+  <div class="slide-col">
+    <h2>Grammarian with Jia Liu, 2025–ongoing</h2>
+    <img width="90%" src="images/grammarian_at_iclc_2025.jpg" alt="photo">
+    <p>A message-based performance and custom chat-system. Two laptops (one running SuperCollider, one running P5LIVE) are connected via the OSC protocol.</p>
+  </div>
+</div>
+
+<div class="slide">
+  <div class="slide-col">
+    <h1>Live Coding Community</h1>
+    <video controls>
+       <source src="videos/2026-04-15-204956--from_scratch_bcn.mp4" type="video/mp4">
+       Your browser does not support showing this video.
+    </video>
+    <p>FromScratch at /* VIU */ Festival Barcelona, 2026</p>
+  </div>
+  <div class="slide-col">
+    <h2>FromScratch</h2>
+    <p>Starting with a (mostly) blank screen. The format in Barcelona derived from the one in Mexico City. 9 minutes — no need to prepare a long set.</p>
+    <p>“the cardinal rule for our audience: All attendees must applaud at the end of nine minutes (remember that this is for fun). With applause guaranteed and errors not only accepted but appreciated, the FromScratch format lends itself as an ideal meetup activity for people with any level of live coding experience.”</p>
+    <p>What kind of aesthetics produce this practice?</p>
+  </div>
+</div>
+
+
+<div id="concrete" class="slide">
+  <div class="slide-col">
+    <h1>Concrete Poetry</h1>
+    <p>A poem in which layout and typography, and an emphasis of the visual and phonetic qualities of words and letters constitute its meaning.</p>
+    <p>Evolved internationally in the 1960s, with a lot of artists from Latin America and the former Soviet Union.</p>
+  </div>
+  <div class="slide-col">
+    <h1>Décio Pignatari, terra, 1957</h1>
+    <img width="90%" src="images/pignatari_decio--terra--1957.png" alt="ra terra ter">
+  </div>
+</div>
+
+
+<div class="slide">
+  <div class="slide-col">
+  <h1>Ruth Wolf-Rehfeldt, <br> Sammlung Streuung, 1977</h1>
+  <img width="90%" src="images/wolf-rehfeldt_ruth--sammlung_streuung--1977.png" alt="ra terra ter">
+  </div>
+
+  <div class="slide-col">
+  <h1><br>Regentage, 1983</h1>
+  <img width="90%" src="images/wolf-rehfeldt_ruth--regentage--1983.png" alt="ra terra ter">
+  </div>
+
+</div>
+
+<div id="intro" class="slide">
+  <div class="slide-full">
+    <br>
+    <h1>Conceptual Constraints</h1>
+    <p>Inspired by early Concrete Poetry works</p>
+    <ul>
+      <li>two colours (black/white, grey/blue – to your preference)</li>
+      <li>monospace font (typewriter-style)</li>
+      <li>2D</li>
+    </ul>
+  </div>
+</div>
+
+
+<div id="p5live" class="slide">
+  <div class="slide-col">
+    <h1>text()</h1>
+    <p><code>text("live", 10, 10, windowWidth, windowHeight);</code></p>
+
+    <pre>
+let me = "you ";
+
+textFont('monospace');
+textSize(32);
+textStyle(NORMAL);
+textAlign(LEFT);
+text(me, 10, 10, windowWidth, windowHeight);
+textWrap(CHAR);
+textLeading(32);
+    </pre>
+  </div>
+
+  <div class="slide-col">
+    <h1>Text Attributes</h1>
+    <p><code>textSize(#)</code> – values in pixel</p>
+    <p><code>textAlign(#)</code> – LEFT, RIGHT or CENTER</p>
+    <p><code>textFont(#)</code> – font name or generic family (monospace)</p>
+    <p><code>textLeading(#)</code> – values in pixel</p>
+    <p><code>textWrap(#)</code> – WORD or CHAR</p>
+  </div>
+
+</body>
+</html>
