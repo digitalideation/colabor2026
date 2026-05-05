@@ -4,7 +4,7 @@
 
 Jasmin Meerhoff
 
-<a href="https://nervousdata.com">nervousdata.com</a>
+<a href="https://nervousdata.com">nervousdata</a>
 
 ## Materials and Notes
 * Slides
@@ -12,19 +12,28 @@ Jasmin Meerhoff
 
 ## Overview
 * Intro-Talk
-* Concrete Poetry (without and with computers)
+* Concrete Poetry (without computers)
 * text()
-* Typography
+* Text Attributes
+* Arrays and Strings
 * JavaScript String Methods
+
+## Conceptual Constraints
+* two colours (black/white, grey/blue – to your preference)
+* monospace font (typewriter-style)
+* 2D
 
 ## text()
 
-## Typography
+## Text Attributes
+
+## Arrays and String
+
 
 ## JavaScript String Methods
-.repeat()
+<code>.repeat()</code>
 
-.replace()
+<code>.replace()</code>
 
 ## References
 * <a href="https://nervousdata.com/compoetry/index">comPoetry</a> – Extended Workshop/How-To for Computer-aided Poetry by Jasmin Meerhoff
