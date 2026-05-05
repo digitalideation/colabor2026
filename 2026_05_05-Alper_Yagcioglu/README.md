@@ -249,6 +249,28 @@ function keyPressed(){
 }
 ```
 
+#### Simple Mouse and Key Editor
+```javascript
+let moveX = 0;
+let moveY = 0;
+
+function setup () {
+  createCanvas(windowWidth, windowHeight);
+}
+
+function draw() {
+  background(155) 
+
+  if (keyIsDown(49)) { // 49 = Taste "1"
+    moveX = map(mouseX, 0, width, 0, 255);
+    moveY = map(mouseY, 0, height, 0, 255);
+  }
+
+  fill(255, 0, 0);
+  ellipse(width / 2, height / 2, 50 + moveX, 50 + moveY);
+}
+```
+
 ## CodeSnippet Paint-Editor
 ```javascript
 let strokeSize = 1;
