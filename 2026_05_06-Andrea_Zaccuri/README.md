@@ -2,7 +2,7 @@
 
 # hydra // feedback loops for live coding
 
-[[Andrea Zaccuri]](https://andreazaccuri.com)
+[Andrea Zaccuri](https://andreazaccuri.com)
 
 
 Today we will go deep into Hydra and learn how does it work and why it is used in live coding performances.
@@ -24,11 +24,12 @@ The workshop will explore feedback loops as a way to create infinite and ever ch
 ## Schedule
 
 - Why Hydra
-- Hydra basics: sources, transformations and compositions and outputs
+- Hydra basics: sources, transformations, compositions and outputs
 - Feedback loops in Hydra and P5
 - Audio reactivity for Hydra
 
 ## Other resources
 
+- [hydra book](https://hydra-book.glitches.me/#/)
 - [hydra garden](https://hydra.ojack.xyz/garden/)
 - [mdn web docs](https://developer.mozilla.org/en-US/)
