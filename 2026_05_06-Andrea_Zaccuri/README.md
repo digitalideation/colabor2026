@@ -17,7 +17,7 @@ The workshop will explore feedback loops as a way to create infinite and ever ch
 
 ## Tools
 
-- [online board for sketching and questions](https://excalidraw.com/#room=19956c62d15a919a351b,fk3B0rPmnpv5pH1w6fj26w)
+- [online board for sketching and questions]([https://excalidraw.com/#room=19956c62d15a919a351b,fk3B0rPmnpv5pH1w6fj26w](https://excalidraw.com/#room=19956c62d15a919a351b,fk3B0rPmnpv5pH1w6fj26w))
 - [hydra online](https://hydra.ojack.xyz/)
 - p5live (localhost)
 
