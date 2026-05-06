@@ -14,6 +14,7 @@ The workshop will explore feedback loops as a way to create infinite and ever ch
 
 - [hydra teaching material](https://learn-andreazaccuri.azeta.workers.dev/260506-colabor/intro/)
 - [hydra api](https://hydra.ojack.xyz/functions/#functions)
+- [hydra random function selector](https://hydra-functions-selector.vercel.app/)
 
 ## Tools
 
