@@ -35,12 +35,19 @@ Using the ml5.js library, you can easily access a variety of pre-trained models 
 
 _________________________
 
-# [Teachable Machine](https://teachablemachine.withgoogle.com/train)
+# [Teachable Machine](https://teachablemachine.withgoogle.com/train/image)
 
 ![Teachable Machine Image Model](/2026_05_08-Paulina_Zybinska/images/TeachableMachine.gif)
 <br>
 
 Teachable Machine is a web-based tool designed for fast and easy machine learning model training. It allows you to "teach" a computer to recognize things—like your face, specific gestures, or certain sounds—directly in your web browser without needing to write complex code. It can be used together with **ml5.js** and **p5.js** to create your own classifiers.
+
+Using TeachableMachine with p5.js and [ml5.js ImageClassifier](https://docs.ml5js.org/#/reference/image-classifier) :
+  - **Step1:** Change the name of the classes to something that is understandable
+  - **Step2:** Add images (at least 20) or video frames (between 100 and 200) to each class 
+  - **Step3:** Click on "Train Model"
+  - **Step4:** After the model is trained click on "Export Model"
+  - **Step5:** In the pop-up window select "Upload Model" and copy the link to your Teachable Machine model to use in p5Live
 
 _________________________
 
