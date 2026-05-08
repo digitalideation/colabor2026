@@ -75,7 +75,6 @@ _________________________
 ### Teachable Machine + P5live
 
 ```javascript
-
 let libs = ['https://unpkg.com/ml5@1/dist/ml5.min.js'];
 
 let classifier;
@@ -188,36 +187,33 @@ function gotHands(results) {
 ### Object Detection
 
 ```javascript
+let libs = ['https://unpkg.com/ml5@1/dist/ml5.min.js'];
+
 let video;
 let detector;
 let detections = [];
 
-function preload(){
-  // Load the COCO SSD model 
-  // This model is trained on the COCO dataset, which contains 80 common objects
+function preload() {
+  // COCO SSD model — 80 common objects
   // https://github.com/tensorflow/tfjs-models/blob/master/coco-ssd/src/classes.ts
-  detector = ml5.objectDetection("cocossd");
+  detector = ml5.objectDetection('cocossd');
 }
 
 function setup() {
-  createCanvas(960, 540); //change to 640, 480 if using webcam
+  createCanvas(960, 540);
   background(0);
 
- // uncomment these lines if using webcam
-  /* video = createCapture(VIDEO); 
-  video.size(width, height);
-  video.hide();  */
-
-  //uncomment these lines if using video file
-   video = createVideo("/2026_05_08-Paulina_Zybinska/code/objectDetection/assets/rainyday2.mp4");
+  video = createVideo(
+    'https://raw.githubusercontent.com/digitalideation/colabor2026/main/2026_05_08-Paulina_Zybinska/code/objectDetection/assets/rainyday2.mp4'
+  );
   video.size(width, height);
   video.hide();
   video.loop();
+  video.volume(0);
 
   detector.detectStart(video, gotDetections);
 }
 
-// Callback function is called each time the object detector finishes processing a frame.
 function gotDetections(results) {
   detections = results;
 }
@@ -228,8 +224,8 @@ function draw() {
   let scaleX = width / video.elt.videoWidth;
   let scaleY = height / video.elt.videoHeight;
 
-  //extra (vanilla javascript) to create a clip path made of all detection rectangles
-  /*drawingContext.save();
+  //clip path made of all detection rectangles
+ /* drawingContext.save();
   drawingContext.beginPath();
   for (let i = 0; i < detections.length; i++) {
     let d = detections[i];
@@ -242,10 +238,10 @@ function draw() {
   }
   drawingContext.clip();*/
 
+
   image(video, 0, 0, width, height);
 
-  //extra (vanilla javascript) to restore the drawing context after the clip path is created
-  //drawingContext.restore();
+  drawingContext.restore();
 
   // outlines + labels on top
   for (let i = 0; i < detections.length; i++) {
@@ -257,7 +253,8 @@ function draw() {
 
     stroke(0, 255, 0);
     strokeWeight(2);
-    noFill();
+    blendMode(DIFFERENCE)
+    fill(255)
     rect(x, y, w, h);
 
     noStroke();
@@ -265,5 +262,8 @@ function draw() {
     textSize(24);
     text(d.label, x + 10, y + 24);
   }
+  
+  blendMode(BLEND)
 }
+
 ```
