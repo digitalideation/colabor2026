@@ -60,3 +60,201 @@ _________________________
 
 ## Code Download
 - [Download Github Repository](https://download-directory.github.io/)
+
+_________________________
+
+## Code Snippets 
+
+### Teachable Machine + P5live
+
+```javascript
+let libs = ['https://unpkg.com/ml5@1/dist/ml5.min.js'];
+
+let classifier;
+ //replace with your link to Teachable Machine model
+let imageModelURL = 'https://teachablemachine.withgoogle.com/models/m32dUhe3gq/';
+
+let video;
+let label = 'loading...';
+let confidence = 0;
+
+function preload() {
+  classifier = ml5.imageClassifier(imageModelURL + 'model.json');
+}
+
+function setup() {
+  createCanvas(windowWidth, windowHeight);
+  video = createCapture(VIDEO, { flipped: true });
+  video.size(640, 480);
+  video.hide();
+
+  classifyVideo();
+
+  textFont('monospace');
+  textAlign(CENTER, CENTER);
+}
+
+function draw() {
+  background(0);
+
+  image(video, 0,0, width, height);
+
+  // Label
+  noStroke();
+  fill(0, 180);
+  rect(0, height - 100, width, 100);
+
+  fill(255);
+  textSize(48);
+  text(label, width / 2, height - 60);
+
+  textSize(18);
+  text(nf(confidence, 1, 2), width / 2, height - 20);
+}
+
+function classifyVideo() {
+  classifier.classify(video, gotResult);
+}
+
+function gotResult(results) {
+  label = results[0].label;
+  confidence = results[0].confidence;
+  classifyVideo();
+}
+```
+
+### HandPose
+
+```javascript
+let libs = ['https://unpkg.com/ml5@1/dist/ml5.min.js'];
+
+let video;
+let state = 'starting...';
+let handPose;
+let hands = [];
+let options = { maxHands: 2, flipHorizontal: true };
+let pScale = 20
+
+function preload() {
+  handPose = ml5.handPose(options);
+}
+
+function setup() {
+  createCanvas(windowWidth, windowHeight);
+
+  video = createCapture(VIDEO, { flipped: true });
+  video.size(width, height);
+  video.hide();
+
+  handPose.detectStart(video, gotHands);
+  state = 'detecting hands';
+}
+
+function draw() {
+  background(20, 100);
+
+
+    for (let i = 0; i < hands.length; i++) {
+      const hand = hands[i];
+      for (let j = 0; j < hand.keypoints.length; j++) {
+        const kp = hand.keypoints[j];
+        const x =  kp.x;
+        const y =  kp.y;
+        fill(map(j, 0, hand.keypoints.length, 0, 255), 255, map(j, 0, hand.keypoints.length, 255, 0));
+        noStroke();
+        circle(x, y, pScale * sin(frameCount * 0.1 + j) % pScale);
+      }
+    }
+
+  noStroke();
+  fill(255);
+  text(state, 10, height - 10);
+}
+
+function gotHands(results) {
+  hands = results;
+}
+```
+
+### Object Detection
+
+```javascript
+let video;
+let detector;
+let detections = [];
+
+function preload(){
+  // Load the COCO SSD model 
+  // This model is trained on the COCO dataset, which contains 80 common objects
+  // https://github.com/tensorflow/tfjs-models/blob/master/coco-ssd/src/classes.ts
+  detector = ml5.objectDetection("cocossd");
+}
+
+function setup() {
+  createCanvas(960, 540); //change to 640, 480 if using webcam
+  background(0);
+
+ // uncomment these lines if using webcam
+  /* video = createCapture(VIDEO); 
+  video.size(width, height);
+  video.hide();  */
+
+  //uncomment these lines if using video file
+   video = createVideo("/2026_05_08-Paulina_Zybinska/code/objectDetection/assets/rainyday2.mp4");
+  video.size(width, height);
+  video.hide();
+  video.loop();
+
+  detector.detectStart(video, gotDetections);
+}
+
+// Callback function is called each time the object detector finishes processing a frame.
+function gotDetections(results) {
+  detections = results;
+}
+
+function draw() {
+  background(0);
+
+  let scaleX = width / video.elt.videoWidth;
+  let scaleY = height / video.elt.videoHeight;
+
+  //extra (vanilla javascript) to create a clip path made of all detection rectangles
+  /*drawingContext.save();
+  drawingContext.beginPath();
+  for (let i = 0; i < detections.length; i++) {
+    let d = detections[i];
+    drawingContext.rect(
+      d.x * scaleX,
+      d.y * scaleY,
+      d.width * scaleX,
+      d.height * scaleY
+    );
+  }
+  drawingContext.clip();*/
+
+  image(video, 0, 0, width, height);
+
+  //extra (vanilla javascript) to restore the drawing context after the clip path is created
+  //drawingContext.restore();
+
+  // outlines + labels on top
+  for (let i = 0; i < detections.length; i++) {
+    let d = detections[i];
+    let x = d.x * scaleX;
+    let y = d.y * scaleY;
+    let w = d.width * scaleX;
+    let h = d.height * scaleY;
+
+    stroke(0, 255, 0);
+    strokeWeight(2);
+    noFill();
+    rect(x, y, w, h);
+
+    noStroke();
+    fill(255);
+    textSize(24);
+    text(d.label, x + 10, y + 24);
+  }
+}
+```
