@@ -1,0 +1,221 @@
+/* stylesheet for slides */
+
+/* FONTS */
+@font-face {
+			 font-family: 'Ronzino';
+			 src: url('fonts/Ronzino-Regular.otf') format('otf'),
+						url('fonts/Ronzino-Regular.woff2') format('woff2'),
+						font-weight: normal;
+						font-style: normal;
+}
+@font-face {
+			 font-family: 'Ronzino-Oblique';
+			 src: url('fonts/Ronzino-Oblique.otf') format('otf'),
+						url('fonts/Ronzino-Oblique.woff2') format('woff2'),
+						font-weight: normal;
+						font-style: normal;
+}
+@font-face {
+			 font-family: 'Ronzino-Bold';
+			 src: url('fonts/Ronzino-Bold.otf') format('otf'),
+						url('fonts/Ronzino-Bold.woff2') format('woff2'),
+						font-weight: normal;
+						font-style: normal;
+}
+
+
+/* STYLE FOR SLIDES (2026) */
+
+.slide {
+	display: flex;
+  position: relative;
+	max-width: 90vw;
+	border-block: 0.8vw solid DarkViolet;
+	font-size: 2vw;
+	padding: 5vw;
+	flex-direction: row;
+  flex-wrap: wrap;
+	gap: 3rem;
+  width: 100%;
+	min-height: 80vh;
+}
+
+.slide-col {
+	flex: 45%;
+	min-width: 40vw;
+}
+
+.slide-full {
+	flex: 100%;
+}
+
+.slide p {
+	font-size: 1em;
+}
+
+.slide h1 {
+	font-size: 1.50em;
+	font-weight: normal;
+}
+
+.slide h2 {
+	font-size: 1.25em;
+	font-weight: normal;
+}
+
+.slide h3 {
+	font-size: 1.25em;
+	font-weight: normal;
+}
+
+.slide ul {
+	margin: 0 1em 0 0;
+	list-style-type: "▒ ";
+}
+
+.slide blockquote {
+	margin: 1rem 0 1rem 1rem;
+	padding-left: 1rem;
+	line-height: 1.25;
+	text-align: left;
+	border-left: 2px solid DarkViolet;
+}
+
+.segment {
+	margin: 2rem 0 2rem 0;
+  padding: 0;
+  width: 100%;
+  border-top: 2px dotted DarkViolet;
+}
+
+header {
+  display: flex;
+  position: sticky;
+  top: 0;
+  background-color: white;
+  height: 100%;
+  z-index: 3;
+}
+
+nav {
+  display: flex;
+  padding: 0 1vw;
+  height: 100%;
+}
+
+nav ul {
+  display: flex;
+  list-style-type: none;
+  padding: 0;
+}
+
+nav li {
+  padding: 0 1rem 0 0;
+  font-size: 1.5rem;
+}
+
+.menu {
+  margin: 1vh 0;
+}
+
+
+/* BASICS */
+body {
+	background: WhiteSmoke;
+	color: #1A001A;
+	font: 16px/1.5 'Ronzino', Helvetica, Arial, sans-serif;
+	font-size: 1.125rem;
+	font-style: normal;
+	padding: 0;
+	margin: 0;
+}
+
+h1 {
+	line-height: 1.22;
+	margin: 0 0 6vh 0;
+	padding: 0;
+}
+
+a {
+	color: RebeccaPurple;
+}
+
+em {
+	font-family: 'Ronzino-Oblique', Helvetica, Arial, sans-serif;
+	font-style: normal;
+}
+
+b, strong {
+	font-family: 'Ronzino-Bold', Helvetica, Arial, sans-serif;
+	font-style: normal;
+	border-bottom: 1px dashed;
+}
+
+pre {
+	background: White;
+	white-space: pre-wrap;
+	word-break: keep-all;
+	font-family: monospace;
+	font-size: 1.5vw;
+	margin: 1rem 0;
+	border: 1px solid RebeccaPurple;
+	padding: 1rem;
+}
+
+code {
+  font-family: monospace;
+	font-size: 1.5vw;
+	background-color: lemonchiffon;
+}
+
+td {
+	vertical-align: top;
+}
+
+th, td {
+  border-bottom: 1px solid #eee;
+	padding: 0.5rem 1rem 0.5rem 0;
+}
+
+audio {
+	width: 100%;
+	display: block;
+	margin: 1rem 0 0.75rem 0;
+}
+
+small {
+	font-size: 1rem;
+	line-height: 1.125rem;
+}
+
+img {
+	max-width: 100%;
+  height: auto;
+}
+
+figure {
+	margin: 0 0 1.5rem 0;
+}
+
+figcaption {
+	color: #5E525E;
+}
+
+section {
+	border-top: 10px solid whitesmoke;
+}
+
+video {
+	max-width: 100%;
+  height: auto;
+	margin: 1rem 0;
+}
+
+
+/* IMAGES */
+
+.alignfull {
+	width: 100vw;
+	left: calc(-50vw + 50%);
+	position: relative;
+}

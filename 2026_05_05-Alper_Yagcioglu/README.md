@@ -3,6 +3,10 @@
 ## Experience Samples Link
 <a href="https://alperyagcioglu.ch/workshop.html" target="_blank">Workshop Experience</a>
 
+<a href="https://filesender.switch.ch/filesender2/?s=download&token=e6a0fa86-680f-4eba-9be9-1a9768cb7b67" target="_blank">Video Präsentation 5.Mai 2026</a>
+
+<a href="https://filesender.switch.ch/filesender2/?s=download&token=6ea16190-d3e4-47bc-8466-fb35fabf0cef" target="_blank">PDF Präsentation Files 5.Mai 2026</a>
+
 ## DOM Step by Step
 
 #### Slider
