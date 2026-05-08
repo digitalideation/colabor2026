@@ -75,10 +75,12 @@ _________________________
 ### Teachable Machine + P5live
 
 ```javascript
+
 let libs = ['https://unpkg.com/ml5@1/dist/ml5.min.js'];
 
 let classifier;
  //replace with your link to Teachable Machine model
+ // you can train your model here https://teachablemachine.withgoogle.com/train/image
 let imageModelURL = 'https://teachablemachine.withgoogle.com/models/m32dUhe3gq/';
 
 let video;
