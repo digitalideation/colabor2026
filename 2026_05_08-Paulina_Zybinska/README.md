@@ -47,6 +47,7 @@ _________________________
 ## Ressources
 - [The Coding Train ml5.js Begginer's Guide](https://thecodingtrain.com/tracks/ml5js-beginners-guide)
 - [Patt Vira Coding Tutorials](https://www.pattvira.com/coding-tutorials/ml5js)
+- [ml5js Glossary](https://docs.ml5js.org/#/learn/ml5-glossary)
 
 ## Projects
 - [Objectifier by Bjorn Karmann](https://bjoernkarmann.dk/project/objectifier)
@@ -56,3 +57,6 @@ _________________________
 ## Advanced web-based tools for ML
  - [MediaPipe](https://ai.google.dev/edge/mediapipe/solutions/guide) : ml5.js on steroids 💪
  - [ONNX Runtime](https://onnxruntime.ai/docs/tutorials/web/) : enables you to run and deploy complex machine learning models in your web application using JavaScript APIs and libraries 🤯
+
+## Code Download
+- [Download Github Repository](https://download-directory.github.io/)
