@@ -47,7 +47,7 @@ Using TeachableMachine with p5.js and [ml5.js ImageClassifier](https://docs.ml5j
   - **Step2:** Add images (at least 20) or video frames (between 100 and 200) to each class 
   - **Step3:** Click on "Train Model"
   - **Step4:** After the model is trained click on "Export Model"
-  - **Step5:** In the pop-up window select "Upload Model" and copy the link to your Teachable Machine model to use in p5Live
+  - **Step5:** In the pop-up window select "Upload Model", and copy the link to your Teachable Machine model to use in p5Live
 
 _________________________
 
