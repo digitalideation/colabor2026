@@ -527,9 +527,10 @@ Addtional modules:
 * [Surge XT](https://library.vcvrack.com/?brand=Surge%20XT)
 * [4ms](https://library.vcvrack.com/?brand=4ms)
 
-
+Siren patch: using LFO (low frequency oscillator) to control pitch and amplitude of a sound source (VCO, voltage controlled oscillator)
 ![vcv-rack-00001](https://github.com/digitalideation/colabor2026/blob/main/week-1/vcv-rack/images/vcv-rack-00001.png?raw=true)
 
+Basic Synthesizer patch controlled with the computer keyboard
 ![vcv-rack-00002](https://github.com/digitalideation/colabor2026/blob/main/week-1/vcv-rack/images/vcv-rack-00002.png?raw=true)
 
 ![vcv-rack-00003](https://github.com/digitalideation/colabor2026/blob/main/week-1/vcv-rack/images/vcv-rack-00003.png?raw=true)
