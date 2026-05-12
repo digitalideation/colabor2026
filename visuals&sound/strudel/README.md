@@ -9,7 +9,7 @@
 setCpm(180/4)
 samples('https://raw.githubusercontent.com/Yyyyaaaannnnoooo/Strudel-samples/refs/heads/main/strudel.json')
 
-$: s("kicks:4")
+$: s("kicks:4") // .n("0 1 3 7") // to change the sample!
   .beat("<0,4,8,<12 [6 12]>>", 16)
   // .beat("0,4,8,12,14?", 16)
   // .beat("0, 10, 14?",16)
