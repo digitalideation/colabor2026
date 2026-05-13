@@ -4,6 +4,33 @@
 * [Ressources and Documentation](https://strudel.cc/workshop/first-sounds/)
 * [Inspiration (Switchangel)](https://www.youtube.com/watch?v=3h1vM0lIrpM)
 
+```javascript
+setcpm(120/4)
+// playing a bass drum
+_$:sound("bd*4").gain(0.25)
+// playing snare drum
+_$:sound("sd*2").gain(0.25)
+// Playing supersaw
+_$:note("c3 c4 d3 f3")
+  .s("supersaw").dec(0.5).gain(0.25)
+
+// using chord
+_$:note("0 1 2 <3 5 7 12>".add(60)).chord("C A F E").voicing()
+  
+  
+  .s("supersaw").dec(0.5).gain(0.25)
+
+
+// using chord
+$:n("0 1@2 <2 4 6> [3 5 7 12 [12 [2 4] -4] 1 2]".add("0 -6 -12 0"))
+  .chord("C A F E")
+  .voicing()
+  
+  .slow(4)
+  // .fast(4)
+  .s("supersaw sine").dec(1).gain(0.25)
+  ._punchcard()
+```
 
 ```javascript
 setCpm(180/4)
