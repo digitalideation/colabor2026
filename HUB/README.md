@@ -11,3 +11,4 @@ The workshop will offer a short introduction in image conversion, for its usage 
 
 * [SuperCollider](https://supercollider.github.io/downloads)
 * [Processing](https://processing.org/download)
+* [sccode](https://sccode.org/)
