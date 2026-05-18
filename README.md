@@ -14,7 +14,7 @@ Guests:  <a href="https://unsorted.love" target="_blank">Unsorted Love</a> (Paul
 ### May 1st [Sheet](https://docs.google.com/spreadsheets/d/1qRkvmpcOofRrkQ5Rw_JtUIZzaAUuNLWNUsvVkxn57Qs/edit?gid=1515019391#gid=1515019391)
 ### May 11th [Sheet](https://docs.google.com/spreadsheets/d/1qRkvmpcOofRrkQ5Rw_JtUIZzaAUuNLWNUsvVkxn57Qs/edit?gid=1568772815#gid=1568772815)
 ### May 18th [Sheet](https://docs.google.com/spreadsheets/d/1qRkvmpcOofRrkQ5Rw_JtUIZzaAUuNLWNUsvVkxn57Qs/edit?gid=2107336087#gid=2107336087)
-### May 26th [Sheet](https://docs.google.com/spreadsheets/d/1qRkvmpcOofRrkQ5Rw_JtUIZzaAUuNLWNUsvVkxn57Qs/edit?gid=144371269#gid=144371269)
+### May 27th [Sheet](https://docs.google.com/spreadsheets/d/1qRkvmpcOofRrkQ5Rw_JtUIZzaAUuNLWNUsvVkxn57Qs/edit?gid=144371269#gid=144371269)
 ### May 28th [Sheet](https://docs.google.com/spreadsheets/d/1qRkvmpcOofRrkQ5Rw_JtUIZzaAUuNLWNUsvVkxn57Qs/edit?gid=238487125#gid=238487125)
 
 ## Softwares
