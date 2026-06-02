@@ -1,0 +1,448 @@
+{
+  "version": "1.8.1",
+  "revision": 61,
+  "structure": [
+    {
+      "type": "sketch",
+      "name": "new_016",
+      "mod": 1779448693045,
+      "code": "let hp, hands=[], ac, oscs=[], gains=[], ready=false;\nconst NOTES = [261,294,330,392,440,131,147,165,196,220];\nconst TIPS = [4,8,12,16,20];\n\nfunction setup(){\n  createCanvas(windowWidth, windowHeight);\n  let s = document.createElement('script');\n  s.src = 'https://unpkg.com/ml5@1/dist/ml5.min.js';\n  s.onload = () => {\n    let cam = createCapture(VIDEO); cam.hide();\n    hp = ml5.handPose({flipped:true});\n    hp.detectStart(cam, r => hands=r);\n    ready = true;\n  };\n  document.head.appendChild(s);\n}\n\nfunction draw(){\n  background(13,27,42,18);\n  if(!ready||!ac){ fill(255,80); textAlign(CENTER,CENTER); text(ready?'click to start':'loading ml5...', width/2, height/2); return }\n  for(let g of gains) g.gain.setTargetAtTime(0, ac.currentTime, 0.05);\n  for(let h of hands){\n    let off = h.handedness==='Left' ? 5 : 0;\n    for(let f=0; f<5; f++){\n      let kp = h.keypoints[TIPS[f]];\n      if(!kp) continue;\n      let vol = map(kp.y, height*0.7, height*0.05, 0, 0.3, true);\n      gains[off+f].gain.setTargetAtTime(vol, ac.currentTime, 0.04);\n      noStroke();\n      for(let r=60; r>0; r-=10){\n        fill(off?180:255, map(f,0,4,80,220), off?255:80, vol*r*8);\n        circle(kp.x, kp.y, r);\n      }\n    }\n  }\n}\n\nfunction mousePressed(){\n  if(!ready) return;\n  if(ac) return ac.resume();\n  ac = new AudioContext();\n  for(let i=0; i<10; i++){\n    let g=ac.createGain(); g.gain.value=0; g.connect(ac.destination); gains.push(g);\n    let o=ac.createOscillator(); o.type='sine'; o.frequency.value=NOTES[i]; o.connect(gains[i]); o.start(); oscs.push(o);\n  }\n}"
+    },
+    {
+      "type": "sketch",
+      "name": "new_015",
+      "mod": 1779440939390,
+      "code": "// {\"P5LIVE\":{\"name\":\"hand_control_room\"}}\nlet libs = [\n\t\"https://unpkg.com/ml5@1/dist/ml5.min.js\"\n];\n\n// ============================================================\n// HAND CONTROL ROOM — instrumento visual controlado por manos\n// ------------------------------------------------------------\n// Usa ml5.js handPose para detectar tus dos manos por webcam\n// y mapear gestos a los parámetros visuales. Los sliders HTML\n// siguen ahí como respaldo: si no se ve ninguna mano, mandan\n// los sliders; si aparece una mano, ella manda ese parámetro.\n//\n// MAPEO DE MANOS:\n//   • Mano IZQUIERDA — posición X        → cols   (densidad)\n//   • Mano IZQUIERDA — apertura dedos    → shake  (temblor)\n//   • Mano DERECHA   — posición Y        → pulse  (latido)\n//   • Mano DERECHA   — apertura dedos    → thick  (grosor)\n//   • Distancia entre las dos manos      → trail  (estela)\n//\n// TECLADO:\n//   1-4    paleta · f fill · s shape · h HUD\n//   espacio flash · r reset\n// ============================================================\n\n// --- CÓMO CARGA ml5 ---\n// El \"let libs = [...]\" de arriba es la sintaxis oficial de p5LIVE\n// para cargar librerías externas por CDN. p5LIVE lo detecta y\n// descarga la librería ANTES de ejecutar tu setup(). No la borres.\n// Podés tipear \"libs\" + TAB en el editor para insertarlo automáticamente.\n\nlet handPose, video, hands = []\nlet sCols, sShake, sPulse, sThick, sTrail\nlet palette = 1, useFill = false, useCircle = false\nlet showHUD = true, flash = 0\n\nconst PALETTES = [\n\t[[255, 255, 255], [200, 200, 200]],\n\t[[255, 60, 120], [60, 200, 255], [255, 220, 0]],\n\t[[255, 80, 0], [120, 0, 255], [0, 255, 180]],\n\t[[40, 255, 40], [0, 100, 0], [200, 255, 200]]\n]\n\nfunction preload() {\n\thandPose = ml5.handPose({ flipped: true })\n}\n\nfunction setup() {\n\tcreateCanvas(windowWidth, windowHeight)\n\trectMode(CENTER)\n\tangleMode(DEGREES)\n\t// arranca la webcam (escondida, sólo la usamos para detección)\n\tvideo = createCapture(VIDEO, { flipped: true })\n\tvideo.size(640, 480)\n\tvideo.hide()\n\thandPose.detectStart(video, gotHands)\n\tbuildSliders()\n}\n\nfunction buildSliders() {\n\tlet y = 20\n\tsCols  = mkSlider(4,   40,  12,  1,   y); y += 38\n\tsShake = mkSlider(0,   60,  6,   1,   y); y += 38\n\tsPulse = mkSlider(0,   10,  3,   0.1, y); y += 38\n\tsThick = mkSlider(0.5, 8,   1.5, 0.1, y); y += 38\n\tsTrail = mkSlider(0,   255, 255, 1,   y)\n}\n\nfunction mkSlider(mn, mx, val, st, y) {\n\tlet s = createSlider(mn, mx, val, st)\n\ts.position(20, y); s.style(\"width\", \"160px\"); return s\n}\n\n// callback de ml5: guarda las manos detectadas\nfunction gotHands(results) { hands = results }\n\nfunction draw() {\n\t// resolver parámetros: manos sobrescriben sliders\n\tlet p = resolveParams()\n\n\tnoStroke()\n\tfill(0, p.trail)\n\trect(width/2, height/2, width, height)\n\n\tif (flash > 0) {\n\t\tfill(255, flash); rect(width/2, height/2, width, height); flash -= 15\n\t}\n\n\tpulseGrid(p.cols, p.shake, p.pulse, p.thick)\n\tdrawHandSkeleton()\n\tif (showHUD) drawHUD(p)\n}\n\n// lee manos y mezcla con sliders\nfunction resolveParams() {\n\tlet p = {\n\t\tcols:  sCols.value(),\n\t\tshake: sShake.value(),\n\t\tpulse: sPulse.value(),\n\t\tthick: sThick.value(),\n\t\ttrail: sTrail.value()\n\t}\n\tlet left = findHand(\"Left\"), right = findHand(\"Right\")\n\n\tif (left) {\n\t\tlet palm = left.keypoints[0]            // base de la palma\n\t\tlet scaled = palm.x / video.width       // 0..1 según posición X\n\t\tp.cols = floor(map(scaled, 0, 1, 4, 40))\n\t\tp.shake = map(pinchDist(left), 0, 200, 60, 0, true) // dedos cerrados = mucho temblor\n\t}\n\tif (right) {\n\t\tlet palm = right.keypoints[0]\n\t\tlet scaled = palm.y / video.height\n\t\tp.pulse = map(scaled, 0, 1, 10, 0)      // arriba = rápido, abajo = quieto\n\t\tp.thick = map(pinchDist(right), 0, 200, 0.5, 8, true)\n\t}\n\tif (left && right) {\n\t\tlet d = dist(left.keypoints[0].x, left.keypoints[0].y,\n\t\t             right.keypoints[0].x, right.keypoints[0].y)\n\t\tp.trail = map(d, 50, 500, 5, 255, true)  // manos juntas = mucha estela\n\t}\n\treturn p\n}\n\n// busca una mano por handedness (\"Left\" / \"Right\")\nfunction findHand(side) {\n\tfor (let h of hands) if (h.handedness === side) return h\n\treturn null\n}\n\n// distancia entre pulgar (kp 4) e índice (kp 8) = \"pinch\"\nfunction pinchDist(hand) {\n\tlet t = hand.keypoints[4], i = hand.keypoints[8]\n\treturn dist(t.x, t.y, i.x, i.y)\n}\n\n// grilla que tiembla y respira (igual que control_room)\nfunction pulseGrid(cols, shake, pulse, thick) {\n\tlet step = width / cols\n\tlet beat = 0.5 + 0.5 * sin(frameCount * pulse)\n\tlet cellSize = step * (0.4 + 0.5 * beat)\n\tstrokeWeight(thick)\n\tfor (let x = step/2; x < width; x += step) {\n\t\tfor (let y = step/2; y < height; y += step) {\n\t\t\tlet c = pickColor(x, y)\n\t\t\tstroke(c[0], c[1], c[2])\n\t\t\tif (useFill) fill(c[0], c[1], c[2], 80); else noFill()\n\t\t\tlet ox = random(-shake, shake), oy = random(-shake, shake)\n\t\t\tif (useCircle) circle(x + ox, y + oy, cellSize)\n\t\t\telse            square(x + ox, y + oy, cellSize)\n\t\t}\n\t}\n}\n\nfunction pickColor(x, y) {\n\tlet pal = PALETTES[palette - 1]\n\treturn pal[(floor(x/50) + floor(y/50)) % pal.length]\n}\n\n// dibuja sólo los puntos y huesos de las manos detectadas\n// (la webcam queda oculta, sólo se ve el \"esqueleto\" flotando)\nfunction drawHandSkeleton() {\n\t// huesos: agrupa keypoints en cadenas de dedos\n\tconst FINGERS = [\n\t\t[0,1,2,3,4],       // pulgar\n\t\t[0,5,6,7,8],       // índice\n\t\t[0,9,10,11,12],    // medio\n\t\t[0,13,14,15,16],   // anular\n\t\t[0,17,18,19,20]    // meñique\n\t]\n\tfor (let h of hands) {\n\t\t// escalar coords de video (640x480) al canvas\n\t\tlet sx = width / video.width, sy = height / video.height\n\t\tstroke(255, 200); strokeWeight(2); noFill()\n\t\tfor (let finger of FINGERS) {\n\t\t\tbeginShape()\n\t\t\tfor (let id of finger) {\n\t\t\t\tlet k = h.keypoints[id]\n\t\t\t\tvertex(k.x * sx, k.y * sy)\n\t\t\t}\n\t\t\tendShape()\n\t\t}\n\t\t// puntos en cada articulación\n\t\tnoStroke(); fill(255)\n\t\tfor (let k of h.keypoints) circle(k.x * sx, k.y * sy, 6)\n\t}\n}\n\nfunction drawHUD(p) {\n\tnoStroke(); fill(0, 180); rect(width - 110, 130, 200, 260)\n\tfill(255); textFont(\"monospace\"); textSize(12); textAlign(LEFT, TOP)\n\tlet lines = [\n\t\t\"hands   \" + hands.length + \"/2\",\n\t\t\"palette \" + palette,\n\t\t\"fill    \" + (useFill ? \"on\" : \"off\"),\n\t\t\"shape   \" + (useCircle ? \"circle\" : \"square\"),\n\t\t\"\",\n\t\t\"cols  \" + nf(p.cols, 2, 0),\n\t\t\"shake \" + nf(p.shake, 2, 1),\n\t\t\"pulse \" + nf(p.pulse, 2, 1),\n\t\t\"thick \" + nf(p.thick, 2, 1),\n\t\t\"trail \" + nf(p.trail, 3, 0),\n\t\t\"\",\n\t\t\"1-4 paleta · f fill\",\n\t\t\"s shape · h hud · space flash\"\n\t]\n\ttext(lines.join(\"\\n\"), width - 200, 20)\n}\n\nfunction keyPressed() {\n\tif (key >= \"1\" && key <= \"4\") palette = int(key)\n\tif (key === \"f\" || key === \"F\") useFill = !useFill\n\tif (key === \"s\" || key === \"S\") useCircle = !useCircle\n\tif (key === \"h\" || key === \"H\") showHUD = !showHUD\n\tif (key === \" \") flash = 255\n}\n"
+    },
+    {
+      "type": "sketch",
+      "name": "emotions",
+      "mod": 1779289331857,
+      "code": "// === EMOTION GRADIENT v2 - p5.live ===\n// Esta versión carga face-api.js automáticamente desde el código\n// No necesitas configurar nada en p5.live\n\nlet video;\nlet modelsLoaded = false;\nlet faceapiReady = false;\nlet loadingStatus = \"Cargando face-api.js...\";\n\nlet emotions = {\n  neutral: 1, happy: 0, sad: 0, angry: 0,\n  fearful: 0, disgusted: 0, surprised: 0\n};\n\nconst palette = {\n  happy:     [45,  90, 100],\n  sad:       [220, 80,  55],\n  angry:     [0,   95,  85],\n  fearful:   [280, 70,  40],\n  disgusted: [90,  85,  70],\n  surprised: [180, 95, 100],\n  neutral:   [0,    0,  60]\n};\n\n// === Cargar face-api.js dinámicamente ===\nfunction loadFaceApi() {\n  return new Promise((resolve, reject) => {\n    if (window.faceapi) { resolve(); return; }\n    const script = document.createElement('script');\n    script.src = 'https://cdn.jsdelivr.net/npm/face-api.js@0.22.2/dist/face-api.min.js';\n    script.onload = () => resolve();\n    script.onerror = () => reject(new Error('No se pudo cargar face-api.js'));\n    document.head.appendChild(script);\n  });\n}\n\nasync function setup() {\n  createCanvas(windowWidth, windowHeight);\n  colorMode(HSB, 360, 100, 100, 1);\n  noStroke();\n  \n  video = createCapture(VIDEO);\n  video.size(320, 240);\n  video.hide();\n  \n  try {\n    await loadFaceApi();\n    faceapiReady = true;\n    loadingStatus = \"Cargando modelos de detección...\";\n    \n    const MODEL_URL = 'https://justadudewhohacks.github.io/face-api.js/models';\n    await faceapi.nets.tinyFaceDetector.loadFromUri(MODEL_URL);\n    loadingStatus = \"Cargando red de expresiones...\";\n    await faceapi.nets.faceExpressionNet.loadFromUri(MODEL_URL);\n    \n    modelsLoaded = true;\n    loadingStatus = \"Listo\";\n    detectLoop();\n  } catch (e) {\n    loadingStatus = \"Error: \" + e.message;\n    console.error(e);\n  }\n}\n\nasync function detectLoop() {\n  if (modelsLoaded && video.elt.readyState === 4) {\n    try {\n      const result = await faceapi\n        .detectSingleFace(video.elt, new faceapi.TinyFaceDetectorOptions({ inputSize: 224 }))\n        .withFaceExpressions();\n      \n      if (result && result.expressions) {\n        const smoothing = 0.15;\n        for (let key in emotions) {\n          emotions[key] = lerp(emotions[key], result.expressions[key] || 0, smoothing);\n        }\n      } else {\n        for (let key in emotions) {\n          emotions[key] = lerp(emotions[key], key === 'neutral' ? 1 : 0, 0.05);\n        }\n      }\n    } catch (e) {\n      console.warn(\"detect error:\", e);\n    }\n  }\n  setTimeout(detectLoop, 100);\n}\n\nfunction draw() {\n  if (!modelsLoaded) {\n    background(0);\n    fill(0, 0, 100);\n    textAlign(CENTER, CENTER);\n    textSize(18);\n    text(loadingStatus, width/2, height/2);\n    return;\n  }\n  \n  let hueX = 0, hueY = 0, s = 0, b = 0, totalWeight = 0;\n  for (let key in emotions) {\n    const w = emotions[key];\n    const [ph, ps, pb] = palette[key];\n    hueX += cos(radians(ph)) * w;\n    hueY += sin(radians(ph)) * w;\n    s += ps * w;\n    b += pb * w;\n    totalWeight += w;\n  }\n  let h = 0;\n  if (totalWeight > 0) {\n    h = (degrees(atan2(hueY, hueX)) + 360) % 360;\n    s /= totalWeight;\n    b /= totalWeight;\n  }\n  \n  drawGradient(h, s, b);\n  drawHUD();\n}\n\nfunction drawGradient(baseH, baseS, baseB) {\n  const steps = 80;\n  const maxR = dist(0, 0, width, height);\n  const cx = width/2 + sin(frameCount * 0.005) * width * 0.15;\n  const cy = height/2 + cos(frameCount * 0.007) * height * 0.15;\n  \n  for (let i = steps; i > 0; i--) {\n    const t = i / steps;\n    const h = (baseH + t * 30) % 360;\n    const sat = baseS * (0.6 + t * 0.4);\n    const bri = baseB * (1 - t * 0.5);\n    fill(h, sat, bri);\n    ellipse(cx, cy, maxR * 2 * t, maxR * 2 * t);\n  }\n  \n  const intensity = 1 - emotions.neutral;\n  const pulse = sin(frameCount * 0.03) * 0.5 + 0.5;\n  fill(baseH, baseS, baseB, 0.15 * intensity * pulse);\n  rect(0, 0, width, height);\n}\n\nfunction drawHUD() {\n  push();\n  translate(20, height - 180);\n  fill(0, 0, 0, 0.4);\n  rect(0, 0, 200, 165, 8);\n  fill(0, 0, 100);\n  textAlign(LEFT, TOP);\n  textSize(11);\n  textFont('monospace');\n  let y = 10;\n  text(\"EMOCIONES\", 10, y);\n  y += 18;\n  const sorted = Object.entries(emotions).sort((a, b) => b[1] - a[1]);\n  for (let [key, val] of sorted) {\n    const [ph, ps, pb] = palette[key];\n    fill(ph, ps, pb);\n    rect(10, y + 2, val * 100, 8);\n    fill(0, 0, 100);\n    text(`${key.padEnd(10)} ${(val*100).toFixed(0)}%`, 115, y);\n    y += 18;\n  }\n  pop();\n}\n\nfunction windowResized() {\n  resizeCanvas(windowWidth, windowHeight);\n}"
+    },
+    {
+      "name": "new_014",
+      "mod": "1779284498147",
+      "type": "sketch",
+      "code": "// {\"P5LIVE\":{\"name\":\"hand_control_room\"}}\nlet libs = [\n\t\"https://unpkg.com/ml5@1/dist/ml5.min.js\"\n];\n\n// ============================================================\n// HAND CONTROL ROOM — instrumento visual controlado por manos\n// ------------------------------------------------------------\n// Usa ml5.js handPose para detectar tus dos manos por webcam\n// y mapear gestos a los parámetros visuales. Los sliders HTML\n// siguen ahí como respaldo: si no se ve ninguna mano, mandan\n// los sliders; si aparece una mano, ella manda ese parámetro.\n//\n// MAPEO DE MANOS:\n//   • Mano IZQUIERDA — posición X        → cols   (densidad)\n//   • Mano IZQUIERDA — apertura dedos    → shake  (temblor)\n//   • Mano DERECHA   — posición Y        → pulse  (latido)\n//   • Mano DERECHA   — apertura dedos    → thick  (grosor)\n//   • Distancia entre las dos manos      → trail  (estela)\n//\n// TECLADO:\n//   1-4    paleta · f fill · s shape · h HUD\n//   espacio flash · r reset\n// ============================================================\n\n// --- CÓMO CARGA ml5 ---\n// El \"let libs = [...]\" de arriba es la sintaxis oficial de p5LIVE\n// para cargar librerías externas por CDN. p5LIVE lo detecta y\n// descarga la librería ANTES de ejecutar tu setup(). No la borres.\n// Podés tipear \"libs\" + TAB en el editor para insertarlo automáticamente.\n\nlet handPose, video, hands = []\nlet sCols, sShake, sPulse, sThick, sTrail\nlet palette = 1, useFill = false, useCircle = false\nlet showHUD = true, flash = 0\n\nconst PALETTES = [\n\t[[255, 255, 255], [200, 200, 200]],\n\t[[255, 60, 120], [60, 200, 255], [255, 220, 0]],\n\t[[255, 80, 0], [120, 0, 255], [0, 255, 180]],\n\t[[40, 255, 40], [0, 100, 0], [200, 255, 200]]\n]\n\nfunction preload() {\n\thandPose = ml5.handPose({ flipped: true })\n}\n\nfunction setup() {\n\tcreateCanvas(windowWidth, windowHeight)\n\trectMode(CENTER)\n\tangleMode(DEGREES)\n\t// arranca la webcam (escondida, sólo la usamos para detección)\n\tvideo = createCapture(VIDEO, { flipped: true })\n\tvideo.size(640, 480)\n\tvideo.hide()\n\thandPose.detectStart(video, gotHands)\n\tbuildSliders()\n}\n\nfunction buildSliders() {\n\tlet y = 20\n\tsCols  = mkSlider(4,   40,  12,  1,   y); y += 38\n\tsShake = mkSlider(0,   60,  6,   1,   y); y += 38\n\tsPulse = mkSlider(0,   10,  3,   0.1, y); y += 38\n\tsThick = mkSlider(0.5, 8,   1.5, 0.1, y); y += 38\n\tsTrail = mkSlider(0,   255, 255, 1,   y)\n}\n\nfunction mkSlider(mn, mx, val, st, y) {\n\tlet s = createSlider(mn, mx, val, st)\n\ts.position(20, y); s.style(\"width\", \"160px\"); return s\n}\n\n// callback de ml5: guarda las manos detectadas\nfunction gotHands(results) { hands = results }\n\nfunction draw() {\n\t// resolver parámetros: manos sobrescriben sliders\n\tlet p = resolveParams()\n\n\tnoStroke()\n\tfill(0, p.trail)\n\trect(width/2, height/2, width, height)\n\n\tif (flash > 0) {\n\t\tfill(255, flash); rect(width/2, height/2, width, height); flash -= 15\n\t}\n\n\tpulseGrid(p.cols, p.shake, p.pulse, p.thick)\n\tdrawHandSkeleton()\n\tif (showHUD) drawHUD(p)\n}\n\n// lee manos y mezcla con sliders\nfunction resolveParams() {\n\tlet p = {\n\t\tcols:  sCols.value(),\n\t\tshake: sShake.value(),\n\t\tpulse: sPulse.value(),\n\t\tthick: sThick.value(),\n\t\ttrail: sTrail.value()\n\t}\n\tlet left = findHand(\"Left\"), right = findHand(\"Right\")\n\n\tif (left) {\n\t\tlet palm = left.keypoints[0]            // base de la palma\n\t\tlet scaled = palm.x / video.width       // 0..1 según posición X\n\t\tp.cols = floor(map(scaled, 0, 1, 4, 40))\n\t\tp.shake = map(pinchDist(left), 0, 200, 60, 0, true) // dedos cerrados = mucho temblor\n\t}\n\tif (right) {\n\t\tlet palm = right.keypoints[0]\n\t\tlet scaled = palm.y / video.height\n\t\tp.pulse = map(scaled, 0, 1, 10, 0)      // arriba = rápido, abajo = quieto\n\t\tp.thick = map(pinchDist(right), 0, 200, 0.5, 8, true)\n\t}\n\tif (left && right) {\n\t\tlet d = dist(left.keypoints[0].x, left.keypoints[0].y,\n\t\t             right.keypoints[0].x, right.keypoints[0].y)\n\t\tp.trail = map(d, 50, 500, 5, 255, true)  // manos juntas = mucha estela\n\t}\n\treturn p\n}\n\n// busca una mano por handedness (\"Left\" / \"Right\")\nfunction findHand(side) {\n\tfor (let h of hands) if (h.handedness === side) return h\n\treturn null\n}\n\n// distancia entre pulgar (kp 4) e índice (kp 8) = \"pinch\"\nfunction pinchDist(hand) {\n\tlet t = hand.keypoints[4], i = hand.keypoints[8]\n\treturn dist(t.x, t.y, i.x, i.y)\n}\n\n// grilla que tiembla y respira (igual que control_room)\nfunction pulseGrid(cols, shake, pulse, thick) {\n\tlet step = width / cols\n\tlet beat = 0.5 + 0.5 * sin(frameCount * pulse)\n\tlet cellSize = step * (0.4 + 0.5 * beat)\n\tstrokeWeight(thick)\n\tfor (let x = step/2; x < width; x += step) {\n\t\tfor (let y = step/2; y < height; y += step) {\n\t\t\tlet c = pickColor(x, y)\n\t\t\tstroke(c[0], c[1], c[2])\n\t\t\tif (useFill) fill(c[0], c[1], c[2], 80); else noFill()\n\t\t\tlet ox = random(-shake, shake), oy = random(-shake, shake)\n\t\t\tif (useCircle) circle(x + ox, y + oy, cellSize)\n\t\t\telse            square(x + ox, y + oy, cellSize)\n\t\t}\n\t}\n}\n\nfunction pickColor(x, y) {\n\tlet pal = PALETTES[palette - 1]\n\treturn pal[(floor(x/50) + floor(y/50)) % pal.length]\n}\n\n// dibuja sólo los puntos y huesos de las manos detectadas\n// (la webcam queda oculta, sólo se ve el \"esqueleto\" flotando)\nfunction drawHandSkeleton() {\n\t// huesos: agrupa keypoints en cadenas de dedos\n\tconst FINGERS = [\n\t\t[0,1,2,3,4],       // pulgar\n\t\t[0,5,6,7,8],       // índice\n\t\t[0,9,10,11,12],    // medio\n\t\t[0,13,14,15,16],   // anular\n\t\t[0,17,18,19,20]    // meñique\n\t]\n\tfor (let h of hands) {\n\t\t// escalar coords de video (640x480) al canvas\n\t\tlet sx = width / video.width, sy = height / video.height\n\t\tstroke(255, 200); strokeWeight(2); noFill()\n\t\tfor (let finger of FINGERS) {\n\t\t\tbeginShape()\n\t\t\tfor (let id of finger) {\n\t\t\t\tlet k = h.keypoints[id]\n\t\t\t\tvertex(k.x * sx, k.y * sy)\n\t\t\t}\n\t\t\tendShape()\n\t\t}\n\t\t// puntos en cada articulación\n\t\tnoStroke(); fill(255)\n\t\tfor (let k of h.keypoints) circle(k.x * sx, k.y * sy, 6)\n\t}\n}\n\nfunction drawHUD(p) {\n\tnoStroke(); fill(0, 180); rect(width - 110, 130, 200, 260)\n\tfill(255); textFont(\"monospace\"); textSize(12); textAlign(LEFT, TOP)\n\tlet lines = [\n\t\t\"hands   \" + hands.length + \"/2\",\n\t\t\"palette \" + palette,\n\t\t\"fill    \" + (useFill ? \"on\" : \"off\"),\n\t\t\"shape   \" + (useCircle ? \"circle\" : \"square\"),\n\t\t\"\",\n\t\t\"cols  \" + nf(p.cols, 2, 0),\n\t\t\"shake \" + nf(p.shake, 2, 1),\n\t\t\"pulse \" + nf(p.pulse, 2, 1),\n\t\t\"thick \" + nf(p.thick, 2, 1),\n\t\t\"trail \" + nf(p.trail, 3, 0),\n\t\t\"\",\n\t\t\"1-4 paleta · f fill\",\n\t\t\"s shape · h hud · space flash\"\n\t]\n\ttext(lines.join(\"\\n\"), width - 200, 20)\n}\n\nfunction keyPressed() {\n\tif (key >= \"1\" && key <= \"4\") palette = int(key)\n\tif (key === \"f\" || key === \"F\") useFill = !useFill\n\tif (key === \"s\" || key === \"S\") useCircle = !useCircle\n\tif (key === \"h\" || key === \"H\") showHUD = !showHUD\n\tif (key === \" \") flash = 255\n}"
+    },
+    {
+      "name": "Sketch 1",
+      "mod": "1779283998073",
+      "type": "sketch",
+      "code": "// {\"P5LIVE\":{\"name\":\"control_room\"}}\n// ============================================================\n// CONTROL ROOM — instrumento visual con sliders y teclado\n// ------------------------------------------------------------\n// SLIDERS (esquina superior izquierda):\n//   • cols      → densidad de la grilla    (4 — 40)\n//   • shake     → temblor aleatorio        (0 — 60)\n//   • pulse     → velocidad del latido     (0 — 10)\n//   • thick     → grosor de línea          (0.5 — 8)\n//   • trail     → estela / motion blur     (0 — 255)\n//   • twist     → rotación global          (0 — 360)\n//\n// TECLADO:\n//   1 / 2 / 3 / 4 → paleta de colores\n//   f             → toggle relleno (fill on/off)\n//   s             → toggle figura (cuadrado / círculo)\n//   r             → reset sliders a valores por defecto\n//   h             → mostrar / ocultar HUD\n//   espacio       → flash blanco (drop!)\n// ============================================================\n\nlet sCols, sShake, sPulse, sThick, sTrail, sTwist\nlet palette = 1\nlet useFill = false\nlet useCircle = false\nlet showHUD = true\nlet flash = 0\n\n// 4 paletas pensadas para algorave\nconst PALETTES = [\n\t[[255, 255, 255], [200, 200, 200]],            // 1: monocromo\n\t[[255, 60, 120], [60, 200, 255], [255, 220, 0]], // 2: neón\n\t[[255, 80, 0], [120, 0, 255], [0, 255, 180]],   // 3: caliente/frío\n\t[[40, 255, 40], [0, 100, 0], [200, 255, 200]]   // 4: matrix verde\n]\n\nfunction setup() {\n\tcreateCanvas(windowWidth, windowHeight)\n\trectMode(CENTER)\n\tangleMode(DEGREES)\n\tbuildSliders()\n\tbackground(0)\n}\n\n// crea los sliders HTML y los posiciona en columna\nfunction buildSliders() {\n\tlet y = 20\n\tconst step = 38\n\tsCols  = labeledSlider(\"cols\",   4,   40,  12,  1,    20, y);            y += step\n\tsShake = labeledSlider(\"shake\",  0,   60,  6,   1,    20, y);            y += step\n\tsPulse = labeledSlider(\"pulse\",  0,   10,  3,   0.1,  20, y);            y += step\n\tsThick = labeledSlider(\"thick\",  0.5, 8,   1.5, 0.1,  20, y);            y += step\n\tsTrail = labeledSlider(\"trail\",  0,   255, 255, 1,    20, y);            y += step\n\tsTwist = labeledSlider(\"twist\",  0,   360, 0,   1,    20, y)\n}\n\n// helper: crea un slider con etiqueta y lo posiciona\nfunction labeledSlider(name, mn, mx, val, stepv, x, y) {\n\tlet s = createSlider(mn, mx, val, stepv)\n\ts.position(x, y)\n\ts.style(\"width\", \"160px\")\n\ts.elt.dataset.label = name   // guardamos el nombre para el HUD\n\treturn s\n}\n\nfunction draw() {\n\t// fondo translúcido = estela; trail=255 limpia totalmente\n\tnoStroke()\n\tfill(0, sTrail.value())\n\trect(width/2, height/2, width, height)\n\n\t// flash blanco (tecla espacio)\n\tif (flash > 0) {\n\t\tfill(255, flash)\n\t\trect(width/2, height/2, width, height)\n\t\tflash -= 15\n\t}\n\n\t// rotación global controlada por \"twist\"\n\tpush()\n\ttranslate(width/2, height/2)\n\trotate(sTwist.value())\n\ttranslate(-width/2, -height/2)\n\n\tpulseGrid(\n\t\tsCols.value(),\n\t\tsShake.value(),\n\t\tsPulse.value(),\n\t\tsThick.value()\n\t)\n\tpop()\n\n\tif (showHUD) drawHUD()\n}\n\n// grilla que tiembla y respira a la vez\n// cols → cantidad de columnas\n// shake → intensidad del temblor aleatorio\n// pulse → velocidad del latido (con sin)\n// thick → grosor de línea\nfunction pulseGrid(cols, shake, pulse, thick) {\n\tlet step = width / cols\n\t// el \"latido\" modula el tamaño de cada celda\n\tlet beat = 0.5 + 0.5 * sin(frameCount * pulse)\n\tlet cellSize = step * (0.4 + 0.5 * beat)\n\tstrokeWeight(thick)\n\n\tfor (let x = step/2; x < width; x += step) {\n\t\tfor (let y = step/2; y < height; y += step) {\n\t\t\tlet c = pickColor(x, y)\n\t\t\tstroke(c[0], c[1], c[2])\n\t\t\tif (useFill) fill(c[0], c[1], c[2], 80); else noFill()\n\t\t\tlet ox = random(-shake, shake)\n\t\t\tlet oy = random(-shake, shake)\n\t\t\tif (useCircle) circle(x + ox, y + oy, cellSize)\n\t\t\telse            square(x + ox, y + oy, cellSize)\n\t\t}\n\t}\n}\n\n// elige color de la paleta actual según posición (alterna celdas)\nfunction pickColor(x, y) {\n\tlet pal = PALETTES[palette - 1]\n\tlet idx = (floor(x / 50) + floor(y / 50)) % pal.length\n\treturn pal[idx]\n}\n\n// HUD: muestra valores actuales arriba a la derecha\nfunction drawHUD() {\n\tpush()\n\tresetMatrix()\n\tnoStroke()\n\tfill(0, 180)\n\trect(width - 110, 100, 200, 200)\n\tfill(255)\n\ttextFont(\"monospace\")\n\ttextSize(12)\n\ttextAlign(LEFT, TOP)\n\tlet info = [\n\t\t\"palette \" + palette,\n\t\t\"fill    \" + (useFill ? \"on\" : \"off\"),\n\t\t\"shape   \" + (useCircle ? \"circle\" : \"square\"),\n\t\t\"\",\n\t\t\"1-4 paleta   f fill\",\n\t\t\"s shape      r reset\",\n\t\t\"h hud        space flash\"\n\t]\n\ttext(info.join(\"\\n\"), width - 200, 20)\n\tpop()\n}\n\nfunction keyPressed() {\n\tif (key >= \"1\" && key <= \"4\") palette = int(key)\n\tif (key === \"f\" || key === \"F\") useFill = !useFill\n\tif (key === \"s\" || key === \"S\") useCircle = !useCircle\n\tif (key === \"h\" || key === \"H\") showHUD = !showHUD\n\tif (key === \"r\" || key === \"R\") resetSliders()\n\tif (key === \" \") flash = 255\n}\n\n// vuelve los sliders a sus valores por defecto\nfunction resetSliders() {\n\tsCols.value(12); sShake.value(6); sPulse.value(3)\n\tsThick.value(1.5); sTrail.value(255); sTwist.value(0)\n}"
+    },
+    {
+      "name": "new_013",
+      "mod": "1779126683954",
+      "type": "sketch",
+      "code": "let palette = [\n  \"#0B3D0B\",\n  \"#1E8F3E\",\n  \"#7ED957\",\n  \"#F4D800\",\n  \"#00C2A8\",\n  \"#FF4F81\",\n  \"#F7F3E9\",\n  \"#222222\",\n  \"#9BD0FF\"\n]\n\nfunction setup() {\n  createCanvas(windowWidth, windowHeight)\n  background(210, 225, 245)\n  noStroke()\n}\n\nfunction draw() {\n\n  // very soft repainting effect\n  fill(210, 225, 245, 4)\n  rect(0, 0, width, height)\n\n  // many layered shapes\n  for (let i = 0; i < 80; i++) {\n\n    let x = random(width)\n    let y = random(height)\n\n    let w = random(20, 260)\n    let h = random(20, 260)\n\n    fill(random(palette))\n\n    push()\n\n    translate(x, y)\n\n    rotate(random(-0.4, 0.4))\n\n    rectMode(CENTER)\n\n    // rounded abstract block\n    rect(\n      0,\n      0,\n      w,\n      h,\n      random(10, 60)\n    )\n\n    // extra layered circles\n    fill(random(palette))\n\n    circle(\n      random(-40, 40),\n      random(-40, 40),\n      random(10, 100)\n    )\n\n    // small details\n    fill(random(palette))\n\n    rect(\n      random(-30, 30),\n      random(-30, 30),\n      random(5, 50),\n      random(5, 50),\n      random(2, 20)\n    )\n\n    pop()\n  }\n}\n\nfunction windowResized() {\n  resizeCanvas(windowWidth, windowHeight)\n}"
+    },
+    {
+      "name": "new_012",
+      "mod": "1779126262676",
+      "type": "sketch",
+      "code": "let palette = [\n  \"#0d5c2f\",\n  \"#19a337\",\n  \"#8bd646\",\n  \"#f2d43d\",\n  \"#ff5e5b\",\n  \"#27c2f2\",\n  \"#f7f3d7\"\n]\n\nfunction setup() {\n  createCanvas(windowWidth, windowHeight)\n  background(220, 235, 255)\n  noStroke()\n}\n\nfunction draw() {\n\n  // transparent layer creates painting effect\n  fill(220, 235, 255, 8)\n  rect(0, 0, width, height)\n\n  for (let i = 0; i < 12; i++) {\n\n    let x = random(width)\n    let y = random(height)\n\n    let w = random(20, 140)\n    let h = random(20, 140)\n\n    fill(random(palette))\n\n    push()\n\n    translate(x, y)\n\n    rotate(random(-0.3, 0.3))\n\n    organicShape(0, 0, w, h)\n\n    pop()\n  }\n}\n\nfunction organicShape(x, y, w, h) {\n\n  beginShape()\n\n  for (let a = 0; a < TWO_PI; a += 0.4) {\n\n    let r1 = w * 0.5 + random(-20, 20)\n    let r2 = h * 0.5 + random(-20, 20)\n\n    let px = cos(a) * r1\n    let py = sin(a) * r2\n\n    vertex(px, py)\n  }\n\n  endShape(CLOSE)\n}"
+    },
+    {
+      "name": "new_011",
+      "mod": "1779123360050",
+      "type": "sketch",
+      "code": "let particles = []\n\nfunction setup() {\n  createCanvas(windowWidth, windowHeight)\n  noStroke()\n\n  for (let i = 0; i < 250; i++) {\n    particles.push({\n      angle: random(TWO_PI),\n      radius: random(40, 300),\n      speed: random(0.005, 0.03),\n      size: random(2, 8)\n    })\n  }\n}\n\nfunction draw() {\n  background(5, 5, 15, 30)\n\n  translate(width / 2, height / 2)\n\n  let portalSize = map(mouseX, 0, width, 80, 350)\n  let gravity = map(mouseY, 0, height, 0.5, 3)\n\n  for (let i = 0; i < particles.length; i++) {\n    let p = particles[i]\n\n    p.angle += p.speed * gravity\n\n    let wave = sin(frameCount * 0.04 + p.radius * 0.03) * 30\n    let x = cos(p.angle) * (p.radius + wave)\n    let y = sin(p.angle) * (p.radius + wave)\n\n    let distanceGlow = map(p.radius, 40, 300, 255, 50)\n\n    fill(0, 200, 255, distanceGlow)\n    ellipse(x, y, p.size)\n\n    fill(255, 0, 180, distanceGlow / 2)\n    ellipse(x * 0.97, y * 0.97, p.size * 1.8)\n  }\n\n  noFill()\n  stroke(0, 255, 255, 180)\n  strokeWeight(3)\n  ellipse(0, 0, portalSize)\n\n  stroke(255, 0, 180, 120)\n  ellipse(0, 0, portalSize + sin(frameCount * 0.08) * 40)\n}"
+    },
+    {
+      "name": "new_010",
+      "mod": "1779123272302",
+      "type": "sketch",
+      "code": "function setup() {\n  createCanvas(windowWidth, windowHeight)\n  noStroke()\n}\n\nfunction draw() {\n  background(10, 15, 30, 25)\n\n  let flowerCount = 20\n  let petalSize = map(mouseX, 0, width, 10, 80)\n  let rotationSpeed = frameCount * 0.02\n\n  translate(width / 2, height / 2)\n\n  for (let i = 0; i < flowerCount; i++) {\n\n    push()\n\n    rotate(TWO_PI / flowerCount * i + rotationSpeed)\n\n    let distance = map(mouseY, 0, height, 50, 250)\n\n    let r = 120 + sin(frameCount * 0.03 + i) * 80\n    let g = 100 + cos(frameCount * 0.04 + i) * 80\n    let b = 200\n\n    fill(r, g, b, 180)\n\n    ellipse(distance, 0, petalSize, petalSize * 1.5)\n\n    pop()\n  }\n}"
+    },
+    {
+      "name": "_audio_strudel_004",
+      "mod": "1778580269644",
+      "type": "sketch",
+      "code": "/*\t\n\t_audio_strudel // cc teddavis.org 2025\n\t\n\tStrudel for live-coding music and COCODING A/V collabs!\n\tdocs: https://strudel.cc/learn\n\tlearn: https://glfmn.io/presentations/algorave/\n*/\n\n// strudel\n_$: n(\"<0 1 <2 5 ~> 3>*<1 2>\") // remove '_' to unmute\n\t.scale(\"[c g, c2, e]:minor\")\n\t.s(\"<saw square>\")\n\t.dec(.2).room(.3).seg(4)\n\t.velocity(signal(()=>p5live.random(.8, 1.5)))\n\n$: s(\"bd(3,8) sd, hh*<4 8 16>\")\n\t.dec(.2).delay(.4)\n\t.color(\"cyan magenta yellow\")\n\t.pianoroll()\n\t.p5live(() => {\n\t\t// console.log(hap)\n\n\t\t// filter for bd and sd events\n\t\tif(hap.s == 'bd') {\n\t\t\tbd = 1\n\t\t}\n\n\t\tif(hap.s == 'sd') {\n\t\t\tsd = 1\n\t\t}\n\t})\n\n// hush() // silence everything above it\n// strudel\n\n// store some global vars\nvar bd = 0, sd = 0\n\nfunction setup() {\n\tcreateCanvas(windowWidth, windowHeight, WEBGL)\n\n}\n\nfunction draw() {\n\t//clear()\n\t//orbitControl(3)\n\t//angleMode(DEGREES)\n\t//rotateY(frameCount / 3)\n\t//noStroke()\n\n\t//strudel.hide(1) // 0 to show\n\n\t//strudel.get()\n\t//texture(st0)\n\n\t//torus(height / 3, bd * 100)\n\n\trotateX(sin(frameCount * 1) * 30)\n\t//box(height / 4, height / 4, sd * height)\n\n\tbd = ease(.2, bd, .02)\n\tsd = ease(0, sd, .05)\n}"
+    },
+    {
+      "name": "strudel-000",
+      "mod": "1778579637532",
+      "type": "sketch",
+      "code": "/* \n  audio_strudel_only\n*/\n\n// strudel\n$: n(\"<0 1 <2 5 ~> 3>*<1 2>\")\n\t.scale(\"[c g, c2, e]:minor\")\n\t.s(\"<saw square>\")\n\t.dec(.2)\n\t.room(0.5)\n\t.seg(4)\n\t.velocity(signal(() => p5live.random(.8, 1.5)))\n\n_$: s(\"bd(3,8) sd, hh*<4 8 16>\")\n\t.dec(.2)\n\t.delay(.4)\n\n//hush()\n// strudel\nfunction setup() {\n\tcreateCanvas(windowWidth, windowHeight)\n\n\tcreateCanvas(1, 1)\n\n\t// ocultar interfaz strudel\n\tstrudel.hide(1)\n}\n\nfunction draw() {\n\n\n}\n\nfunction mousePressed() {\n\tuserStartAudio()\n}"
+    },
+    {
+      "name": "new_009",
+      "mod": "1778579618627",
+      "type": "sketch",
+      "code": "/* \n  audio_strudel_only\n*/\n\n// strudel\n_$: n(\"<0 1 <2 5 ~> 3>*<1 2>\")\n\t.scale(\"[c g, c2, e]:minor\")\n\t.s(\"<saw square>\")\n\t.dec(.2)\n\t.room(.3)\n\t.seg(4)\n\t.velocity(signal(() => p5live.random(.8, 1.5)))\n\n$: s(\"bd(3,8) sd, hh*<4 8 16>\")\n\t.dec(.2)\n\t.delay(.4)\n\n// hush()\n// strudel\nfunction setup() {\n\tcreateCanvas(windowWidth, windowHeight)\n\n\tcreateCanvas(1, 1)\n\n\t// ocultar interfaz strudel\n\tstrudel.hide(1)\n}\n\nfunction draw() {\n\n\n}\n\nfunction mousePressed() {\n\tuserStartAudio()\n}"
+    },
+    {
+      "name": "new_008",
+      "mod": "1778579494012",
+      "type": "sketch",
+      "code": "/* \n  audio_strudel_only\n*/\n\n// strudel\n_$: n(\"<0 1 <2 5 ~> 3>*<1 2>\")\n\t.scale(\"[c g, c2, e]:minor\")\n\t.s(\"<saw square>\")\n\t.dec(.2)\n\t.room(.3)\n\t.seg(4)\n\t.velocity(signal(() => p5live.random(.8, 1.5)))\n\n$: s(\"bd(3,8) sd, hh*<4 8 16>\")\n\t.dec(.2)\n\t.delay(.4)\n\n\nfunction setup() {\n\tcreateCanvas(windowWidth, windowHeight)\n\n\tcreateCanvas(1, 1)\n\n\tstrudel.hide(1)\n}\n\nfunction draw() {\n\n\n}\n\nfunction mousePressed() {\n\tuserStartAudio()\n}"
+    },
+    {
+      "name": "new_007",
+      "mod": "1778579454585",
+      "type": "sketch",
+      "code": "/* \n  audio_strudel_only\n*/\n\n// strudel\n_$: n(\"<0 1 <2 5 ~> 3>*<1 2>\")\n\t.scale(\"[c g, c2, e]:minor\")\n\t.s(\"<saw square>\")\n\t.dec(.2)\n\t.room(.3)\n\t.seg(4)\n\t.velocity(signal(() => p5live.random(.8, 1.5)))\n\n$: s(\"bd(3,8) sd, hh*<4 8 16>\")\n\t.dec(.2)\n\t.delay(.4)\n\n// hush()\n// strudel\nfunction setup() {\n\tcreateCanvas(windowWidth, windowHeight)\n\n\tcreateCanvas(1, 1)\n\n\t// ocultar interfaz strudel\n\tstrudel.hide(1)\n}\n\nfunction draw() {\n\n\n}\n\nfunction mousePressed() {\n\tuserStartAudio()\n}"
+    },
+    {
+      "name": "_audio_strudel_003",
+      "mod": "1778579354640",
+      "type": "sketch",
+      "code": "/* \n  audio_strudel_only\n*/\n\n// strudel\n_$: n(\"<0 1 <2 5 ~> 3>*<1 2>\")\n\t.scale(\"[c g, c2, e]:minor\")\n\t.s(\"<saw square>\")\n\t.dec(.2)\n\t.room(.3)\n\t.seg(4)\n\t.velocity(signal(() => p5live.random(.8, 1.5)))\n\n$: s(\"bd(3,8) sd, hh*<4 8 16>\")\n\t.dec(.2)\n\t.delay(.4)\n\n// hush()\n// strudel\n/* \n  audio_strudel_only\n*/\n\n// strudel\n_$: n(\"<0 1 <2 5 ~> 3>*<1 2>\")\n\t.scale(\"[c g, c2, e]:minor\")\n\t.s(\"<saw square>\")\n\t.dec(.2)\n\t.room(.3)\n\t.seg(4)\n\t.velocity(signal(() => p5live.random(.8, 1.5)))\n\n$: s(\"bd(3,8) sd, hh*<4 8 16>\")\n\t.dec(.2)\n\t.delay(.4)\n\n// hush()\n// strudel\n\nfunction setup() {\n\tcreateCanvas(1, 1)\n\n\t// ocultar interfaz strudel\n\tstrudel.hide(1)\n\tcreateCanvas(1, 1)\n\n\t// ocultar interfaz strudel\n\tstrudel.hide(1)\n}\n\nfunction draw() {\n\n\n}\n\nfunction mousePressed() {\n\tuserStartAudio()\n}\n\nfunction mousePressed() {\n\tuserStartAudio()"
+    },
+    {
+      "name": "_audio_strudel_002",
+      "mod": "1778578975658",
+      "type": "sketch",
+      "code": ""
+    },
+    {
+      "name": "new_006",
+      "mod": "1778578829636",
+      "type": "sketch",
+      "code": ""
+    },
+    {
+      "name": "_audio_strudel_001",
+      "mod": "1778578614301",
+      "type": "sketch",
+      "code": "let amp = 0\nlet amp = 0\nlet amp = 0\n\nfunction setup() {\n\tcreateCanvas(windowWidth, windowHeight)\n\n\tstrudel.init().then(() => {\n\t\tstrudel.evaluate(`\n      s(\"bd sd bd sd\")\n        .gain(\"[1 .3 .8 .3]\")\n    `)\n\t})\n\tcreateCanvas(windowWidth, windowHeight)\n\n\tstrudel.init().then(() => {\n\t\tstrudel.evaluate(`\n      s(\"bd sd bd sd\")\n        .gain(\"[1 .3 .8 .3]\")\n    `)\n\t})\n}\n\nfunction draw() {\n\tbackground(0)\n\n\t// simulación simple de “respuesta” al beat\n\tamp *= 0.9\n\n\tlet size = 50 + amp * 120\n\n\tfill(255)\n\tcircle(width / 2, height / 2, size)\n\tbackground(0)\n\n\t// simulación simple de “respuesta” al beat\n\tamp *= 0.9\n\n\tlet size = 50 + amp * 120\n\n\tfill(255)\n\tcircle(width / 2, height / 2, size)\n\n}\n\nfunction mousePressed() {\n\tuserStartAudio()\n\tamp = 1\n}\n\nfunction mousePressed() {\n\tuserStartAudio()\n\tamp = 1\n}"
+    },
+    {
+      "name": "new_005",
+      "mod": "1778578367012",
+      "type": "sketch",
+      "code": ""
+    },
+    {
+      "name": "new_004",
+      "mod": "1778578078395",
+      "type": "sketch",
+      "code": "// strudel\ns(\"bd sd bd sd\")\n// strudel\n\nfunction setup() {\n  createCanvas(400, 400)\n}\n\nfunction draw() {\n  background(0)\n}\n\n"
+    },
+    {
+      "name": "new_003",
+      "mod": "1777468386682",
+      "type": "sketch",
+      "code": "//https://teachablemachine.withgoogle.com/models/-TZs74Q9n/ Teachable machine\n\nlet libs = [\"https://unpkg.com/ml5@1/dist/ml5.min.js\",'https://unpkg.com/hydra-synth', \n'includes/libs/hydra-synth.js', 'https://cdn.jsdelivr.net/gh/ffd8/hy5@main/hy5.js', 'includes/libs/hy5.js']\n\n//sandbox - start\nH.pixelDensity(1)\ns0.initP5()\nP5.toggle(0)\n\nsrc(s0)\n.modulate(noize(1000), () => strenght)\n.luma(() => 0.2 * a.fft[0])\n\n.out()\n\n//sandbox - end\n\nlet modelLink = \"https://teachablemachine.withgoogle.com/models/-TZs74Q9n/\"\n\nlet classifier;\n\n// A variable to hold the video we want to classify\nlet video;\n\n// Variable for displaying the results on the canvas\nlet label = \"Model loading...\";\n\nfunction preload() {\n  classifier = ml5.imageClassifier(modelLink + \"model.json\");\n}\n\nfunction setup() {\n  createCanvas(windowWidth, windowHeight);\n  background(255);\n\n  // Using webcam feed as video input, hiding html element to avoid duplicate with canvas\n  video = createCapture(VIDEO, {flipped:true});\n  video.size(width, height);\n  video.hide();\n  classifyVideo()\n  \n}\n\n\nfunction draw() {\n  // Each video frame is painted on the canvas\n  image(video, 0, 0);\n\n  // Printing class with the highest probability on the canvas\n  fill(255);\n  textSize(32);\n  text(label, width/2, height/2);\n  \n  if (label == \"me\"){\n      circle(width/2, height/2, 100)\n  }else if ( label == \"phone\"){\n  rect(width/2, height/2, 100)\n  }else {\n      triangle(width/2, height/2, width/2 + 200, height/2 - 200, width/2 + 400, height/2)\n  }\n \n  \n \n  \n  \n  \n}\n\n// Callback function for when classification has finished\nfunction gotResult(results) {\n  // Update label variable which is displayed on the canvas\n  label = results[0].label;\n  classifyVideo()\n  \n}\n\nfunction classifyVideo() {\n      \n      classifier.classify(video, gotResult);\n      \n}let libs = ['https://unpkg.com/ml5@1/dist/ml5.min.js'];\n\nlet video;\nlet state = 'starting...';\nlet handPose;\nlet hands = [];\nlet options = { maxHands: 2, flipHorizontal: true };\nlet pScale = 20\n\nlet distUp\n\n\nfunction preload() {\n  handPose = ml5.handPose(options);\n}\n\nfunction setup() {\n  createCanvas(windowWidth, windowHeight);\n\n  video = createCapture(VIDEO, { flipped: true });\n  video.size(width, height);\n  video.hide();\n\n  handPose.detectStart(video, gotHands);\n  state = 'detecting hands';\n}\n\nfunction draw() {\n  background(20, 100);\n  //image(video, 0, 0)\n\n\n    for (let i = 0; i < hands.length; i++) {\n      const hand = hands[i];\n      for (let j = 0; j < hand.keypoints.length; j++) {\n        const kp = hand.keypoints[j];\n        const x =  kp.x;\n        const y =  kp.y;\n        fill(map(j, 0, hand.keypoints.length, 0, 255), 255, map(j, 0, hand.keypoints.length, 255, 0));\n        noStroke();\n        circle(x, y, pScale * sin(frameCount * 0.1 + j) % pScale);\n      }\n    }\n\n  noStroke();\n  fill(255);\n  text(state, 10, height - 10);\n}\n\nfunction gotHands(results) {\n  hands = results;\n}"
+    },
+    {
+      "name": "basic molar animation",
+      "mod": "1777372739563",
+      "type": "sketch",
+      "code": "let dimX = 453\nlet dimY = dimX\nlet num = 17\nlet reduction = dimX / num\nlet posX = 0\nlet posY = 0\n\nfunction setup() {\n\tcreateCanvas(windowWidth, windowHeight)\n\tbackground(255)\n\trectMode(CENTER)\n\tangleMode(DEGREES)\n\tposX = width / 2\n\tposY = height / 2\n}\n\nfunction draw() {\n\tbackground(255)\n\tnoFill()\n\tstrokeWeight(3)\n\tstroke(0)\n\tlet numX = 10 //number of squares\n\n\n\n\n\n\n\t//forloop\n\tfor(let i = 0; i < numX; i++) { //here we use i variable because it is numX\n\t\tlet dimension = width / numX //define dimension\n\t\tlet posX = dimension / 2 + (i * dimension)\n\t\tfor(let j = 0; j < numX; j++) { //here we use j variable because it is numY the number here defines the ammount of rows, we use numX\n\t\t\tlet posY = dimension / 2 + (j * dimension)\n\t\t\ttmcs(posX, posY, 4, dimension, 5) //5 is the num parameter, if i affect it here it affects the ammount of squares\n\n\n\t\t}\n\t}\n\n\n\n}\n\n\n\n// this function draws squares at position\n// x and y, and they move randomly \n// a tiny bit\nfunction tmcs(x, y, speed, dim, num) {\n\n\tlet dimension = dim + sin(frameCount * speed) * 10\n\t// num = 10\n\tlet reduction = dimension / num\n\n\tfor(let i = 0; i < num; i++) {\n\t\tlet offsetX = noise(frameCount * 0.00001 , frameCount * 0.00003, i) *10\n\t\tlet offsetY = noise(frameCount * 0.00001 , frameCount * 0.0003, i) *10\n\t\tlet r = random(255)\n\t\tlet g = random(255)\n\t\tlet b = random(255)\n\t\tfill (255) //fill the little square with color\n\t\tif(i == num-1) { //the center square is defined by num-1 for the fill\n\t\t\tfill(random(255))\n\t\t}\n\t\tstroke(r, g, b)\n\t\tstrokeWeight(3)\n\t\tsquare(\n\t\t\tx + offsetX,\n\t\t\ty + offsetY,\n\t\t\t(dimension) - (reduction * i)\n\t\t)\n\t}\n}"
+    },
+    {
+      "name": "new_002",
+      "mod": "1777369666673",
+      "type": "sketch",
+      "code": "function setup() {\n\tcreateCanvas(windowWidth, windowHeight)\n\tbackground (0)\n\tframeRate(10)\n\t\n\t//this is ignored\n}\n\nfunction draw() {\n\t//paint program very basic\n\tfill(255,100,100)\n\tstroke(255)\n\tstrokeWeight(3)\n\tsquare(800, 200, 30)\n\tfill (255,3,30)\n\tsquare(600, 200, 30)\n\t\n}\n\n"
+    },
+    {
+      "name": "new_001",
+      "mod": "1777369134277",
+      "type": "sketch",
+      "code": "function setup() {\n\tcreateCanvas(windowWidth, windowHeight)\n\tbackground(0)\n\tasdkjlkasdj\n}\n\nfunction draw() {\n\t\n}"
+    }
+  ],
+  "count": {
+    "sketches": 24,
+    "folders": 0
+  },
+  "settings": {
+    "doctype": "P5L_SETTINGS",
+    "date": "20260522112711",
+    "settings": {
+      "version": "1.8.1",
+      "revision": 61,
+      "welcome": false,
+      "autoCompile": true,
+      "compileTimer": 500,
+      "ecoRender": true,
+      "canvasCursor": true,
+      "console": true,
+      "consoleMode": "auto",
+      "fullscreenMode": false,
+      "fileName": "new_016",
+      "menuMode": true,
+      "menutab": true,
+      "exportCode": true,
+      "notifyToggle": true,
+      "tippyToggle": true,
+      "multitabToggle": true,
+      "timestampToggle": true,
+      "cocodingAutosaveToggle": true,
+      "cocodingFlagsToggle": false,
+      "checkupdates": true,
+      "debugMode": false,
+      "editMode": true,
+      "safeMode": false,
+      "shortcuts": {
+        "softcompile": {
+          "name": "SoftCompile",
+          "key": "ctrl+enter",
+          "callback": "recompileKey()"
+        },
+        "hardcompile": {
+          "name": "HardCompile",
+          "key": "ctrl+shift+enter",
+          "callback": "recompile(true)"
+        },
+        "editor": {
+          "name": "Editor",
+          "key": "ctrl+e",
+          "callback": "editorToggle()"
+        },
+        "menu": {
+          "name": "Menu",
+          "key": "ctrl+m",
+          "callback": "menuToggle()"
+        },
+        "settings": {
+          "name": "Settings",
+          "key": "ctrl+,",
+          "callback": "showSettings(true)"
+        },
+        "snippets": {
+          "name": "Snippets",
+          "key": "ctrl+shift+s",
+          "callback": "snippetsApplyToggle()"
+        },
+        "snippets_edit": {
+          "name": "Snippets Editor",
+          "key": "alt+shift+s",
+          "callback": "snippetsToggle()"
+        },
+        "references": {
+          "name": "References",
+          "key": "ctrl+r",
+          "callback": "toggleRef()"
+        },
+        "chalkboard": {
+          "name": "Chalkboard",
+          "key": "ctrl+b",
+          "callback": "toggleChalkboard()"
+        },
+        "autocompile": {
+          "name": "Live-Coding Toggle",
+          "key": "ctrl+a",
+          "callback": "autoCompileToggle()"
+        },
+        "newsketch": {
+          "name": "New Sketch",
+          "key": "ctrl+n",
+          "callback": "loadDefault()"
+        },
+        "clonesketch": {
+          "name": "Clone Sketch",
+          "key": "ctrl+shift+c",
+          "callback": "cloneSketch()"
+        },
+        "tidy": {
+          "name": "Tidy Code",
+          "key": "ctrl+t",
+          "callback": "tidyCode(editor)"
+        },
+        "codecomment": {
+          "name": "Comment Code",
+          "key": "meta+/",
+          "init": "editor.commands.bindKey(settings.shortcuts[\"codecomment\"].key, \"togglecomment\")"
+        },
+        "fontbigger": {
+          "name": "Increase Fontsize",
+          "key": "ctrl+=",
+          "callback": "fontSizeAdjust(0.25)"
+        },
+        "fontsmaller": {
+          "name": "Decrease Fontsize",
+          "key": "ctrl+-",
+          "callback": "fontSizeAdjust(- 0.25)"
+        },
+        "pause": {
+          "name": "Pause",
+          "key": "ctrl+p",
+          "callback": "pauseSketch()"
+        },
+        "snapshot": {
+          "name": "Export Snapshot",
+          "key": "ctrl+s",
+          "callback": "savePNG()"
+        },
+        "import": {
+          "name": "Import Sketch",
+          "key": "ctrl+o",
+          "callback": "importSketchesDialog()"
+        },
+        "jump": {
+          "name": "Quick Sketch Jump",
+          "key": "ctrl",
+          "init": "setupJumpSketches(settings.shortcuts[\"jump\"].key)",
+          "tippy": "Then combine w/ 1, 2,...0 to jump thru sketches"
+        },
+        "audio": {
+          "name": "Audio Snippet",
+          "key": "ctrl+shift+a",
+          "callback": "snippetsApplySelect('demo-audio');snippetsApply()",
+          "fixed": false
+        },
+        "osc": {
+          "name": "OSC Snippet",
+          "key": "ctrl+shift+o",
+          "callback": "snippetsApplySelect('demo-osc');snippetsApply()",
+          "fixed": false
+        },
+        "filter": {
+          "name": "Filter Sketches",
+          "key": "ctrl+shift+f",
+          "callback": "filterSketchesFocus()"
+        }
+      },
+      "editor": {
+        "fontSize": 14.75,
+        "keybinding": "keybinding",
+        "linenumbers": true,
+        "autocomplete": true,
+        "lockcode": true,
+        "passEditorKeys": false,
+        "recompilepulse": true
+      },
+      "snippets": {
+        "demo": {
+          "new": {
+            "gt": "",
+            "s": "",
+            "dt": "",
+            "db": "",
+            "gb": "",
+            "demo": "true"
+          },
+          "audio": {
+            "gt": "",
+            "s": "setupAudio(true) // global vars\n// a5.ease = .075 // set easing",
+            "dt": "/* audio vars: amp, ampEase, fft, fftEase, waveform, waveformEase */\nupdateAudio()",
+            "db": "",
+            "gb": "",
+            "demo": "true"
+          },
+          "font": {
+            "gt": "let font\n\nfunction preload() {\n\tfont = loadFont(\"includes/demos-data/fonts/RobotoMono-Regular.otf\")\n}",
+            "s": "textFont(font)",
+            "dt": "",
+            "db": "",
+            "gb": "",
+            "demo": "true"
+          },
+          "osc": {
+            "gt": "let libs = [\"includes/js/socket.io.js\"];\nlet socket;",
+            "s": "setupOsc('127.0.0.1', 12000, 12001); // oscHost, oscPortIn, oscPortOut",
+            "dt": "",
+            "db": "",
+            "gb": "\n// OSC LOGIC \nfunction receiveOsc(address, value) {\n\t// print('in: ' + address + ', ' +value)\n}\n\nfunction sendOsc(address, value) {\n\tif(socket != undefined) {\n\t\tsocket.emit('message', [address].concat(value));\n\t}\n}\n\nfunction setupOsc(oscHost, oscPortIn, oscPortOut) {\n\tsocket = io.connect('http://127.0.0.1:8082');\n\tsocket.on('connect', function() {\n\t\tsocket.emit('config', {\n\t\t\tserver: {\n\t\t\t\thost: oscHost,\n\t\t\t\tport: oscPortIn\n\t\t\t},\n\t\t\tclient: {\n\t\t\t\thost: oscHost,\n\t\t\t\tport: oscPortOut\n\t\t\t}\n\t\t});\n\t\tprint('OSC Ready!\\n' + oscHost + ', listen: ' + oscPortIn + ', send: ' + oscPortOut);\n\t});\n\tsocket.on('message', function(msg) {\n\t\treceiveOsc(msg[0], msg.splice(1));\n\t});\n}",
+            "demo": "true"
+          },
+          "midi": {
+            "gt": "",
+            "s": "// setup MIDI in/out by ID # or \"name\" (see console.log)\nsetupMidi(0, 0, true) // in, out, globalvars (if false use: midi5. )\n// midi5.debug = ['note', 'controlchange'] // send to console",
+            "dt": "/* vars: note, cc, notes[], ccs[], channels[], */\nupdateMidi()\n",
+            "db": "",
+            "gb": ""
+          }
+        },
+        "user": {
+          "Strudel": {
+            "gt": "/* \n  audio_strudel_only\n*/\n\n// strudel\n_$: n(\"<0 1 <2 5 ~> 3>*<1 2>\")\n  .scale(\"[c g, c2, e]:minor\")\n  .s(\"<saw square>\")\n  .dec(.2)\n  .room(.3)\n  .seg(4)\n  .velocity(signal(() => p5live.random(.8, 1.5)))\n\n$: s(\"bd(3,8) sd, hh*<4 8 16>\")\n  .dec(.2)\n  .delay(.4)\n\n// hush()\n// strudel",
+            "s": " createCanvas(1, 1)\n\n  // ocultar interfaz strudel\n  strudel.hide(1)",
+            "dt": "",
+            "db": "",
+            "gb": "function mousePressed() {\n  userStartAudio()}\n  "
+          }
+        }
+      },
+      "snippetsghostmode": {
+        "active": false,
+        "delay": 15
+      },
+      "sonicode": {
+        "mode": "sine",
+        "poly": 1,
+        "active": false,
+        "sonicodePoly": 0,
+        "base": 3
+      },
+      "statscount": 0,
+      "syncdata": {
+        "sketches": [],
+        "code": "",
+        "active": false,
+        "libs": [],
+        "cursor": {
+          "row": 0,
+          "column": 0
+        },
+        "console": [],
+        "namespace": "",
+        "cocodeadded": false
+      },
+      "cocoding": {
+        "active": false,
+        "timestamp": null,
+        "nick": "",
+        "namespace": "",
+        "lockdown": false,
+        "level": "",
+        "token": 0,
+        "sync": false,
+        "request": false,
+        "writemode": false,
+        "color": "#00aa00",
+        "cursor": {
+          "row": 0,
+          "column": 0
+        },
+        "msgID": -1,
+        "hasAdmin": false,
+        "error": false,
+        "code": ""
+      },
+      "scripts": [
+        "includes/p5/p5.min.js",
+        "includes/p5/addons/p5.sound.min.js"
+      ],
+      "theme": "ace/theme/terminal",
+      "themeBG": "#00323FE0",
+      "themeBGactive": true,
+      "themeCOLORactive": true,
+      "themeCOLOR": "#B2F7DB",
+      "themeACTIVEactive": true,
+      "themeACTIVE": "#11EED830",
+      "refresh": false,
+      "chalkboard": {
+        "backgroundColor": "#00280A",
+        "backgroundOpacity": 0.75,
+        "strokeColor": "#ffffff",
+        "strokeWeight": 10,
+        "strokeOpacity": 1
+      },
+      "backup": {
+        "frequency": 2,
+        "last": 1779277293556
+      },
+      "indexDB": true,
+      "autocomplete": true,
+      "linenumbers": true,
+      "recompilepulse": true,
+      "lockcode": true,
+      "notifytoggle": true,
+      "tippytoggle": true,
+      "multitabtoggle": true,
+      "timestamptoggle": true,
+      "cocodingautosavetoggle": true,
+      "cocodingflagstoggle": false,
+      "passeditorkeys": false,
+      "snippetsghostmode.active": false,
+      "sonicode.active": false
+    }
+  }
+}

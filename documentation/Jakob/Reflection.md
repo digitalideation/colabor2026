@@ -1,0 +1,12 @@
+# Midterm Reflection
+The first phase of the Colabor Creative Coding module has been an exercise in translating established web development workflows into the fluid, performative environment of live coding. Partnering with Bastian, we quickly aligned on our conceptual priorities: we wanted to lean heavily into visual art, drawing inspiration from the dense, nostalgic ASCII aesthetics. To ensure our visuals remained striking and cohesive, I made a strict stylistic decision early on to eliminate all blue tones, restricting our palette entirely to high-contrast magenta and deep, dark grays.
+
+My primary focus was developing our core visual "subject." Leveraging my background in JavaScript, I prototyped a tool in p5.js that maps the pixel brightness of an image to an ASCII density string. While the static output was interesting, I wanted to introduce an organic sense of motion. I expanded the logic to load an array of images and use linear interpolation to smoothly morph between the pixel data, creating a fluid, animated transition effect.
+
+However, this ambition directly clashed with the course’s constraint of keeping live-coding snippets under 30 lines; my morphing engine was pushing 150. Rather than sacrificing visual complexity, I made the architectural decision to encapsulate the heavy logic into an ES6 Class within a separate library file (`asciiLib.js`). By instantiating this object in our main sketch, I successfully reduced the visible live-code footprint to well under 30 lines while exposing crucial parameters like grid resolution, morph speed, and color hexes for real-time manipulation.
+
+For our third snippet, I wanted to experiment with Hydra, creating a soft, interactive "flashlight" effect linked to the mouse coordinates to dynamically illuminate our dark canvas.
+
+Presenting at the midterm validated our technical foundation but also highlighted areas for refinement. The feedback confirmed that routing the flashlight effect through a p5-to-Hydra bridge is unnecessarily convoluted. Moving toward the final Algorave, my immediate next step is to refactor that tracking effect natively without Hydra. 
+
+At the end I believe, that we have a solid base we can work upon. There is still much to do, but we’re on a good path.
