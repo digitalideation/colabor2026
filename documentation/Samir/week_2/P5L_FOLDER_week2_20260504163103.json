@@ -1,0 +1,48 @@
+{
+  "version": "1.8.1",
+  "revision": 61,
+  "structure": [
+    {
+      "name": "week2",
+      "mod": "1777909321350",
+      "type": "folder",
+      "toggle": "collapse",
+      "contents": [
+        {
+          "name": "frameCount_draw",
+          "mod": "1777909425921",
+          "type": "sketch",
+          "code": "function setup() {\n\tcreateCanvas(windowWidth, windowHeight)\n\n}\n\nfunction draw() {\n\tbackground(0, 15, 255, 15) //r , g, b, a\n\tfill (frameCount % 255)\n\tcircle(mouseX, mouseY, frameCount*5 % 200)\n\t\n\tprint (frameCount % 200)\n}"
+        },
+        {
+          "name": "draw_webcam",
+          "mod": "1777910531551",
+          "type": "sketch",
+          "code": "let capture, scl = 1,\n\trot = 0\n\nfunction setup() {\n\tcreateCanvas(windowWidth, windowHeight)\n\n\tcapture = createCapture(VIDEO)\n\tcapture.size(320, 240)\n\tcapture.hide() // hide raw camera\n\timageMode(CENTER)\n\tsetupAudio(true) // global vars\n\t// a5.ease = .075 // set easing\n}\n\nfunction draw() {\n\t/* audio vars: amp, ampEase, fft, fftEase, waveform, waveformEase */\n\tupdateAudio()\n\timage(capture, frameCount * 10 % width, height / 2, capture.width * ampEase *.05,capture.height * ampEase* .05)\n\n}"
+        },
+        {
+          "name": "colab-circle_001",
+          "mod": "1777906486212",
+          "type": "sketch",
+          "code": "// CTRL + Shift + a for the audio amplifier\n\nfunction setup() {\n\tcreateCanvas(windowWidth, windowHeight)\n\n\tsetupAudio(true) // global vars\n\t// a5.ease = .075 // set easing\n\tsetupAudio(true) // global vars\n\t// a5.ease = .075 // set easing\n}\n\nfunction draw() {\n\t/* audio vars: amp, ampEase, fft, fftEase, waveform, waveformEase */\n\tupdateAudio()\n\tbackground(255, 255, 0, 4)\n\tcircle(frameCount * 10 % width, height / 1.5, ampEase * 10)\n\tfill(255, 0, 0)\n\tnoStroke()\n}"
+        },
+        {
+          "name": "basic_molnar_animation",
+          "mod": "1777462386488",
+          "type": "sketch",
+          "code": "let dimX = 453\nlet dimY = dimX\nlet num = 17\nlet reduction = dimX / num\nlet posX = 0\nlet posY = 0\n\nfunction setup() {\n\tcreateCanvas(windowWidth, windowHeight)\n\tbackground(255, 255, 200)\n\trectMode(CENTER)\n\tangleMode(DEGREES)\n\tposX = width * 0.5\n\tposY = height * 0.5\n\tsetupAudio(true) // global vars\n\t// a5.ease = .075 // set easing\n}\n\nfunction draw() {\n\t/* audio vars: amp, ampEase, fft, fftEase, waveform, waveformEase */\n\tupdateAudio()\n\tbackground(100, 100, 255)\n\tnoFill()\n\tstrokeWeight(2)\n\tstroke(0)\n\tlet count = 20\n\tfor(let i = 0; i < count; i++) {\n\t\tlet dimension = width / count\n\t\tlet posX = dimension / 2 + (i * dimension)\n\t\tfor(let j = 0; j < count; j++) {\n\t\t\tlet posY = dimension / 2 + (j * dimension)\n\t\t\ttmcs(posX, posY, dimension, 10, 400)\n\n\t\t}\n\n\t}\n\n}\n\n\n\n\n// this function draws squares at position\n// posX and posY, and they moce randomly\n// a tiny bit\nfunction tmcs(x, y, dim, num, speed) {\n\n\tlet dimension = dim + sin(frameCount * speed * 10)\n\t//num = 10\n\treduction = dimension / num\n\n\tfor(let i = 0; i < num; i++) {\n\t\tlet offsetX = random(7)\n\t\tlet offsetY = random(7)\n\t\tstroke(255, 0, 255)\n\t\tstrokeWeight(3)\n\t\tsquare(\n\t\t\tx + offsetX,\n\t\t\ty + offsetY,\n\t\t\t(dimension) - (reduction * i)\n\t\t)\n\t}\n}"
+        },
+        {
+          "name": "colab-circle",
+          "mod": "1777904407468",
+          "type": "sketch",
+          "code": "function setup() {\n\tcreateCanvas(windowWidth, windowHeight)\n\n}\n\nfunction draw() {\n\tbackground(0, 30)\n\tcircle(frameCount * 10 % width, height / 2, 250)\n\t\n\ttextSize(100)\n\ttextAlign(CENTER, CENTER)\n\ttext(key, width / 2, height / 2)\n\tfill(255,255,0)\n\tcircle(mouseX, mouseY, 100)\n\t// asdjfhaskldjfasasdfasdf\n}"
+        }
+      ]
+    }
+  ],
+  "count": {
+    "sketches": 5,
+    "folders": 1
+  }
+}

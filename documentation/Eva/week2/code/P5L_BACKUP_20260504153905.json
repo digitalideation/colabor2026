@@ -1,0 +1,332 @@
+{
+  "version": "1.8.1",
+  "revision": 61,
+  "structure": [
+    {
+      "name": "06_ColorSlider",
+      "mod": "1777661202611",
+      "type": "sketch",
+      "code": "var r = 0;\nvar b = 255;\n\nfunction setup() {\n\tcreateCanvas(windowWidth, windowHeight)\n\t\n}\n\nfunction draw() {\n\tr = map(mouseX,0,width,0,255)\n\t\tb = map(mouseX,0,width,255,0)\n\nbackground(r,0,b)\t\nfill(250,118,222)\nellipse(mouseX, 200,64,64)\n}"
+    },
+    {
+      "name": "05_RandomConfettiPattern",
+      "mod": "1777660364309",
+      "type": "sketch",
+      "code": "let x, y,r,g,b;\nfunction setup() {\n\tcreateCanvas(windowWidth, windowHeight)\n\tbackground(0)\n\tframeRate(10)\n}\n\nfunction draw() {\nr= random(255)\ng = random(255)\nb =random(255)\nx=random(width)\ny=random(height)\nnoStroke()\nfill(r,g,b,100)\n// last number meaning transparency out of 255\ncircle(x,y,50)\n// last number meaning size of circle\n}"
+    },
+    {
+      "name": "04_Dvd_Logo",
+      "mod": "1777472911387",
+      "type": "sketch",
+      "code": "let x;\nlet y;\nlet z;\nlet xspeed;\nlet yspeed;\nlet zspeed;\nlet depth = 2000\nlet dvd;\nlet r, g, b;\n\nfunction setup() {\n  createCanvas(windowWidth, windowHeight, WEBGL);\n  x = random(width);\n  y = random(height);\n  z = random(-depth,0);\n  xspeed = 4;\n  yspeed = 4;\n  zspeed = 4;\n  pickcolor();\n}\n\nfunction pickcolor() {\n  r = random(255);\n  g = random(255);\n  b = random(255);\n\n}\n\nfunction draw() {\n\ttranslate(-width/2, -height/2)\n  background(0);\n  noStroke(255);\n  //fill(255);\n  fill(r, g, b);\n  \n  push()\n  translate(x,y,z)\n  box(300)\n  //rect(x, y, 80, 60);\n  //image(dvd, x, y, 80, 60);\npop()\n\n  x = x + xspeed;\n  y = y + yspeed;\n  z = z + zspeed;\n\n  if (z >= 200) {\n    zspeed = -zspeed;\n    z = 200;\n    pickcolor();\n  } else if (z <= -depth) {\n    zspeed = -zspeed;\n    z = -depth;\n    pickcolor();\n  }\n  \n   if (x >= width) {\n    xspeed = -xspeed;\n    x = width;\n    pickcolor();\n  } else if (x <= 0) {\n    xspeed = -xspeed;\n    x = 0;\n    pickcolor();\n  }\n\n  if (y >= height) {\n    yspeed = -yspeed;\n    y = height;\n    pickcolor();\n  } else if (y <= 0) {\n    yspeed = -yspeed;\n    y = 0;\n    pickcolor();\n  }\n}"
+    },
+    {
+      "name": "03_3d",
+      "mod": "1777468383546",
+      "type": "sketch",
+      "code": "let posX = 0 \nlet posY = 0\nlet boxDim = 100\nfunction setup() {\n\tcreateCanvas(windowWidth, windowHeight, WEBGL)\n\t\n}\n\nfunction draw() {\n\tbackground(0)\n\torbitControl()\n\tfill(255)\n\t\n\tposX+= 10\n\tposY= posY -10\n\t\n\tif (posX > (width/2)+(boxDim/2)) {\n\t\tposX = -width/2\n\t}\n\t\n\tif(posY < - (height/2)){\n\t\tposY= 0\n\t}\n\t\n\tpush()\n\ttranslate(posX, posY, 0)\n\tbox(100)\n\tbox (boxDim)\n\tpop()\n\t\n\t\n\tstrokeWeight(3)\n\tpush()\n\tstroke (255,0,0)\n\tline(0,0,0, width,0,0)\n\tstroke (0,255,0)\n\tline(0,0,0, 0,-height,0)\n\tstroke(0,0,255)\n\tline(0,0,0, 0,0,1000)\n\tpop()\n} "
+    },
+    {
+      "name": "02_VeraMolnar",
+      "mod": "1777371824264",
+      "type": "sketch",
+      "code": "let dimX = 453\nlet dimY = dimX\nlet num = 17\nlet reduction = dimX / num\nlet posX = 0\nlet posY = 0\n\nfunction setup() {\n\tcreateCanvas(windowWidth, windowHeight)\n\tbackground(255)\n\trectMode(CENTER)\n\tangleMode(DEGREES)\n\tposX = width / 2\n\tposY = height / 2\n}\n\nfunction draw() {\n\tbackground(255)\n\tnoFill()\n\tstrokeWeight(3)\n\tstroke(0)\n\t\n\tlet numX = 10\n\tfor(let i = 0; i < numX; i++){\n\t\tlet dimension = width / numX \n\t\tlet posX = dimension / 2 + (i * dimension) \n\t\tfor (let j = 0; j <5; j++){\n\t\t\tlet posY = dimension / 2 +  (j * dimension)\n\t\t\ttmcs(posX, posY, 4, dimension, 10)\t\n\t\t}\n\t}\n\t// animation!\n\t// calculate the dimension of the square\n\t// based on a sin function\n\n\t// for \n\n}\n// this function draws squares at position\n// x and y, and they move randomly \n// a tiny bit\nfunction tmcs(x, y, speed, dim, num){\n\t\n\tlet dimension = dim + sin(frameCount * speed) * 10\n\t// num = 10\n\tlet reduction = dimension / num\n\t\n\tfor(let i = 0; i < num; i++) {\n\t\tlet offsetX = random(7)\n\t\tlet offsetY = random(7)\n\t\tstroke(255, 0, 0)\n\t\tstrokeWeight(3)\n\t\tsquare(\n\t\t\tx + offsetX,\n\t\t\ty + offsetY,\n\t\t\t(dimension) - (reduction * i)\n\t\t)\n\t}\n}"
+    },
+    {
+      "name": "01_basic paint",
+      "mod": "1777369140248",
+      "type": "sketch",
+      "code": "let r,g,b;\nfunction setup() {\n\tcreateCanvas(windowWidth, windowHeight)\n\tbackground (255,10,150)\n\tframeRate(100)\n}\n\nfunction draw() {\n// paint programm\n\tr = random(255)\ng = random(255)\nb = random (255)\nstroke(0)\nstrokeWeight(5)\n\nfill(r,g,b,100)\nellipse(mouseX, mouseY,220)\n\t\n}\n\nv"
+    }
+  ],
+  "count": {
+    "sketches": 6,
+    "folders": 0
+  },
+  "settings": {
+    "doctype": "P5L_SETTINGS",
+    "date": "20260504153905",
+    "settings": {
+      "version": "1.8.1",
+      "revision": 61,
+      "welcome": false,
+      "autoCompile": true,
+      "compileTimer": 500,
+      "ecoRender": true,
+      "canvasCursor": true,
+      "console": true,
+      "consoleMode": "auto",
+      "fullscreenMode": false,
+      "fileName": "06_ColorSlider",
+      "menuMode": true,
+      "menutab": true,
+      "exportCode": true,
+      "notifyToggle": true,
+      "tippyToggle": true,
+      "multitabToggle": true,
+      "timestampToggle": true,
+      "cocodingAutosaveToggle": true,
+      "cocodingFlagsToggle": false,
+      "checkupdates": true,
+      "debugMode": false,
+      "editMode": true,
+      "safeMode": false,
+      "shortcuts": {
+        "softcompile": {
+          "name": "SoftCompile",
+          "key": "ctrl+enter",
+          "callback": "recompileKey()"
+        },
+        "hardcompile": {
+          "name": "HardCompile",
+          "key": "ctrl+shift+enter",
+          "callback": "recompile(true)"
+        },
+        "editor": {
+          "name": "Editor",
+          "key": "ctrl+e",
+          "callback": "editorToggle()"
+        },
+        "menu": {
+          "name": "Menu",
+          "key": "ctrl+m",
+          "callback": "menuToggle()"
+        },
+        "settings": {
+          "name": "Settings",
+          "key": "ctrl+,",
+          "callback": "showSettings(true)"
+        },
+        "snippets": {
+          "name": "Snippets",
+          "key": "ctrl+shift+s",
+          "callback": "snippetsApplyToggle()"
+        },
+        "snippets_edit": {
+          "name": "Snippets Editor",
+          "key": "alt+shift+s",
+          "callback": "snippetsToggle()"
+        },
+        "references": {
+          "name": "References",
+          "key": "ctrl+r",
+          "callback": "toggleRef()"
+        },
+        "chalkboard": {
+          "name": "Chalkboard",
+          "key": "ctrl+b",
+          "callback": "toggleChalkboard()"
+        },
+        "autocompile": {
+          "name": "Live-Coding Toggle",
+          "key": "ctrl+a",
+          "callback": "autoCompileToggle()"
+        },
+        "newsketch": {
+          "name": "New Sketch",
+          "key": "ctrl+n",
+          "callback": "loadDefault()"
+        },
+        "clonesketch": {
+          "name": "Clone Sketch",
+          "key": "ctrl+shift+c",
+          "callback": "cloneSketch()"
+        },
+        "tidy": {
+          "name": "Tidy Code",
+          "key": "ctrl+t",
+          "callback": "tidyCode(editor)"
+        },
+        "codecomment": {
+          "name": "Comment Code",
+          "key": "meta+/",
+          "init": "editor.commands.bindKey(settings.shortcuts[\"codecomment\"].key, \"togglecomment\")"
+        },
+        "fontbigger": {
+          "name": "Increase Fontsize",
+          "key": "ctrl+shift+0",
+          "callback": "fontSizeAdjust(0.25)"
+        },
+        "fontsmaller": {
+          "name": "Decrease Fontsize",
+          "key": "ctrl+-",
+          "callback": "fontSizeAdjust(- 0.25)"
+        },
+        "pause": {
+          "name": "Pause",
+          "key": "ctrl+p",
+          "callback": "pauseSketch()"
+        },
+        "snapshot": {
+          "name": "Export Snapshot",
+          "key": "ctrl+s",
+          "callback": "savePNG()"
+        },
+        "import": {
+          "name": "Import Sketch",
+          "key": "ctrl+o",
+          "callback": "importSketchesDialog()"
+        },
+        "jump": {
+          "name": "Quick Sketch Jump",
+          "key": "ctrl",
+          "init": "setupJumpSketches(settings.shortcuts[\"jump\"].key)",
+          "tippy": "Then combine w/ 1, 2,...0 to jump thru sketches"
+        },
+        "audio": {
+          "name": "Audio Snippet",
+          "key": "ctrl+shift+a",
+          "callback": "snippetsApplySelect('demo-audio');snippetsApply()",
+          "fixed": false
+        },
+        "osc": {
+          "name": "OSC Snippet",
+          "key": "ctrl+shift+o",
+          "callback": "snippetsApplySelect('demo-osc');snippetsApply()",
+          "fixed": false
+        },
+        "filter": {
+          "name": "Filter Sketches",
+          "key": "ctrl+shift+f",
+          "callback": "filterSketchesFocus()"
+        }
+      },
+      "editor": {
+        "fontSize": 19,
+        "keybinding": "keybinding",
+        "linenumbers": true,
+        "autocomplete": true,
+        "lockcode": true,
+        "passEditorKeys": false,
+        "recompilepulse": true
+      },
+      "snippets": {
+        "demo": {
+          "new": {
+            "gt": "",
+            "s": "",
+            "dt": "",
+            "db": "",
+            "gb": "",
+            "demo": "true"
+          },
+          "audio": {
+            "gt": "",
+            "s": "setupAudio(true) // global vars\n// a5.ease = .075 // set easing",
+            "dt": "/* audio vars: amp, ampEase, fft, fftEase, waveform, waveformEase */\nupdateAudio()",
+            "db": "",
+            "gb": "",
+            "demo": "true"
+          },
+          "font": {
+            "gt": "let font\n\nfunction preload() {\n\tfont = loadFont(\"includes/demos-data/fonts/RobotoMono-Regular.otf\")\n}",
+            "s": "textFont(font)",
+            "dt": "",
+            "db": "",
+            "gb": "",
+            "demo": "true"
+          },
+          "osc": {
+            "gt": "let libs = [\"includes/js/socket.io.js\"];\nlet socket;",
+            "s": "setupOsc('127.0.0.1', 12000, 12001); // oscHost, oscPortIn, oscPortOut",
+            "dt": "",
+            "db": "",
+            "gb": "\n// OSC LOGIC \nfunction receiveOsc(address, value) {\n\t// print('in: ' + address + ', ' +value)\n}\n\nfunction sendOsc(address, value) {\n\tif(socket != undefined) {\n\t\tsocket.emit('message', [address].concat(value));\n\t}\n}\n\nfunction setupOsc(oscHost, oscPortIn, oscPortOut) {\n\tsocket = io.connect('http://127.0.0.1:8082');\n\tsocket.on('connect', function() {\n\t\tsocket.emit('config', {\n\t\t\tserver: {\n\t\t\t\thost: oscHost,\n\t\t\t\tport: oscPortIn\n\t\t\t},\n\t\t\tclient: {\n\t\t\t\thost: oscHost,\n\t\t\t\tport: oscPortOut\n\t\t\t}\n\t\t});\n\t\tprint('OSC Ready!\\n' + oscHost + ', listen: ' + oscPortIn + ', send: ' + oscPortOut);\n\t});\n\tsocket.on('message', function(msg) {\n\t\treceiveOsc(msg[0], msg.splice(1));\n\t});\n}",
+            "demo": "true"
+          },
+          "midi": {
+            "gt": "",
+            "s": "// setup MIDI in/out by ID # or \"name\" (see console.log)\nsetupMidi(0, 0, true) // in, out, globalvars (if false use: midi5. )\n// midi5.debug = ['note', 'controlchange'] // send to console",
+            "dt": "/* vars: note, cc, notes[], ccs[], channels[], */\nupdateMidi()\n",
+            "db": "",
+            "gb": ""
+          }
+        },
+        "user": {}
+      },
+      "snippetsghostmode": {
+        "active": false,
+        "delay": 15
+      },
+      "sonicode": {
+        "mode": "sine",
+        "poly": 1,
+        "active": false,
+        "sonicodePoly": 0,
+        "base": 3
+      },
+      "statscount": 0,
+      "syncdata": {
+        "sketches": [],
+        "code": "",
+        "active": false,
+        "libs": [],
+        "cursor": {
+          "row": 0,
+          "column": 0
+        },
+        "console": [],
+        "namespace": "",
+        "cocodeadded": false
+      },
+      "cocoding": {
+        "active": false,
+        "timestamp": null,
+        "nick": "",
+        "namespace": "",
+        "lockdown": false,
+        "level": "",
+        "token": 0,
+        "sync": false,
+        "request": false,
+        "writemode": false,
+        "color": "#00aa00",
+        "cursor": {
+          "row": 0,
+          "column": 0
+        },
+        "msgID": -1,
+        "hasAdmin": false,
+        "error": false,
+        "code": ""
+      },
+      "scripts": [
+        "includes/p5/p5.min.js",
+        "includes/p5/addons/p5.sound.min.js"
+      ],
+      "theme": "ace/theme/gob",
+      "themeBG": "#00323FE0",
+      "themeBGactive": true,
+      "themeCOLORactive": false,
+      "themeCOLOR": "#B2F7DB",
+      "themeACTIVEactive": false,
+      "themeACTIVE": "#11EED830",
+      "refresh": false,
+      "chalkboard": {
+        "backgroundColor": "#00280A",
+        "backgroundOpacity": 0.75,
+        "strokeColor": "#ffffff",
+        "strokeWeight": 10,
+        "strokeOpacity": 1
+      },
+      "backup": {
+        "frequency": 2,
+        "last": 1777901940355
+      },
+      "indexDB": true,
+      "autocomplete": true,
+      "linenumbers": true,
+      "recompilepulse": true,
+      "lockcode": true,
+      "notifytoggle": true,
+      "tippytoggle": true,
+      "multitabtoggle": true,
+      "timestamptoggle": true,
+      "cocodingautosavetoggle": true,
+      "cocodingflagstoggle": false,
+      "passeditorkeys": false,
+      "snippetsghostmode.active": false,
+      "sonicode.active": false
+    }
+  }
+}
