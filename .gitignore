@@ -41,3 +41,7 @@ Temporary Items
 *.png
 *.jpeg
 *.jpg
+
+!documentation/Alina/attachment/*.png
+!documentation/Alina/attachment/*.jpeg
+!documentation/Alina/attachment/*.jpg
