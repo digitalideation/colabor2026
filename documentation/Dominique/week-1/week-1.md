@@ -63,7 +63,7 @@ function draw() {
 ```
 
 ![](/Users/dominiqueclaire/Documents/01_graphic_design/00_+Colabor/00_dokumentation/week-1/images/P5L_basic_paint_20260430101630.png)
-
+![[P5L_basic_paint_20260430101630.png]]
 
 
 ☆ BASIC SQUARE
@@ -89,7 +89,7 @@ function draw() {
 ```
 
 ![](/Users/dominiqueclaire/Documents/01_graphic_design/00_+Colabor/00_dokumentation/week-1/images/P5L_basic_square_20260430103631.png)
-
+![[P5L_basic_square_20260430103631.png]]
 
 
 ☆ VERSUCHE NACHBILDUNG VON VERA MOLNARS 
@@ -132,7 +132,7 @@ function draw() {
 ```
 
 ![](/Users/dominiqueclaire/Documents/01_graphic_design/00_+Colabor/00_dokumentation/week-1/images/P5L_image_square_20260430105028.png)
-
+![[P5L_image_square_20260430105028.png]]
 
 
 ☆ TEST ANIMATION
@@ -182,7 +182,7 @@ function draw() {
 ```
 
 ![](/Users/dominiqueclaire/Documents/01_graphic_design/00_+Colabor/00_dokumentation/week-1/images/P5L_test-animation_20260430111842.png)
-
+![[P5L_test-animation_20260430111842.png]]
 
 
 ☆ VERSUCHE NACHBILDUNG VON VERA MOLNARS  (for-Loops)
@@ -240,7 +240,7 @@ function draw() {
 ```
 
 ![](/Users/dominiqueclaire/Documents/01_graphic_design/00_+Colabor/00_dokumentation/week-1/images/P5L_animation-for_20260501105340.png)
-
+![[P5L_animation-for_20260501105340.png]]
 
 
 -----------
@@ -336,7 +336,7 @@ function tmcs(x, y, dim, speed, num){
 
 ![](/Users/dominiqueclaire/Documents/01_graphic_design/00_+Colabor/00_dokumentation/week-1/images/P5L_for-loop-gemaelde_20260501115108.png)
 
-
+![[P5L_for-loop-gemaelde_20260501115108.png]]
 
 ★ 3D WÜRFEL AUF ACHSE
 
@@ -401,7 +401,7 @@ function draw() {
 ```
 
 ![](/Users/dominiqueclaire/Documents/01_graphic_design/00_+Colabor/00_dokumentation/week-1/images/P5L_3d-box-yann_20260501120723.png)
-
+![[P5L_3d-box-yann_20260501120723.png]]
 
 
 ★ 2D ANIMATION INSPIRED BY DVD-SCREENSAVER
@@ -480,7 +480,7 @@ function draw() {
 ```
 
 ![](/Users/dominiqueclaire/Documents/01_graphic_design/00_+Colabor/00_dokumentation/week-1/images/P5L_2d-box-bewegung-farbe_20260501122531.png)
-
+![[P5L_2d-box-bewegung-farbe_20260501122531.png]]
 
 
 ★ 3D ANIMATION INSPIRED BY DVD-SCREENSAVER
@@ -584,7 +584,7 @@ function draw() {
 ```
 
 ![](/Users/dominiqueclaire/Documents/01_graphic_design/00_+Colabor/00_dokumentation/week-1/images/P5L_3d-box-bewegung_20260501124556.png)
-
+![[P5L_3d-box-bewegung_20260501124556.png]]
 
 
 ★ 3D ANIMATION INSPIRED BY DVD-SCREENSAVER MIT SICHTBAREM RAUM
@@ -698,7 +698,7 @@ function draw() {
 ```
 
 ![](/Users/dominiqueclaire/Documents/01_graphic_design/00_+Colabor/00_dokumentation/week-1/images/P5L_3d-box-bewegung-raum_20260501125353.png)
-
+![[P5L_3d-box-bewegung-raum_20260501125353.png]]
 
 
 
@@ -726,13 +726,13 @@ function draw() {
 
 ![](/Users/dominiqueclaire/Documents/01_graphic_design/00_+Colabor/00_dokumentation/week-1/images/sound_1.png)
 
-
+![[sound_1.png]]
 
 ☆ KEYBOARD SOUND SYNTHESIZER
 
 ![](/Users/dominiqueclaire/Documents/01_graphic_design/00_+Colabor/00_dokumentation/week-1/images/sound_2.png)
 
-
+![[sound_2.png]]
 
 -----------
 
@@ -753,17 +753,17 @@ function draw() {
 ★ Experiment 3
 
 ![](/Users/dominiqueclaire/Documents/01_graphic_design/00_+Colabor/00_dokumentation/week-1/images/sound_3.png)
-
+![[sound_3.png]]
 ★ Experiment 4
 
 ![](/Users/dominiqueclaire/Documents/01_graphic_design/00_+Colabor/00_dokumentation/week-1/images/sound_4.png)
 
-
+![[sound_4.png]]
 
 ★ Experiment 5
 
 ![](/Users/dominiqueclaire/Documents/01_graphic_design/00_+Colabor/00_dokumentation/week-1/images/sound_5.png)
-
+![[sound_5.png]]
 
 
 ★ P5.LIVE – Experiment 1
@@ -795,7 +795,7 @@ function draw() {
 ```
 
 ![](/Users/dominiqueclaire/Documents/01_graphic_design/00_+Colabor/00_dokumentation/week-1/images/P5L_experiment-1_20260504120659.png)
-
+![[P5L_experiment-1_20260504120659.png]]
 
 
 ★ P5.LIVE – Experiment 2
@@ -831,7 +831,7 @@ function draw() {
 
 ![](/Users/dominiqueclaire/Documents/01_graphic_design/00_+Colabor/00_dokumentation/week-1/images/P5L_experiment-2_20260504121357.png)
 
-
+![[P5L_experiment-2_20260504121357.png]]
 
 ★ P5.LIVE – Experiment 3
 
@@ -865,7 +865,7 @@ function draw() {
 ```
 
 ![](/Users/dominiqueclaire/Documents/01_graphic_design/00_+Colabor/00_dokumentation/week-1/images/P5L_experiment-4_20260504122211.png)
-
+![[P5L_experiment-4_20260504122211.png]]
 
 
 ★ P5.LIVE – Experiment 4
@@ -907,4 +907,4 @@ function draw() {
 }
 ```
 
-![](/Users/dominiqueclaire/Documents/01_graphic_design/00_+Colabor/00_dokumentation/week-1/images/P5L_experiment-5_20260504124241.png)
+![](/Users/dominiqueclaire/Documents/01_graphic_design/00_+Colabor/00_dokumentation/week-1/images/P5L_experiment-5_20260504124241.png)![[P5L_experiment-5_20260504124241.png]]

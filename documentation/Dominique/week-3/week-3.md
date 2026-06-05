@@ -392,7 +392,7 @@ function windowResized() {
 ```
 
 <video src="/Users/dominiqueclaire/Documents/01_graphic_design/00_+Colabor/00_dokumentation/week-3/img/text_beeinflussen_musik.mov" controls=""></video>
-
+![[Dominique/week-3/img/text_beeinflussen_musik.mov]]
 
 
 ☆ BEWEGENDE DREIECKE, GRUPPIEREN UND FOLGEN SICH
@@ -500,3 +500,4 @@ class Boid {
 ```
 
 <video src="./img/dreiecke-folgen.mov" controls=""></video>
+![[Dominique/week-3/img/dreiecke-folgen.mov]]

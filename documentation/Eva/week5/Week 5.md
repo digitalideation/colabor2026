@@ -1,4 +1,4 @@
-### Process towards final set 
+x### Process towards final set 
 
 Research: P5 Puppet
  ![[Henry The Handopus — Michael Rexroad Design.webloc]]![[p5.js Web Editor p5 Puppet Runthrough copy.webloc]]

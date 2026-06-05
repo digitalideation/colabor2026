@@ -38,8 +38,8 @@ square(posX+300, posY, dim - (reduction * i))
 }
 ```
 
-![P5L_First day_20260430102404](C:\Users\basti\OneDrive\Desktop\colabor\week-1\images\P5L_First day_20260430102404.png)
 
+![[P5L_First day_20260430102404.png]]
 
 
 # Day 2
@@ -103,9 +103,8 @@ square(posX + offsetX, posY + offsetY,(dimension) - (reduction * i))
 }
 ```
 
-![P5L_bouncing sqaures_20260430102417](C:\Users\basti\OneDrive\Desktop\colabor\week-1\images\P5L_bouncing sqaures_20260430102417.png)
 
-
+![[P5L_bouncing sqaures_20260430102417.png]]
 
 # Day 3
 
@@ -157,8 +156,7 @@ function draw() {
 }
 ```
 
-![Screenshot 2026-05-21 135655](C:\Users\basti\OneDrive\Desktop\colabor\week-1\images\Screenshot 2026-05-21 135655.png)
-
+![[Screenshot 2026-05-21 135655.png]]
 # Day 4 
 
 ## 30.04.2026
@@ -179,8 +177,8 @@ function setup() {
 }
 ```
 
-![Screenshot 2026-05-21 140235](C:\Users\basti\OneDrive\Desktop\Invers\Scans\Bilder\Screenshots 1\Screenshot 2026-05-21 140235.png)
 
+![[Screenshot 2026-05-21 140235.png]]
 # Day 5 
 
 ## 31.04.2026

@@ -40,8 +40,8 @@ function draw() {
 }
 ```
 
-![](C:\Users\basti\OneDrive\Desktop\Invers\Scans\Bilder\Screenshots 1\Screenshot 2026-05-21 141402.png)
 
+![[Screenshot 2026-05-21 142204.png]]
 # Day 4
 
 ## 07.05.2026

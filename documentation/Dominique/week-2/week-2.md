@@ -50,7 +50,7 @@ function draw() {
 ```
 
 ![](/Users/dominiqueclaire/Documents/01_graphic_design/00_+Colabor/00_dokumentation/week-2/img/P5L_Basic-1-Framecount_20260505113853.png)
-
+![[P5L_Basic-1-Framecount_20260505113853.png]]
 
 
 ☆ BASIC EXPERIMENTE P5LIVE 2
@@ -76,7 +76,7 @@ function draw() {
 ```
 
 ![](/Users/dominiqueclaire/Documents/01_graphic_design/00_+Colabor/00_dokumentation/week-2/img/P5L_Basic_2_framecount_20260505114510.png)
-
+![[P5L_Basic_2_framecount_20260505114510.png]]
 
 
 ☆ AUDIOREACTIVE
@@ -116,7 +116,7 @@ function draw() {
 ```
 
 ![](/Users/dominiqueclaire/Documents/01_graphic_design/00_+Colabor/00_dokumentation/week-2/img/drawing (6).png)
-
+![[drawing (6).png]]
 
 
 ☆ CAMERA SNIPPET
@@ -145,7 +145,7 @@ function draw() {
 ```
 
 ![](/Users/dominiqueclaire/Documents/01_graphic_design/00_+Colabor/00_dokumentation/week-2/img/P5L_camera-snippet_20260505131250.png)
-
+![[P5L_camera-snippet_20260505131250.png]]
 
 
 ☆ P5LIVE LIBRARY MBWalker
@@ -181,7 +181,7 @@ function draw() {
 ```
 
 ![](/Users/dominiqueclaire/Documents/01_graphic_design/00_+Colabor/00_dokumentation/week-2/img/P5L_library-walker_20260505115402.png)
-
+![[P5L_library-walker_20260505115402.png]]
 
 
 ---------------
@@ -343,9 +343,9 @@ function draw() {
 ```
 
 ![](/Users/dominiqueclaire/Documents/01_graphic_design/00_+Colabor/00_dokumentation/week-2/img/P5L_Machine-experiment_20260505160844.png)
-
+![[P5L_Machine-experiment_20260505160844.png]]
 ![](/Users/dominiqueclaire/Documents/01_graphic_design/00_+Colabor/00_dokumentation/week-2/img/P5L_Machine-experiment_20260505161209.png)
-
+![[P5L_Machine-experiment_20260505161209.png]]
 
 
 ★ KREIS MIT DYNAMISCHER PINSELSPITZE
@@ -389,7 +389,7 @@ function keyPressed(){
 ```
 
 ![](/Users/dominiqueclaire/Documents/01_graphic_design/00_+Colabor/00_dokumentation/week-2/img/P5L_kreis rotieren_20260505161306.png)
-
+![[P5L_kreis rotieren_20260505161306.png]]
 
 
 ★ STIFT MIT DYNAMISCHER PINSELSPITZE
@@ -428,7 +428,7 @@ function keyPressed(){
 ```
 
 ![](/Users/dominiqueclaire/Documents/01_graphic_design/00_+Colabor/00_dokumentation/week-2/img/P5L_drawing_20260505162206.png)
-
+![[P5L_drawing_20260505162206.png]]
 
 
 ★ PINSEL ALS SMILEY
@@ -467,7 +467,7 @@ function keyPressed(){
 ```
 
 ![](/Users/dominiqueclaire/Documents/01_graphic_design/00_+Colabor/00_dokumentation/week-2/img/P5L_drawing_smiley_20260505163122.png)
-
+![[P5L_drawing_smiley_20260505163122.png]]
 
 
 ★ DYNAMISCHE PINSELGRÖSSE
@@ -506,7 +506,7 @@ function keyPressed(){
 ```
 
 ![](/Users/dominiqueclaire/Documents/01_graphic_design/00_+Colabor/00_dokumentation/week-2/img/P5L_weight-changing-brush_20260505163730.png)
-
+![[P5L_weight-changing-brush_20260505163730.png]]
 
 
 ★ BEISPIEL VERHALTEN SINUS & COSINUS
@@ -535,7 +535,7 @@ function draw() {
 ```
 
 ![](/Users/dominiqueclaire/Documents/01_graphic_design/00_+Colabor/00_dokumentation/week-2/img/P5L_sinus-cosinus_20260505164414.png)
-
+![[P5L_sinus-cosinus_20260505164414.png]]
 
 
 ★ NOISE
@@ -563,7 +563,7 @@ function draw() {
 ```
 
 ![](/Users/dominiqueclaire/Documents/01_graphic_design/00_+Colabor/00_dokumentation/week-2/img/P5L_sinus-cosinus-random_20260505164727.png)
-
+![[P5L_sinus-cosinus-random_20260505164727.png]]
 
 
 ★ DYNAMISCHE FÜLLFARBE
@@ -586,7 +586,7 @@ function draw() {
 
 ![](/Users/dominiqueclaire/Documents/01_graphic_design/00_+Colabor/00_dokumentation/week-2/img/P5L_color-donut_20260505165200.png)
 
-
+![[P5L_color-donut_20260505165200.png]]
 
 
 
@@ -648,7 +648,7 @@ function setup() {
 ```
 
 ![](/Users/dominiqueclaire/Documents/01_graphic_design/00_+Colabor/00_dokumentation/week-2/img/hydra_audioreactive.png)
-
+![[hydra_audioreactive.png]]
 
 
 ☆ EXPERIMENT 1 HYDRA
@@ -692,7 +692,7 @@ function keyPressed(){
 ```
 
 ![](/Users/dominiqueclaire/Documents/01_graphic_design/00_+Colabor/00_dokumentation/week-2/img/hydra_audioreactive_2.png)
-
+![[hydra_audioreactive_2.png]]
 
 
 ☆ EXPERIMENT 2 HYDRA
@@ -980,7 +980,7 @@ function draw() {
 ```
 
 <video src="/Users/dominiqueclaire/Documents/01_graphic_design/00_+Colabor/00_dokumentation/week-2/img/text_ersetzen.mov" controls=""></video>
-
+![[text_ersetzen.mov]]
 
 
  ★ EXPERIMENT
@@ -1018,7 +1018,7 @@ function draw() {
 ```
 
 <video src="/Users/dominiqueclaire/Documents/01_graphic_design/00_+Colabor/00_dokumentation/week-2/img/experiment-ersetzen-2.mov" controls=""></video>
-
+![[experiment-ersetzen-2.mov]]
 
 
  ★ for-loop
@@ -1052,7 +1052,7 @@ function draw() {
 ```
 
 <video src="/Users/dominiqueclaire/Documents/01_graphic_design/00_+Colabor/00_dokumentation/week-2/img/for-loop-ersetzen.mov" controls=""></video>
-
+![[for-loop-ersetzen.mov]]
 
 
 -------
@@ -1076,7 +1076,7 @@ function draw() {
 ☆ TECHABLE MACHINE
 
 ![](/Users/dominiqueclaire/Documents/01_graphic_design/00_+Colabor/00_dokumentation/week-2/img/techeable_machine.png)
-
+![[techeable_machine.png]]
 
 
 ☆ TECHABLE MACHINE IN P5LIVE
@@ -1356,3 +1356,4 @@ function gotHands(results) {
 ```
 
 <video src="/Users/dominiqueclaire/Documents/01_graphic_design/00_+Colabor/00_dokumentation/week-2/img/hand-pose-zeichnen.mov" controls=""></video>
+![[hand-pose-zeichnen.mov]]

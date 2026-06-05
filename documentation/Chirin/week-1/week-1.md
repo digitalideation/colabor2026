@@ -19,7 +19,7 @@ function draw() {
 ```
 
 ![P5L_basic_paint_20260429090502](/Users/chirin/Documents/DDA25/26FS/04_Colabor/documentation/week-1/images/P5L_basic_paint_20260429090502.png)
-
+![[P5L_basic_paint_20260429090502.png]]
 #### Day 2
 
 ```javascript
@@ -70,7 +70,7 @@ function draw() {
 ```
 
 ![P5L_basic_molnar_01_20260429090435](/Users/chirin/Documents/DDA25/26FS/04_Colabor/documentation/week-1/images/P5L_basic_molnar_01_20260429090435.png)
-
+![[P5L_basic_molnar_01_20260429090435.png]]
 ```javascript
 let dimX = 400
 let dimY = dimX
@@ -109,11 +109,11 @@ function draw() {
 ```
 
 ![P5L_basic_molnar_animation_20260429090302](/Users/chirin/Documents/DDA25/26FS/04_Colabor/documentation/week-1/images/P5L_basic_molnar_animation_20260429090302.png)
-
+![[P5L_basic_molnar_animation_20260429090302.png]]
 Inspiration Vera Molnár
 
 ![Vera_Molnar_Inspiration](/Users/chirin/Documents/DDA25/26FS/04_Colabor/documentation/week-1/images/Vera_Molnar_Inspiration.png)
-
+![[Vera_Molnar_Inspiration.png]]
 #### Day 3
 
 ```javascript
@@ -173,13 +173,13 @@ function tmcs(x, y, speed, dim, num){
 ```
 
 ![P5L_basic_molnar_03_20260429113301](/Users/chirin/Documents/DDA25/26FS/04_Colabor/documentation/week-1/images/P5L_basic_molnar_03_20260429113301.png)
-
+![[P5L_basic_molnar_03_20260429113301.png]]
 ![P5L_basic_molnar_03_20260429113313](/Users/chirin/Documents/DDA25/26FS/04_Colabor/documentation/week-1/images/P5L_basic_molnar_03_20260429113313.png)
-
+![[P5L_basic_molnar_03_20260429113313.png]]
 ![P5L_basic_molnar_03_20260429130758](/Users/chirin/Documents/DDA25/26FS/04_Colabor/documentation/week-1/images/P5L_basic_molnar_03_20260429130758.png)
-
+![[P5L_basic_molnar_03_20260429130758.png]]
 ![P5L_basic_molnar_03_20260429113906](/Users/chirin/Documents/DDA25/26FS/04_Colabor/documentation/week-1/images/P5L_basic_molnar_03_20260429113906.png)
-
+![[P5L_basic_molnar_03_20260429113906.png]]
 ```javascript
 let posX = 0 
 let posY = 0 
@@ -223,7 +223,7 @@ function draw() {
 ```
 
 ![P5L_bouncing_cube_01_20260429145825](/Users/chirin/Documents/DDA25/26FS/04_Colabor/documentation/week-1/images/P5L_bouncing_cube_01_20260429145825.png)
-
+![[P5L_bouncing_cube_01_20260429145825.png]]
 ```javascript
 let x;
 let y;
@@ -308,11 +308,11 @@ function draw() {
 ```
 
 ![P5L_bouncing_cube_02_20260429145856](/Users/chirin/Documents/DDA25/26FS/04_Colabor/documentation/week-1/images/P5L_bouncing_cube_02_20260429145856.png)
-
+![[P5L_bouncing_cube_02_20260429145856.png]]
 ![Bildschirmfoto 2026-04-29 um 13.24.38](/Users/chirin/Documents/DDA25/26FS/04_Colabor/documentation/week-1/images/Bildschirmfoto 2026-04-29 um 13.24.38.png)
-
+![[Bildschirmfoto 2026-04-29 um 13.24.38.png]]
 ![Bildschirmfoto 2026-04-29 um 13.21.38](/Users/chirin/Documents/DDA25/26FS/04_Colabor/documentation/week-1/images/Bildschirmfoto 2026-04-29 um 13.21.38.png)
-
+![[Bildschirmfoto 2026-04-29 um 13.21.38.png]]
 #### Day 4
 
 Today we worked with VCV Rack 2
@@ -320,10 +320,10 @@ Today we worked with VCV Rack 2
 CHAOS !!! 🤖⚡️
 
 ![Bildschirmfoto 2026-04-30 um 11.26.44](/Users/chirin/Documents/DDA25/26FS/04_Colabor/documentation/week-1/images/Bildschirmfoto 2026-04-30 um 11.26.44.png)
-
+![[Bildschirmfoto 2026-04-30 um 11.26.44.png]]
 ![Bildschirmfoto 2026-04-30 um 14.28.55](/Users/chirin/Documents/DDA25/26FS/04_Colabor/documentation/week-1/images/Bildschirmfoto 2026-04-30 um 14.28.55.png)
-
+![[Bildschirmfoto 2026-04-30 um 14.28.55.png]]
 ![Bildschirmfoto 2026-04-30 um 13.53.40](/Users/chirin/Documents/DDA25/26FS/04_Colabor/documentation/week-1/images/Bildschirmfoto 2026-04-30 um 13.53.40.png)
-
+![[Bildschirmfoto 2026-04-30 um 13.53.40.png]]
 
 

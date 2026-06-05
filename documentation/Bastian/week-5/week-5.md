@@ -65,13 +65,13 @@ function windowResized() {
 ```
 
 ![](C:\Users\basti\OneDrive\Desktop\Invers\Scans\Bilder\Screenshots 1\Screenshot 2026-06-01 205521.png)
-
+![[Screenshot 2026-06-01 205521.png]]
 ![Screenshot 2026-06-01 205506](C:\Users\basti\OneDrive\Desktop\Invers\Scans\Bilder\Screenshots 1\Screenshot 2026-06-01 205506.png)
-
+![[Screenshot 2026-06-01 205506.png]]
 ![Screenshot 2026-06-01 205455](C:\Users\basti\OneDrive\Desktop\Invers\Scans\Bilder\Screenshots 1\Screenshot 2026-06-01 205455.png)
-
+![[Screenshot 2026-06-01 205455.png]]
 ![Screenshot 2026-06-01 205302](C:\Users\basti\OneDrive\Desktop\Invers\Scans\Bilder\Screenshots 1\Screenshot 2026-06-01 205302.png)
-
+![[Screenshot 2026-06-01 205302.png]]
 With the help of Jakob and some help online I managed to create an Interactive Background which changes color and text and size with a mouseclick.
 
 # Day 3
