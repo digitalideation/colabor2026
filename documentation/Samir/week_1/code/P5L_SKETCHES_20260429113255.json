@@ -1,0 +1,67 @@
+{
+  "version": "1.8.0",
+  "revision": 60,
+  "structure": [
+    {
+      "name": "new_001",
+      "mod": "1777454495275",
+      "type": "sketch",
+      "code": "\nfunction setup() {\n\tcreateCanvas(windowWidth, windowHeight)\n\t\n}\n\nfunction draw() {\n\tbackground (mouseX, mouseY, 255)\n}"
+    },
+    {
+      "name": "Week1",
+      "mod": "1777376259582",
+      "type": "folder",
+      "toggle": "expand",
+      "contents": [
+        {
+          "name": "basic_molnar_animation",
+          "mod": "1777385073734",
+          "type": "sketch",
+          "code": "let dimX = 453\nlet dimY = dimX\nlet num = 17\nlet reduction = dimX / num\nlet posX = 0\nlet posY = 0\n\nfunction setup() {\n\tcreateCanvas(windowWidth, windowHeight)\n\tbackground(255, 255, 200)\n\trectMode(CENTER)\n\tangleMode(DEGREES)\n\tposX = width * 0.5\n\tposY = height * 0.5\n}\n\nfunction draw() {\n\tbackground (100,100,255)\n\tnoFill()\n\tstrokeWeight (2)\n\tstroke(0)\n\tlet count = 20\n\tfor (let i = 0; i < count; i++){\n\t\tlet dimension = width /count\n\t\tlet posX = dimension / 2 + (i * dimension)\n\t\tfor (let j = 0; j < count; j++){\n\t\t\tlet posY = dimension / 2 + (j * dimension)\n\t\t\ttmcs (posX, posY, dimension, 10, 400)\n\t\t\t\n\t\t}\n\t\t\n\t}\n}\n\n\n\n\n// this function draws squares at position\n// posX and posY, and they moce randomly\n// a tiny bit\nfunction tmcs (x, y, dim, num, speed) {\n\t\n\tlet dimension = dim + sin(frameCount * speed * 10)\n\t//num = 10\n\treduction = dimension / num\n\t\n\tfor(let i = 0; i < num; i++){\n\t\tlet offsetX = random (7)\n\t\tlet offsetY = random (7)\n\t\tstroke (255, 0, 255)\n\t\tstrokeWeight (3)\n\t\tsquare(\n\t\t\tx + offsetX, \n\t\t\ty + offsetY, \n\t\t\t(dimension) - (reduction * i)\n\t\t)\n\t}\n}"
+        },
+        {
+          "name": "basic_molnar",
+          "mod": "1777376014051",
+          "type": "sketch",
+          "code": "let dimX = 453\nlet dimY = dimX\nlet num = 17\nlet reduction = dimX / num\nlet posX = 0\nlet posY = 0\n\nfunction setup() {\n\tcreateCanvas(windowWidth, windowHeight)\n\tbackground(255, 255, 200)\n\trectMode(CENTER)\n\tangleMode(DEGREES)\n\tposX = width * 0.5\n\tposY = height * 0.5\n}\n\nfunction draw() {\n\tbackground (255)\n\tnoFill()\n\tstrokeWeight(1)\n\tstroke(0)\n\t// animation\n\t// calculate the dimension of the square\n\t// based in a sin function\n\tdimX = 300\n\tnum = 20\n\treduction = dimX / num\n\t//for loop\n\tfor(let i = 0; i < num; i++){\n\t\trect(posX, posY, \n\t\t(dimX) - (reduction * i))\n\t}\n\ttext (frameCount, 400, 400)\n}"
+        },
+        {
+          "name": "Tutorial",
+          "mod": "1777285585874",
+          "type": "sketch",
+          "code": "function setup() {\n\tcreateCanvas(windowWidth, windowHeight)\n\tbackground(102,0,255)\n\t\n}\n\nfunction draw() {\n\tbackground (0,0, 255, 30)\n\tnoFill()\n\tstroke(255)\n\t\n\tcircle (mouseX, mouseY, 50)\n\t\n}"
+        },
+        {
+          "name": "basic_paint",
+          "mod": "1777369151338",
+          "type": "sketch",
+          "code": "function setup() {\n\tcreateCanvas(windowWidth, windowHeight)\n\tbackground(102, 0, 204)\n\t\n}\n\nfunction draw() {\n\t// paint program very basic\n\tellipse(mouseX, mouseY, 20)\n}"
+        },
+        {
+          "name": "basic_squares",
+          "mod": "1777371893173",
+          "type": "sketch",
+          "code": "function setup() {\n\tcreateCanvas(windowWidth, windowHeight)\n\tbackground(0)\n}\n\nfunction draw() {\n\tfill(255,255,0)\n\tstroke(255,100,255)\n\tstrokeWeight(10)\n\tsquare(300,200,100,5)\n\t//square 1\n\tfill(0,0,255)\n\tstroke(255,0,0)\n\tsquare(400,300,100, 5)\n\t//square 2\n\t\n}"
+        },
+        {
+          "name": "basic_molnar_tunnel",
+          "mod": "1777384968901",
+          "type": "sketch",
+          "parent": "Week1",
+          "code": "let dimX = 453\nlet dimY = dimX\nlet num = 17\nlet reduction = dimX / num\nlet posX = 0\nlet posY = 0\n\nfunction setup() {\n\tcreateCanvas(windowWidth, windowHeight)\n\tbackground(255, 255, 200)\n\trectMode(CENTER)\n\tangleMode(DEGREES)\n\tposX = width * 0.5\n\tposY = height * 0.5\n}\n\nfunction draw() {\n\tbackground (255, 25)\n\tnoFill()\n\tstrokeWeight(1)\n\tstroke(0)\n\tdimX = 300 + (tan(frameCount * 3) * 600)*(sin(frameCount * 2))\n\tnum = 20\n\treduction = dimX / num\n\t//for loop\n\tfor(let i = 0; i < num; i++){\n\t\trect(posX, posY, \n\t\t(dimX) - (reduction * i))\n\t}\n\ttext (frameCount, 400, 400)\n}"
+        },
+        {
+          "name": "basic_molnar_X",
+          "mod": "1777372730772",
+          "type": "sketch",
+          "code": "function setup() {\n\tcreateCanvas(windowWidth, windowHeight)\n\tbackground(255, 255, 200)\n\trectMode(CENTER)\n}\n\nlet dim = 200\nlet reduction = 10\nlet posX = 500\nlet posY = 300\n\n\nfunction draw() {\n\tnoFill()\n\tstrokeWeight(1)\n\tstroke(0)\n\tsquare(posX, posY, dim)\n\tsquare(posX, posY, dim - (reduction * 1))\n\tsquare(posX, posY, dim - (reduction * 2))\n\tsquare(posX, posY, dim - (reduction * 3))\n\tsquare(posX, posY, dim - (reduction * 4))\n\tsquare(posX, posY, dim - (reduction * 5))\n\tsquare(posX, posY, dim - (reduction * 6))\n\t\n\tfor(let i = 0; i < 20; i++){\n\t\tsquare(posX, posY, dim - (reduction * i))\n\t\tsquare(posX+250, posY, dim - (reduction * i))\n\t\tsquare(posX+500, posY, dim - (reduction * i))\n\t\tsquare(posX+750, posY, dim - (reduction * i))\n\t\t//up\n\t\tsquare(posX, posY+50, dim - (reduction * i))\n\t\tsquare(posX+250, posY+50, dim - (reduction * i))\n\t\tsquare(posX+500, posY+50, dim - (reduction * i))\n\t\tsquare(posX+750, posY+50, dim - (reduction * i))\n\t\t//down\n\t}\n}"
+        }
+      ]
+    }
+  ],
+  "count": {
+    "sketches": 8,
+    "folders": 1
+  }
+}

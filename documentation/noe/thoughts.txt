@@ -1,0 +1,6 @@
+I've really enjoyed playing around in p5live and its versatile use within with e.g. 
+strudel and hydra or the html export feature. This is surely something I will keep on playing and experimenting with. I decided to focus more on working with sound, I enjoy strudel but find it less accessible than vcv rack and enjoy playing more on it too, because in strudel the code can easily break and the performing aspect doesn't intrigue me as much.
+For the presentation in our group though I will try to make a cool and especially not boring vcv rack patch. I want to build a patch with multiple audio channels and I want to learn how setup a live session that can be played and feels like it's evolving. I
+I think it's really interesting how you can modulate nearly every aspect of every part with another part and also how these affects are constructed and intertwined with each other.
+It can be really frustrating when only one patch cable is missing or a frequency is cut off too much for the patch to work but really rewarding when you find and fix it for it to work again.
+I also like to focus on working as a team or the presentation, that it feels like a team effort and a viewer can get lost in the performance, that sound and visual melts together as one.
