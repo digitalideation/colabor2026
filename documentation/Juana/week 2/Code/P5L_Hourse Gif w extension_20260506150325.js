@@ -1,0 +1,39 @@
+// {"P5LIVE":{"name":"Hourse Gif w extension","mod":1778079805404}} 
+
+let libs = ['https://unpkg.com/hydra-synth', 'includes/libs/hydra-synth.js', 'https://cdn.jsdelivr.net/gh/ffd8/hy5@main/hy5.js', 'includes/libs/hy5.js', 'https://cdn.jsdelivr.net/gh/geikha/hyper-hydra@latest/hydra-gif.js']
+
+// sandbox - start
+H.pixelDensity(2) // 2x = retina, set <= 1 if laggy
+
+s0.initP5() // send p5 to hydra
+P5.toggle(0) // optionally hide p5
+
+s1.initGif("https://upload.wikimedia.org/wikipedia/commons/d/d5/Muybridge_horse_walking_animated.gif")
+src(s1)
+	.diff(noize(1))
+	.kaleid(1)
+	
+.out(o0)
+
+// osc(10,0.3,2)
+// 	.mask(shape(4))
+// .out(o0)
+
+// src(o0)
+//   .diff(noize(10))
+// .out(o1)
+
+// render(o1)
+
+
+// sandbox - end
+
+
+function setup() {
+	createCanvas(windowWidth, windowHeight)
+}
+
+function draw() {
+	// clear()
+	// circle(mouseX, mouseY, 10)
+}
