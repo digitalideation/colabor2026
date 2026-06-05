@@ -14,16 +14,16 @@ Sadly I haven't really heard anything of the windrush scandal research team so f
 
 #### Feedback with Yann and Stefanie
 
-![[CCC_week_5.jpeg]]
+![](attachment/52d2c617e3dd989f1d9629934391a854.jpeg)
 
 After the feedback I decided to dig into the Flocking as well for a better understanding of the code and how to influence it with audio. I realized that it's quite complicated in a way. 
 
 I was in the library the whole day and search for references in different books. That made me a bit melancholic because of all the ai use etc. 
 
-![[CCC_week_5 1.jpeg]]
+![](attachment/acbceb504a466904cdb8b020c1d3c35b.jpeg)
 
 
-![[CCC_week_5 2.jpeg]]
+![](attachment/725fd6a90190ae8113e090dea9286fe4.jpeg)
 
 I enjoyed the input from Budhaditya because I liked the way of listening in a really meditative state of mind. My take away was that I never want to lose my curiosity to really listen to places and environments I take for granted.
 
@@ -216,7 +216,7 @@ https://cdn.jsdelivr.net/gh/ffd8/P5LIVE/includes/utils/p5live-audio.js
 */
 ```
 
-![[P5L_flock_dominique_27_05 _20260528162639.png]]
+![](attachment/a28fa61359fda58c6c4eed7b142a1998.png)
 ```javascript
 // noprotect
 const PALETTE = [
@@ -398,7 +398,7 @@ https://cdn.jsdelivr.net/gh/ffd8/P5LIVE/includes/utils/p5live-audio.js
 */
 ```
 
-![[P5L_flock_dominique_27_006_20260528153802.png]]
+![](attachment/9765a458a35d69e93bd462e68baa97bf.png)
 
 ```javascript
 // {"P5LIVE":{"name":"flock_dominique_27_006","mod":1779982812939}} 
@@ -584,7 +584,7 @@ If using outside P5LIVE, include p5live-audio.js
 https://cdn.jsdelivr.net/gh/ffd8/P5LIVE/includes/utils/p5live-audio.js
 */
 ```
-![[P5L_flock_dominique_27_006_20260528154012.png]]
+![](attachment/7ca523a1dcd02dbe676cccaa1651ba3a.png)
 
 ## Thursday, 28th of may
 
@@ -668,7 +668,7 @@ function draw() {
 	}
 }
 ```
-![[P5L_new_018_20260530211426.png]]
+![](attachment/239482b4be9099a41c407b3205fcdb5d.png)
 ```javascript
 function setup() {
 	createCanvas(windowWidth, windowHeight)
@@ -705,7 +705,7 @@ function draw() {
 ```
 
 
-![[P5L_typo_live_20260530191503.png]]
+![](attachment/70169715defc6a26aadb086cc95c42e8.png)
 
 ```javascript
 function setup() {
@@ -743,7 +743,7 @@ function draw() {
 ```
 
 
-![[P5L_typo_live_20260530191514.png]]
+![](attachment/90e169bd48164deb538bb8514cf0268b.png)
 
 ```javascript
 let meAskyou = ["Did you hear about the windrush generation before?",
@@ -785,7 +785,7 @@ function draw() {
 ```
 
 
-![[P5L_typo_live_20260530203642.png]]
+![](attachment/d2eaf82424232bd895ee98fed77d3248.png)
 
 ```javascript
 let meAskyou = ["Did you hear about the windrush generation before?",
@@ -828,7 +828,7 @@ function draw() {
 ```
 
 
-![[P5L_typo_live_20260530204447.png]]
+![](attachment/0b8629bb9d0d009d564a9a04348a5de0.png)
 
 Because of the textWrap(CHAR) sometimes the text starts at another line after one letter so I realized that (WORD) would be better.
 
@@ -871,7 +871,7 @@ function draw() {
 ```
 
 
-![[P5L_typo_live_20260530204858.png]]
+![](attachment/94263dfafcc2085981b73275365d7877.png)
 
 ```javascript
 let meAskyou = ["Did you hear about the windrush generation before?",
@@ -927,7 +927,7 @@ function mousePressed() {
 }
 ```
 
-![[P5L_typo_live_20260530210133.png]]
+![](attachment/9486cfb903d63696342412d876265823.png)
 
 ```javascript
 //noprotect
@@ -965,7 +965,7 @@ function draw() {
 }
 ```
 
-![[P5L_typo_live_20260530214728.png]]
+![](attachment/e471d101c1e246bbbccb2cf8b03e2a6f.png)
 
 ```javascript
 //noprotect
@@ -1004,7 +1004,7 @@ function draw() {
 ```
 
 
-![[P5L_typo_live_20260530220812.png]]
+![](attachment/678dd4211785b989409bb2a4dc235ca7.png)
 
 
 With Dominique I decided to create the opening scene of the visuals for our performance in a concrete poetry kind of style (i really liked the input with Jasmin), whilst playing some audio snippets. 
@@ -1072,7 +1072,7 @@ function draw() {
   }
 }
 ```
-![[P5L_interview scroll_20260530223906.png]]
+![](attachment/64e575dd791868e1dd98fc840525c96d.png)
 
 ```javascript
 let scrollText = ` "Has it affected the way you feel connected to the country?
@@ -1151,7 +1151,7 @@ function draw() {
 }
 ```
 
-![[P5L_interview scroll_20260530224122.png]]
+![](attachment/bb7ede2aa3238843105aca66079297bd.png)
 
 ```javascript
 let scrollText = ` "Has it affected the way you feel connected to the country?
@@ -1229,7 +1229,7 @@ function draw() {
 }
 ```
 
-![[P5L_interview scroll_20260530224419.png|613]]
+![](attachment/37900d0bb2f4de932464eb4e7ec2e8ff.png)
 ```javascript
 let scrollText = ` "Has it affected the way you feel connected to the country?
 Oh, yeah, 100%, it has. And it’s very strange as a child, 
@@ -1308,7 +1308,7 @@ frameRate(1)
 }
 ```
 
-![[P5L_interview scroll_20260530224647.png]]
+![](attachment/76e13118cf3728c3a3d9e989aad68564.png)
 
 ```javascript
 let scrollText = ` "Has it affected the way you feel connected to the country?
@@ -1395,7 +1395,7 @@ if (fftEase > 40) {
 }
 ```
 
-![[P5L_interview scroll_20260530225225.png]]
+![](attachment/9c72a2f997d7665a777948192d348384.png)
 
 ```javascript
 let scrollText = ` "Has it affected the way you feel connected to the country?
@@ -1485,7 +1485,7 @@ if (fftEase[100] > 40) {
 ```
 
 
-![[P5L_interview scroll_20260530230030.png]]
+![](attachment/4413ced0da273a113663a5c1f7c53bd5.png)
 
 ```javascript
 let scrollText = ` "Has it affected the way you feel connected to the country?
@@ -1576,7 +1576,7 @@ if (fftEase[100] > 40) {
 ```
 
 
-![[P5L_interview scroll_20260530230725.png]]
+![](attachment/cca2585d58c95e7618efebaf7d372bce.png)
 
 ```javascript
 let scrollText = ` "Has it affected the way you feel connected to the country?
@@ -1671,33 +1671,33 @@ if (fftEase[100] > 40) {
 }
 ```
 
-![[P5L_interview scroll_20260530232343.png]]
+![](attachment/68e2f562ab8a599df2fc6b01340a0b69.png)
 
 I played a lot with the alpha channel for the background and i loved the smear lines.
 
 I drew a storyboard that I shared with Dominique so that we could make sure of what we're talking.
-![[CCC_week_5 3.jpeg]]
+![](attachment/e92acb283a01c1914339cd40f96d63b2.jpeg)
 
 I really tried a lot of different things:
-![[Bildschirmaufnahme 2026-05-27 um 16.11.00.mov]]
+![](attachment/723fab45cfc808a9342ac36eb5672d9c.mov)
 
 
 
-![[Bildschirmaufnahme 2026-05-27 um 16.13.05.mov]]
-![[Bildschirmaufnahme 2026-05-27 um 16.17.29.mov]]
-![[Bildschirmaufnahme 2026-05-27 um 16.38.05.mov]]
-![[Bildschirmaufnahme 2026-05-28 um 15.23.19.mov]]it got really laggy...
+![](attachment/ee2763cddd7c696ffd1db55fae7c8bc5.mov)
+![](attachment/86bc43f636f2de6699052a53b84740b9.mov)
+![](attachment/ad9fe436dfea17f0e7964a48d766f376.mov)
+![](attachment/9d359596ab0f164e0e6f685a587654b4.mov)it got really laggy...
 
-![[Bildschirmaufnahme 2026-05-28 um 16.19.40.mov]]
-![[Bildschirmaufnahme 2026-05-28 um 16.24.23.mov]]
+![](attachment/fecc2ed3b3f57b95c656d66780df66e6.mov)
+![](attachment/411c3411aebd5ede6f66085846990b76.mov)
 
 During the process I created my code in strudel and I was really frustrated. But that was the first try that was way too long! 
 
-![[Bildschirmaufnahme 2026-05-29 um 00.02.39.mov]]![[Bildschirmaufnahme 2026-05-30 um 21.23.38.mov]]
+![](attachment/304076804a2fd6f15d7500fceec7e294.mov)![](attachment/f23b85df67a692383ae372034b434c22.mov)
 
-![[Bildschirmaufnahme 2026-05-30 um 21.29.21.mov]]![[Bildschirmaufnahme 2026-05-30 um 22.38.28.mov]]![[Bildschirmaufnahme 2026-05-30 um 22.48.21.mov]]
-![[Bildschirmaufnahme 2026-05-31 um 14.32.04.mov]]
-![[Bildschirmaufnahme 2026-05-31 um 15.23.17.mov]]
+![](attachment/21970700faf240225754859ca50406d2.mov)![](attachment/9ea2285f8c85da91eb7875e8bf675e47.mov)![](attachment/2e5ad8ca5c08ff44e868a99beef597c5.mov)
+![](attachment/d19fb56d82148d0a62cdab8274c5386b.mov)
+![](attachment/9234c2e47fb97ca04cde9702ef99002a.mov)
 
 
 ```javascript

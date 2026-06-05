@@ -2,11 +2,11 @@
   <i>& my progress</i>
 </h1>
 Hello I'm **Alina** *italic*
-![[CCC_1.jpeg]]
+![](attachment/67638f46025a9dd9e211463d2cc2effd.jpeg)
 
-![[CCC_1 2.jpeg]]
+![](attachment/76ac4171b8dec1f9580708ff30814c53.jpeg)
 
-![[CCC_1 1.jpeg]]
+![](attachment/47bd6af173c064c711f2e3e03ae31731.jpeg)
 
 ```javascript
 // {"P5LIVE":{"name":"new_001","mod":1777372609858}} 
@@ -27,7 +27,7 @@ function draw() {
 
 }
 ```
-![[P5L_new_001_20260428103649.png]]
+![](attachment/0a4a95cc7418f0657714ac69a5763240.png)
 
 ```javascript
 // {"P5LIVE":{"name":"new_001","mod":1777369573696}} 
@@ -54,10 +54,10 @@ line(35,7,mouseX,mouseY)
   
 
 ```
-![[P5L_new_001_20260428094443.png]]
+![](attachment/8090115a36561e8c6ebd33cd9e2e5b56.png)
 
 Das waren meine ersten Versuche mit P5live. 
-![[P5L_new_001_20260428094613.png]]
+![](attachment/fc0456cc37d653ec14ac77d6d5d74107.png)
 
 
 ```javascript
@@ -93,53 +93,53 @@ function draw() {
   noLoop(); // Stoppt das dauerhafte Neuzeichnen, da das Bild statisch ist
 }
 ```
-![[P5L_new_003_20260428110732.png]]
+![](attachment/749d829c7f186800d9318aa4f5857fbe.png)
 Das sind die ersten Quadrate, die wir in der Übung von Vera Molnar gemacht haben. 
 
-![[P5L_new_004_20260428111617.png]]
+![](attachment/8da1087a04a875abfec9e909ad4f29f0.png)
 
 ```javascript
 ```
-![[P5L_new_004_20260428130442.png]]
+![](attachment/c96d89877be5de9eae063c7bcaf86b06.png)
 ```javascript
 ```
-![[P5L_new_004_20260428112147.png]]
+![](attachment/c41271ff0b415a9c3175a65c3420e8e3.png)
 ```javascript
 ```
-![[P5L_new_004_20260428113042.png]]
-```javascript
-```
-
-![[P5L_new_006_20260428134058.png]]
-
-```javascript
-```
-![[P5L_recoding_20260428135813.png]]
-```javascript
-```
-![[P5L_recoding_20260428145830.png]]
-```javascript
-```
-![[P5L_tag_2_yann_2.0_molnar_20260429130810.png]]
+![](attachment/3f61d5668dde63c307807f40a207cb9a.png)
 ```javascript
 ```
 
-![[P5L_exercise_2_20260429132450.png]]
+![](attachment/42d663bfc3cd3cda6859ef8414a00f62.png)
 
-![[P5L_dvd_bouncing_20260429145415.png]]
+```javascript
+```
+![](attachment/0bc8358ae323bac972ab2a6335345809.png)
+```javascript
+```
+![](attachment/4da099b1f5453b3f9e46e1ee6febaaca.png)
+```javascript
+```
+![](attachment/e8bb0ebef1003a03087dd998c638c7d7.png)
+```javascript
+```
+
+![](attachment/9bb561172bb069dd6bcabae386b2fad9.png)
+
+![](attachment/af3ac39e52ed733ddc8028feaa41faa5.png)
 
 With Yann we were experimenting with VCV rack:
-![[VCV_1.png]]
-![[VCV_2.png]]
-![[VCV_3.png]]
-![[VCV_4.png]]
-![[VCV_5.png]]
-![[VCV_6.png]]
-![[VCV_7.png]]
-![[VCV_8.png]]
-![[VCV_9.png]]
-![[VCV_10.png]]
-![[VCV_11.png]]
+![](attachment/c3338cf757e85299d930f7504e667581.png)
+![](attachment/8e0baf770dd7b7199be3512903db3f4a.png)
+![](attachment/50f9957b6d9fa71419de69daba00272b.png)
+![](attachment/432bbff4bcaaea8f61a6203d738324c5.png)
+![](attachment/419a26021fe5736b39d6ed2b8bc2d752.png)
+![](attachment/79f09ff6f7f12a0dfe93ddb38a246c39.png)
+![](attachment/c1d278cce2deb1f7c51618ffb0d794bc.png)
+![](attachment/c07e1b1aee0c9a9e8fafdf0b7b80e54e.png)
+![](attachment/076e871b8c5bbdd69d717e61fb5b0937.png)
+![](attachment/a8a025297e58e89491f9e74550c75b18.png)
+![](attachment/636233dd78d0987d15d0edee5afc622e.png)
 
 
 ```javascript

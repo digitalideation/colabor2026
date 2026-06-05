@@ -1,10 +1,10 @@
 ## Montag 11.Mai 2026
 
 ## "Input on sound and visual music" mit Stefanie Bräuer
-![[CCC_1 13.jpeg|613]]
-![[CCC_1 14.jpeg]]
+![](attachment/3be467b831ad4a4bd75cd4248df4cde0.jpeg)
+![](attachment/13ce0d212816d2cf346170cfdabc76d8.jpeg)
 Hub am Nachmittag:
-![[CCC_1 15.jpeg]]
+![](attachment/7b4ef4de186dca0ac4cd35c18b138bc0.jpeg)
 ## Dienstag 12.Mai 2026 
 
 
@@ -16,9 +16,9 @@ Wir haben uns darauf geeinigt, dass ich den Audioteil und Dominique den visuelle
 DnB verbindet musikalische Einflüsse aus Reggae, Dub, Hip Hop, Electro Funk, Soul, Dance Hall, Grime und Punk, also Einflüsse von den Menschen, die diese Musik aus der Karribik mitbrachten. Schlagzeug-Solos von beispielsweise James Brown wurden beschleunigt und gesamplet.  
 
 https://www.bbc.com/news/articles/c3w4q1ee1p4o
-![[CCC_1 12.jpeg]]
+![](attachment/5d2ea4b943d31ee16336e59b80ec6677.jpeg)
 Hub am Nachmittag:
-![[CCC_1 16.jpeg]]## Mittwoch 13.Mai 2026 Strudel-Einführung mit Yann
+![](attachment/b1d352b58a7d2da8ddd2894675f91684.jpeg)## Mittwoch 13.Mai 2026 Strudel-Einführung mit Yann
 
 ```javascript
 setCpm(180/4)
@@ -63,7 +63,7 @@ $:s("vocals:26").scrub(rand.seg(8).rib(6,1)).gain(0.3)
 $:note("e1*2").s("sawtooth")
 .legato(1).lpf("<400, 2000>").slow(4).gain(0.4).distort(0.2).delayfb(0.2)
 ```
-![[CCC_1 17.jpeg]]
+![](attachment/f2268df965f30ed85a530f8b344eb85e.jpeg)
 
 Here the three code snippets I prepared for the presentation:
 
@@ -251,4 +251,4 @@ _$:s("music_:13").slow(64).legato(1).delay(0.8)
 
 Hier habe ich sehr viel herumexperimentiert...
 
-![[Bildschirmaufnahme 2026-05-18 um 16.18.52.mov]]
+![](attachment/0cd271baed9668c4a13a95da2b33bade.mov)

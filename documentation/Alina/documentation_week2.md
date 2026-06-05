@@ -1,11 +1,11 @@
 ## Mittwoch, 6. Mai. 2026 Workshop mit Andrea Zaccuri
-![[CCC_1 11.jpeg]]
+![](attachment/0fad2a948cae92249ea2ea58bb213709.jpeg)
 ```javascript
 noise(5, 0.2).out();
 //umso kleiner das erste Argument-> umso mehr Zoom
 //noise(scale, Geschwindigkeit)
 ```
-![[Bildschirmfoto 2026-05-06 um 09.46.20.png]]
+![](attachment/556ae02b489838ff16b041577108908e.png)
 
 Der Splitscreen wird auch Buffer genannt.
 
@@ -17,7 +17,7 @@ render()
 
 ```
 
-![[Bildschirmfoto 2026-05-06 um 09.52.58.png]]
+![](attachment/34315d4f9327783e2ca310306d6045f7.png)
 
 
 Man kann die Webcam als Quelle brauchen:
@@ -34,7 +34,7 @@ Oder man kann Bilder vom Desktop oder einer Webseite laden:
 s0.initImage("https://upload.wikimedia.org/wikipedia/commons/2/25/Hydra-Foto.jpg")
 src(s0).out()
 ```
-![[Bildschirmfoto 2026-05-06 um 14.11.50.png]]
+![](attachment/f619de7506b9547fe7669f3e665ccc9d.png)
 Wenn wir mehr als eine Quelle (src) verwenden wollen, müssen wir die Outputs benennen (o0,o1,o2,o3).
 
 ```javascript
@@ -44,7 +44,7 @@ osc(5,0.1,0.4).out() // .out(o0) und .out() ist das Gleiche
 
 ```
 
-![[Bildschirmfoto 2026-05-06 um 11.25.02.png]]
+![](attachment/1f6f77d533f9eb98287fd9ce60990fda.png)
 ## transformations
 
 ##### input (src, image, video, function) -> transform (z.B .rotate(), .pixelate()) -> outpout (.out())
@@ -78,7 +78,7 @@ osc(30,0.2,30)
   .modulate(src(o0).scale(0.95), 0.15)
   .out(o0)
 ```
-![[Bildschirmfoto 2026-05-06 um 10.27.23.png]]
+![](attachment/2688535bf1014ee644a1c308e062c22f.png)
 
 
 ```javascript
@@ -86,7 +86,7 @@ osc(40).add(noise(3)).out()
 ```
 
 
-![[Bildschirmfoto 2026-05-06 um 11.17.51.png]]
+![](attachment/4614ac584441c0e5e8663adadd20b1d3.png)
 Es sieht ein wenig wie Schlangen-Optik aus.
 
 modulate bestimmt, wie sich die Pixel bewegen:
@@ -100,10 +100,10 @@ render(o2)
 ```
 
 output 1
-![[Bildschirmfoto 2026-05-06 um 11.27.30.png]]
+![](attachment/05cbe2f7eb02491d0a2bb9867e684409.png)
 
 Output 2 pixelate noise und oscillator ->
-![[Bildschirmfoto 2026-05-06 um 11.27.54.png]]
+![](attachment/85d3a16622f4bc2c6456e8d26299c998.png)
 
 
 
@@ -124,7 +124,7 @@ render(o2)
 ```
 
 Man kann mehrere Effekte kombinieren und neue Outputs kreieren, um von da aus diesen wiederum als Input zu brauchen.
-![[Bildschirmfoto 2026-05-06 um 11.41.40.png]]
+![](attachment/7701c3ee3a5717fd1ff3799bb1d8cb80.png)
 
 
 ```javascript
@@ -135,7 +135,7 @@ osc(6).modulate(src(s0),1).out(o0)
 
 ```
 
-![[Bildschirmfoto 2026-05-06 um 11.52.04.png]]
+![](attachment/68167ae5ade66a3a33971954749de41c.png)
 
 ```javascript
 let libs = ['https://unpkg.com/hydra-synth', 'includes/libs/hydra-synth.js', 'https://cdn.jsdelivr.net/gh/ffd8/hy5@main/hy5.js', 'includes/libs/hy5.js']
@@ -168,15 +168,15 @@ function draw() {
 }
 ```
 ![[Bildschirmaufnahme 2026-05-06 um 14.05.04.mov]
-![[Bildschirmaufnahme 2026-05-06 um 14.57.32.mov]]
+![](attachment/c5c45d1cf6763da251aaa88ae17bb416.mov)
 
-![[Bildschirmfoto 2026-05-06 um 14.03.27.png]]
-![[Bildschirmfoto 2026-05-06 um 14.11.50.png]]
+![](attachment/cee9e0ab0775a257fe6207c6934984c9.png)
+![](attachment/f619de7506b9547fe7669f3e665ccc9d.png)
 
 
-![[Bildschirmfoto 2026-05-06 um 13.58.46.png]]
+![](attachment/a15985ae9c6cfc840ff0083e62aa4502.png)
 
-![[Bildschirmfoto 2026-05-06 um 13.58.22.png]]
+![](attachment/f673f11c9efc825eb35f82dc967c9c23.png)
 
 
 ### 07.Mai 2026 Input mit Jasmin Meerhof
@@ -212,7 +212,7 @@ function draw() {
 }
 ```
 
-![[P5L_new_002_20260507112751.png]]
+![](attachment/bc1ca584d39b48e5e34e7a0edfa84cd0.png)
 
 ```javascript
 function setup() {
@@ -241,32 +241,32 @@ function draw() {
 }
 ```
 
-![[P5L_new_002_20260507113305.png]]
+![](attachment/800d27320604a5cd83e32a6486942f6c.png)
 
 
-![[P5L_new_002_20260507113852.png]]
-![[P5L_new_002_20260507113935.png]]
+![](attachment/f6f47a59350b1f2463be99d579f5d3cf.png)
+![](attachment/c0c1a9b6cfa223e189993922a59c537c.png)
 
-![[P5L_new_002_20260507114341.png]]
+![](attachment/4d2670b7a03df9fc46c3db7195291f79.png)
 
-![[P5L_new_002_20260507130139.png]]
-
-
-![[P5L_new_002_20260507132340.png]]
+![](attachment/7f6c7716716d54ebf1ff145cc260a593.png)
 
 
-![[P5L_new_002_20260507140139.png]]
-
-![[P5L_new_002_20260507140222.png]]
+![](attachment/de459e500636bb1bb680c61d14a36214.png)
 
 
+![](attachment/45c8d232a4a20f5ea26193ee8e4583f9.png)
 
-![[P5L_new_002_20260507140354.png]]
-
-![[Bildschirmfoto 2026-05-07 um 13.19.18.png]]
+![](attachment/39ad47a029ec434346a9497ba1569075.png)
 
 
-![[Bildschirmfoto 2026-05-07 um 13.19.28.png]]
+
+![](attachment/e8ec18c6220925837de889311ff310ca.png)
+
+![](attachment/73ff3db2ad823934571604b6d24585b1.png)
+
+
+![](attachment/7111163f43719565866a866f07bb4507.png)
 
 ### Freitag, 08.Mai.2026 Machine Learning mit Paulina Zybinska
 
@@ -366,13 +366,13 @@ function classifyVideo(){
 Wir haben bei Paulina mit Teachable Machine einen Trainingsdatensatz gemacht, jedoch war das Ganze noch nicht so zuverlässig bei so wenigen Trainingsbildern. So hat mich Teachable Machine ab und zu wegen der Hand als Pen erkennt. Ausserdem haben wir mit Body Pose sowie gearbeitet.
 
 
-![[P5L_new_006_20260508114742.png]]
+![](attachment/d62ea84646f42aa594d87dc66b005d91.png)
 
-![[P5L_new_006_20260508134644.png]]
+![](attachment/810c57c1ea47789ed6882844a92105b6.png)
 
-![[Bildschirmaufnahme 2026-05-08 um 13.53.50.mov]]
+![](attachment/3bb67ebe65d595452ad2d55a9fdae2ad.mov)
 
-![[Bildschirmaufnahme 2026-05-08 um 13.55.36.mov]]
+![](attachment/d0a5eb4ee76ed277e3425548113964df.mov)
 
 
 ```jaa
@@ -466,7 +466,7 @@ function gotHands(results) {
 }
 ```
 
-![[P5L_new_007_20260519170538.png]]
+![](attachment/ac1a8939dfa1bb16031992a610d60c72.png)
 
 ```javascript
 / {"P5LIVE":{"name":"new_008","mod":1779210359885}} 
@@ -550,4 +550,4 @@ function draw() {
   blendMode(BLEND)
 }
 ```
-![[P5L_new_008_20260519170559.png]]
+![](attachment/50137d5c1b548a89dd9e7f5f171e912c.png)

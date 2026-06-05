@@ -110,11 +110,11 @@ _$:s("music_:2").gain(0.25)
 ```
 
 Nun habe ich zu Übungszwecken verschiedene wav-Dateien heruntergeladen, um diese zu verändern.
-![[Scan_Seite_5.jpg]]
+![](attachment/9aa0d59102095836fc8db75bb8f1d9b1.jpg)
 ### Wednesday, may 20th input with Stefanie 
 
-![[Scan_Seite_4.jpg]]
-![[Scan_Seite_3.jpg]]
+![](attachment/605232891260d4abb1b1d1bd0b09a437.jpg)
+![](attachment/351460068544faee53647305afc2b86a.jpg)
 
 
 ### Thursday, may 21st
@@ -134,7 +134,7 @@ https://www.history.ac.uk/research/history-policy/windrush-scandal-transnational
 
 
 After my research I realized that there's an archive of 60 interviews with people that experienced the windrush scandal or are connected with it in a way. So I decided to ask for consent if we could  use their audio files or transcripts for our live coding performance.
-![[Bildschirmfoto 2026-05-22 um 09.11.14.png]]
+![](attachment/fc8f018a296e7a47603bbf1102d5eb1f.png)
 
 
 I hope I'll get an answer from them before the live coding performance but as the performance is already coming up in a bit more than a week I'm not so sure about that.
@@ -142,9 +142,9 @@ I hope I'll get an answer from them before the live coding performance but as th
 
 
 ### Friday, may 22nd input with Yann
-![[Scan_Seite_2.jpg]]
+![](attachment/ba242d7c7db369f3ac5ac62db270f934.jpg)
 
-![[Scan_Seite_1.jpg]]
+![](attachment/2a342877b55a21ca750d53523f5a67a1.jpg)
 
 ```javascript
 // {"P5LIVE":{"name":"3d_audio_2.0","mod":1779457061595}} 
@@ -214,7 +214,7 @@ If using outside P5LIVE, include p5live-audio.js
 https://cdn.jsdelivr.net/gh/ffd8/P5LIVE/includes/utils/p5live-audio.js
 */
 ```
-![[P5L_3d_audio_2.0_20260522133741.png]]
+![](attachment/b6f6ca45f018ea5cb64db8c403361de8.png)
 ```javascript
 // {"P5LIVE":{"name":"3d_audio_2.0","mod":1779450645522}} 
 
@@ -272,7 +272,7 @@ If using outside P5LIVE, include p5live-audio.js
 https://cdn.jsdelivr.net/gh/ffd8/P5LIVE/includes/utils/p5live-audio.js
 */
 ```
-![[P5L_3d_audio_2.0_20260522115045.png]]
+![](attachment/999b707bdf44133edc2facb7c55ff618.png)
 ```javascript
 // {"P5LIVE":{"name":"3d_music_forloop","mod":1779458257984}} 
 
@@ -355,8 +355,8 @@ If using outside P5LIVE, include p5live-audio.js
 https://cdn.jsdelivr.net/gh/ffd8/P5LIVE/includes/utils/p5live-audio.js
 */
 ```
-![[P5L_3d_music_forloop_20260522135737.png]]
+![](attachment/3426480a26d33436feea2b97b66c01f5.png)
 
 We experimented with WEBGL and 3D shapes that were audioreactive. I really liked the idea of creating an own mesh in blender and let it bounce around. 
 
-![[Bildschirmaufnahme 2026-05-22 um 13.49.08.mov]]![[Bildschirmaufnahme 2026-05-22 um 14.35.17.mov]]
+![](attachment/036320ba8b600b64d45d19cffbcc3b01.mov)![](attachment/fead71c61851c41078157a9d0190e9bd.mov)
